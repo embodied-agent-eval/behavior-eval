@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: behavior-eval
+Version: 1.0
+Home-page: https://github.com/embodied-agent-eval/behavior-eval
+Author: stanford
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: igibson
+Requires-Dist: bddl
