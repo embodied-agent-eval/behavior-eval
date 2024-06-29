@@ -1,7 +1,7 @@
 import copy
 from enum import IntEnum
 from typing import List
-from igibson.transition_model.base_env import BaseEnv
+from behavior.transition_model.base_env import BaseEnv
 from igibson.envs.igibson_env import iGibsonEnv
 from igibson.tasks.behavior_task import BehaviorTask
 from igibson.objects.multi_object_wrappers import ObjectMultiplexer,ObjectGrouper

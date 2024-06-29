@@ -1,6 +1,6 @@
 import fire
 from multiprocessing import Process
-from igibson.evaluation.action_sequence.scripts.get_prompt_action_sequence import get_llm_prompt
+from behavior.evaluation.action_sequence.scripts.get_prompt_action_sequence import get_llm_prompt
 import  os
 import json
 

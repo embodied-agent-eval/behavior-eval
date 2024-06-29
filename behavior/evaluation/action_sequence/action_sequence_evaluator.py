@@ -1,12 +1,12 @@
-from igibson.transition_model.base_env import BaseEnv
+from behavior.transition_model.base_env import BaseEnv
 from igibson.envs.igibson_env import iGibsonEnv
 from igibson.objects.multi_object_wrappers import ObjectMultiplexer,ObjectGrouper
 from igibson.objects.articulated_object import URDFObject
 from igibson.object_states.on_floor import RoomFloor
-from igibson.evaluation.action_sequence.prompts.one_shot import prompt
-from igibson.transition_model.eval_env import EvalEnv
-from igibson.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
-from igibson.evolving_graph.eval_evolving_graph_env import EvalActions
+from behavior.evaluation.action_sequence.prompts.one_shot import prompt
+from behavior.transition_model.eval_env import EvalEnv
+from behavior.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
+from behavior.evolving_graph.eval_evolving_graph_env import EvalActions
 import platform
 from contextlib import redirect_stdout
 import io

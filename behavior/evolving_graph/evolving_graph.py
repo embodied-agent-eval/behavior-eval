@@ -2,7 +2,7 @@ import networkx as nx
 from igibson.objects.multi_object_wrappers import ObjectMultiplexer,ObjectGrouper
 from igibson import object_states
 from igibson.objects.articulated_object import URDFObject
-from igibson.transition_model.relation_tree import GraphRelationTree,TeleportType
+from behavior.transition_model.relation_tree import GraphRelationTree,TeleportType
 from igibson.object_states.on_floor import RoomFloor
 from igibson.tasks.behavior_task import BehaviorTask
 from collections import deque

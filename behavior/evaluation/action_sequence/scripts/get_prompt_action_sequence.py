@@ -1,7 +1,7 @@
 import os
 import json
 import fire
-from igibson.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
+from behavior.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
 
 def get_llm_prompt(demo_path,rst_path):
     env=ActionSequenceEvaluator(demo_path=demo_path)

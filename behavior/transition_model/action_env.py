@@ -1,6 +1,5 @@
 import gym
 import numpy as np
-from igibson.action_primitives.starter_semantic_action_primitives import ActionPrimitiveError
 from igibson.robots import BaseRobot,BehaviorRobot
 from igibson.scenes.igibson_indoor_scene import InteractiveIndoorScene
 import igibson.object_states as object_states
