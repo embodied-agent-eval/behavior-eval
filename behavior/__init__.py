@@ -36,6 +36,10 @@ goal_int_result_path = os.environ.get("BEHAVIOR_GOAL_INT_RESULT", global_config.
 goal_int_result_path = os.path.expanduser(goal_int_result_path)
 logger.debug(f"Goal Intention Result Path: {goal_int_result_path}")
 
+goal_int_resources_path = os.environ.get("BEHAVIOR_GOAL_INT_RESOURCE", global_config.get("goal_int_resource_path"))
+goal_int_resources_path = os.path.expanduser(goal_int_resources_path)
+logger.debug(f"Goal Intention Resource Path: {goal_int_resources_path}")
+
 root_path = os.path.dirname(os.path.realpath(__file__))
 
 if not os.path.isabs(vr_demo_path):
@@ -46,3 +50,5 @@ if not os.path.isabs(action_seq_result_path):
     action_seq_result_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), action_seq_result_path)
 if not os.path.isabs(goal_int_result_path):
     goal_int_result_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), goal_int_result_path)
+if not os.path.isabs(goal_int_resources_path):
+    goal_int_resources_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), goal_int_resources_path)

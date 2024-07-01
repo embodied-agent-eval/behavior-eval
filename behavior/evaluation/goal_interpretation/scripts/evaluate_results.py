@@ -1,5 +1,6 @@
 import igibson.object_states as object_states
 import json
+import behavior
 
 
 
@@ -501,7 +502,7 @@ def main():
     ALL_RESULTS = {}
 
     for model_name in all_models:
-        save_path = f"./igibson/evaluation/goal_interpretation/results/HELM_output/{model_name}_outputs.json"
+        save_path = f"{behavior.goal_int_result_path}/HELM_output/{model_name}_outputs.json"
         with open(save_path, 'r') as json_file:
             ALL_RESULTS[model_name] = json.load(json_file)
 
@@ -523,11 +524,12 @@ def main():
                 }
             )    
         
+        
         ALL_METRICS[model_name], sorted_model_results_evaluated = evaluate_dataset(result_reference_list)
-        with open(f"./igibson/evaluation/goal_interpretation/results/error_analysis/{model_name}_error_analysis.json", 'w') as json_file:
+        with open(f"{behavior.goal_int_result_path}/error_analysis/{model_name}_error_analysis.json", 'w') as json_file:
             json.dump(sorted_model_results_evaluated, json_file, indent=4)
     
-    print("results saved to ./igibson/evaluation/goal_interpretation/results/error_analysis/")
+    print(f"results saved to {behavior.goal_int_result_path}/error_analysis/")
 
 if __name__ == "__main__":
     main()

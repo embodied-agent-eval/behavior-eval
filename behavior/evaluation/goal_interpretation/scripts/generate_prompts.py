@@ -1,18 +1,21 @@
 from tqdm import tqdm
 import json
+import os
+import behavior
 
 
 # define the prompt save path
-prompt_save_path = "./igibson/evaluation/goal_interpretation/data/goal_interpretation_prompts.json"
 
+prompt_save_path = f"{behavior.goal_int_result_path}/reconstructed_prompts/goal_interpretation_prompts.json"
+os.makedirs(os.path.dirname(prompt_save_path), exist_ok=True)
 
 
 # Fixed paths (you should not have to change these paths)
-demo_to_conds_path = "./igibson/evaluation/goal_interpretation/data/all_conditions.json"
-demo_to_objs_path = "./igibson/evaluation/goal_interpretation/data/all_objects.json"
-task_to_instructions_path = "./igibson/evaluation/goal_interpretation/data/instructions_by_activity_name.json"
-prompt_path = "./igibson/evaluation/goal_interpretation/prompts/behavior_goal_interpretation.txt"
-task_to_demo_path = "./igibson/evaluation/goal_interpretation/data/task_to_demo.json"
+demo_to_conds_path = f"{behavior.goal_int_resources_path}/data/all_conditions.json"
+demo_to_objs_path = f"{behavior.goal_int_resources_path}/data/all_objects.json"
+task_to_instructions_path = f"{behavior.goal_int_resources_path}/data/instructions_by_activity_name.json"
+prompt_path = f"{behavior.goal_int_resources_path}/prompts/behavior_goal_interpretation.txt"
+task_to_demo_path = f"{behavior.goal_int_resources_path}/data/task_to_demo.json"
 
 
 
