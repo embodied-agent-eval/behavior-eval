@@ -1,7 +1,7 @@
 import igibson.object_states as object_states
 import json
 import behavior
-
+import os
 
 
 
@@ -526,7 +526,10 @@ def evaluate_results(llm_response_dir):
         
         
         ALL_METRICS[model_name], sorted_model_results_evaluated = evaluate_dataset(result_reference_list)
-        with open(f"{behavior.goal_int_result_path}/error_analysis/{model_name}_error_analysis.json", 'w') as json_file:
+        
+        error_analysis_save_path = f"{behavior.goal_int_result_path}/error_analysis/{model_name}_error_analysis.json"
+        os.makedirs(os.path.dirname(error_analysis_save_path), exist_ok=True)
+        with open(error_analysis_save_path, 'w') as json_file:
             json.dump(sorted_model_results_evaluated, json_file, indent=4)
     
     print(f"results saved to {behavior.goal_int_result_path}/error_analysis/")

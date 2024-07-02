@@ -21,12 +21,12 @@ def main(module:Optional[str]="action_sequence",func:Optional[str]="evaluate_res
     if module not in ["goal_interpretation","action_sequence","subgoal_decomposition","transition_modeling"]:
         return "Invalid module, must be goal_interpretation,action_sequence,subgoal_decomposition,transition_modeling"
     if module == "action_sequence":
-        if func == "evaluate_result":
+        if func == "evaluate_results":
             action_sequence_evaluate_results(llm_response_dir,worker_num)
         elif func == "generate_prompts":
             action_sequence_generate_prompts(worker_num)
     elif module == "goal_interpretation":
-        if func == "evaluate_result":
+        if func == "evaluate_results":
             goal_interpretation_evaluate_results(llm_response_dir)
         elif func == "generate_prompts":
             goal_interpretation_generate_prompts()

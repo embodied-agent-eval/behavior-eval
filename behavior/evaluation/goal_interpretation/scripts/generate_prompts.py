@@ -14,7 +14,7 @@ os.makedirs(os.path.dirname(prompt_save_path), exist_ok=True)
 demo_to_conds_path = f"{behavior.goal_int_resources_path}/data/all_conditions.json"
 demo_to_objs_path = f"{behavior.goal_int_resources_path}/data/all_objects.json"
 task_to_instructions_path = f"{behavior.goal_int_resources_path}/data/instructions_by_activity_name.json"
-prompt_path = f"{behavior.goal_int_resources_path}/prompts/behavior_goal_interpretation.txt"
+prompt_path = f"{behavior.goal_int_resources_path}/prompt_template/behavior_goal_interpretation.txt"
 task_to_demo_path = f"{behavior.goal_int_resources_path}/data/task_to_demo.json"
 
 
