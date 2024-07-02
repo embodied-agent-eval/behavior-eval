@@ -36,7 +36,7 @@ goal_int_result_path = os.environ.get("BEHAVIOR_GOAL_INT_RESULT", global_config.
 goal_int_result_path = os.path.expanduser(goal_int_result_path)
 logger.debug(f"Goal Intention Result Path: {goal_int_result_path}")
 
-goal_int_resources_path = os.environ.get("BEHAVIOR_GOAL_INT_RESOURCE", global_config.get("goal_int_resource_path"))
+goal_int_resources_path = os.environ.get("BEHAVIOR_GOAL_INT_RESOURCE", global_config.get("goal_int_resources_path"))
 goal_int_resources_path = os.path.expanduser(goal_int_resources_path)
 logger.debug(f"Goal Intention Resource Path: {goal_int_resources_path}")
 

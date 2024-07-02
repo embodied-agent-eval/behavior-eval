@@ -3,7 +3,7 @@ from igibson.envs.igibson_env import iGibsonEnv
 from igibson.objects.multi_object_wrappers import ObjectMultiplexer,ObjectGrouper
 from igibson.objects.articulated_object import URDFObject
 from igibson.object_states.on_floor import RoomFloor
-from behavior.evaluation.action_sequence.prompts.one_shot import prompt
+from behavior.evaluation.action_sequence.resources.prompt_templates.one_shot import prompt
 from behavior.transition_model.eval_env import EvalEnv
 from behavior.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
 from behavior.evolving_graph.eval_evolving_graph_env import EvalActions
