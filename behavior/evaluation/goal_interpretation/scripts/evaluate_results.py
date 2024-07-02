@@ -5,13 +5,13 @@ import behavior
 
 
 
-demo_to_conds_path = "./igibson/evaluation/goal_interpretation/data/all_conditions.json"
-demo_to_objs_path = "./igibson/evaluation/goal_interpretation/data/all_objects.json"
-demo_names_path = "./igibson/evaluation/goal_interpretation/data/100_selected_demos.txt"
-task_to_instructions_path = "./igibson/evaluation/goal_interpretation/data/instructions_by_activity_name.json"
-prompt_path = "./igibson/evaluation/goal_interpretation/prompts/behavior_goal_interpretation.txt"
-task_to_demo_path = "./igibson/evaluation/goal_interpretation/data/task_to_demo.json"
-demo_to_prompt_path = "./igibson/evaluation/goal_interpretation/data/llm_prompts.json"
+demo_to_conds_path = f"{behavior.goal_int_resources_path}/data/all_conditions.json"
+demo_to_objs_path = f"{behavior.goal_int_resources_path}/data/all_objects.json"
+demo_names_path = f"{behavior.goal_int_resources_path}/data/100_selected_demos.txt"
+task_to_instructions_path = f"{behavior.goal_int_resources_path}/data/instructions_by_activity_name.json"
+prompt_path = f"{behavior.goal_int_resources_path}/prompts/behavior_goal_interpretation.txt"
+task_to_demo_path = f"{behavior.goal_int_resources_path}/data/task_to_demo.json"
+demo_to_prompt_path = f"{behavior.goal_int_resources_path}/data/llm_prompts.json"
 
 
 
@@ -479,7 +479,7 @@ def evaluate_dataset(result_reference_list):
 
 
 
-def main():
+def evaluate_results(llm_response_dir):
     '''
     This script is used to evaluate performance of the 15 LLMs in the Embodied Agents Eval Paper.
     
@@ -502,7 +502,7 @@ def main():
     ALL_RESULTS = {}
 
     for model_name in all_models:
-        save_path = f"{behavior.goal_int_result_path}/HELM_output/{model_name}_outputs.json"
+        save_path = f"{llm_response_dir}/{model_name}_outputs.json"
         with open(save_path, 'r') as json_file:
             ALL_RESULTS[model_name] = json.load(json_file)
 
@@ -532,4 +532,4 @@ def main():
     print(f"results saved to {behavior.goal_int_result_path}/error_analysis/")
 
 if __name__ == "__main__":
-    main()
+    evaluate_results()

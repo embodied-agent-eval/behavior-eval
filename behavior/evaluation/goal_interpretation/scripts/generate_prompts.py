@@ -20,7 +20,7 @@ task_to_demo_path = f"{behavior.goal_int_resources_path}/data/task_to_demo.json"
 
 
 
-def main():
+def generate_prompts():
     '''
     This script is used to generate GPT prompts for goal conditions for the demos in the dataset.
     
@@ -90,4 +90,4 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    generate_prompts()
