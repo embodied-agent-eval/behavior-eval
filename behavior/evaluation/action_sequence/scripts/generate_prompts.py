@@ -20,7 +20,7 @@ def get_llm_prompt(demo_name, result_list, lock, output_path):
         with open(output_path, 'w') as f:
             json.dump(list(result_list), f, indent=4)
 
-def main(worker_num: Optional[int] = 1):
+def generate_prompts(worker_num: Optional[int] = 1):
     with open(behavior.demo_name_path) as f:
         demo_list = json.load(f)
 
@@ -52,4 +52,4 @@ def main(worker_num: Optional[int] = 1):
 
 # Example usage
 if __name__ == "__main__":
-    fire.Fire(main)
+    fire.Fire(generate_prompts)

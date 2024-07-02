@@ -81,7 +81,7 @@ def evaluate_one_llm(llm_response_path,worker_num: Optional[int] = 1):
         json.dump(summary,f,indent=4)
     return summary
 
-def evaluate_all_llm(llm_response_dir,worker_num: Optional[int] = 1):
+def evaluate_results(llm_response_dir,worker_num: Optional[int] = 1):
     os.makedirs(behavior.action_seq_result_path, exist_ok=True)
     for filename in os.listdir(llm_response_dir):
         file_path = os.path.join(llm_response_dir, filename)
@@ -90,4 +90,4 @@ def evaluate_all_llm(llm_response_dir,worker_num: Optional[int] = 1):
             evaluate_one_llm(file_path,worker_num)
 
 if __name__ == '__main__':
-    fire.Fire(evaluate_all_llm)
+    fire.Fire(evaluate_results)
