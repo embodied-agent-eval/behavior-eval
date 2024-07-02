@@ -23,15 +23,15 @@ pbar = None
 
 def download_igibson_key():
     """
-    Download iGibson 1.0 key
+    Download iGibson key
     """
     while (
         input(
-            "Do you agree to the terms for using iGibson 1.0 key (http://svl.stanford.edu/igibson/assets/GDS_agreement.pdf)? [y/n]"
+            "Do you agree to the terms for using iGibson key (http://svl.stanford.edu/igibson/assets/GDS_agreement.pdf)? [y/n]"
         )
         != "y"
     ):
-        print("You need to agree to the terms for using iGibson 1.0 key.")
+        print("You need to agree to the terms for using iGibson key.")
         
     key_path = igibson.key_path  # Assuming igibson.key_path is defined elsewhere in the config
     url = "https://storage.googleapis.com/gibson_scenes/igibson.key"
