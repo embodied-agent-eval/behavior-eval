@@ -45,7 +45,8 @@ def main(worker_num: Optional[int] = 1):
             get_llm_prompt(demo_name, result_list, lock, output_path)
 
     result_list = list(result_list)  # Convert from manager list to regular list
-
+    with open(output_path, 'w') as f:
+        json.dump(list(result_list), f, indent=4)
     print(f"Results saved to {output_path}")
     return result_list
 
