@@ -23,6 +23,7 @@ dev/transfer.c
 
 # behavior/data
 behavior/data/*
+behavior/evaluation/*/results/*
 
 docs/apidoc
 
