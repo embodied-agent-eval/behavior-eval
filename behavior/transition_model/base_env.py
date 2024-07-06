@@ -2,22 +2,19 @@ from igibson.utils.ig_logging import IGLogReader
 from igibson.utils.utils import parse_config
 import os
 import igibson
+import behavior
+import json
 
 class BaseEnv:
-    def defalt_init(self,demo_path):
-        task = IGLogReader.read_metadata_attr(demo_path, "/metadata/atus_activity")
-        if task is None:
-            task = IGLogReader.read_metadata_attr(demo_path, "/metadata/task_name")
-
-        task_id = IGLogReader.read_metadata_attr(demo_path, "/metadata/activity_definition")
-        if task_id is None:
-            task_id = IGLogReader.read_metadata_attr(demo_path, "/metadata/task_instance")
-
-        scene_id = IGLogReader.read_metadata_attr(demo_path, "/metadata/scene_id")
+    def defalt_init(self,demo_name):
+        with open(behavior.demo_stats_path, "r") as f:
+            demo_stats = json.load(f)
+        task=demo_stats[demo_name]["task"]
+        task_id=demo_stats[demo_name]["task_id"]
+        scene_id=demo_stats[demo_name]["scene_id"]
 
         config_filename = os.path.join(igibson.configs_path, "behavior_robot_mp_behavior_task.yaml")
         config = parse_config(config_filename)
-        
 
         config["task"] = task
         config["task_id"] = task_id
@@ -28,13 +25,11 @@ class BaseEnv:
         self.config = config
     
             
-    def __init__(self,config=None,demo_path=None,demo_dir=None,demo_name=None,**kwargs) -> None:
-        assert config is not None or demo_path is not None or demo_name is not None
+    def __init__(self,config=None,demo_name=None,**kwargs) -> None:
+        assert config is not None or demo_name is not None
         self.config=config
-        if demo_dir is not None and demo_name is not None:
-            demo_path=os.path.join(demo_dir,demo_name+'.hdf5')
-        if demo_path is not None:
-            self.defalt_init(demo_path)
+        if demo_name is not None:
+            self.defalt_init(demo_name)
 
 
 
