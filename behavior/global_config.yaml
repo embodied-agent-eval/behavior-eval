@@ -1,5 +1,6 @@
 vr_demo_path: data/virtual_reality
 demo_name_path: data/demo_names.json
+demo_stats_path: data/demo_stats.json
 action_seq_result_path: evaluation/action_sequence/results
 goal_int_result_path: evaluation/goal_interpretation/results
 goal_int_resources_path: evaluation/goal_interpretation/resources
