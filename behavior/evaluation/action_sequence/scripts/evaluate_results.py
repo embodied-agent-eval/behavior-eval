@@ -8,8 +8,7 @@ import behavior
 from typing import Optional
 
 def evaluate_llm_response(demo_name, result_list, lock, output_path,actions_raw):
-    demo_path = os.path.join(behavior.vr_demo_path, demo_name + '.hdf5')
-    ase = ActionSequenceEvaluator(demo_path=demo_path)
+    ase = ActionSequenceEvaluator(demo_name=demo_name)
     rst = {
         "identifier": demo_name,
         "llm_rst": ase.evaluate_all(actions_raw),

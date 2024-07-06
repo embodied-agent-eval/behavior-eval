@@ -7,8 +7,7 @@ from behavior.evaluation.action_sequence.action_sequence_evaluator import Action
 import fire
 
 def get_llm_prompt(demo_name, result_list, lock, output_path):
-    demo_path = os.path.join(behavior.vr_demo_path, demo_name + '.hdf5')
-    env = ActionSequenceEvaluator(demo_path=demo_path)
+    env = ActionSequenceEvaluator(demo_name=demo_name)
     prompt = env.get_prompt()
     rst = {
         "identifier": demo_name,
