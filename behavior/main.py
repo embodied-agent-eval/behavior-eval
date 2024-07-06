@@ -5,7 +5,7 @@ from behavior.evaluation.action_sequence.scripts.generate_prompts import generat
 from behavior.evaluation.goal_interpretation.scripts.evaluate_results import evaluate_results as goal_interpretation_evaluate_results
 from behavior.evaluation.goal_interpretation.scripts.generate_prompts import generate_prompts as goal_interpretation_generate_prompts
 
-def main(module:Optional[str]="action_sequence",func:Optional[str]="evaluate_results",worker_num:Optional[int]=1,llm_response_dir:Optional[str]=None):
+def main(module:Optional[str]="action_sequence",func:Optional[str]="generate_prompts",worker_num:Optional[int]=1,llm_response_dir:Optional[str]=None):
     """
     module: goal_interpretation,action_sequence,subgoal_decomposition,transition_modeling
     func: evaluate_results,generate_prompts
