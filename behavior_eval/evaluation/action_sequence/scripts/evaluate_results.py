@@ -2,9 +2,9 @@ import fire
 from multiprocessing import Process, Manager
 import  os
 import json
-from behavior.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
+from behavior_eval.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
 from collections import defaultdict
-import behavior
+import behavior_eval
 from typing import Optional
 
 def evaluate_llm_response(demo_name, result_list, lock, output_path,actions_raw):
@@ -25,7 +25,7 @@ def evaluate_one_llm(llm_response_path,worker_num: Optional[int] = 1):
     lock = manager.Lock()
 
     llm_response_name=os.path.basename(llm_response_path).split('.')[0]
-    output_path = os.path.join(behavior.action_seq_result_path, f'error_analysis/{llm_response_name}.json')
+    output_path = os.path.join(behavior_eval.action_seq_result_path, f'error_analysis/{llm_response_name}.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     llm_response=json.load(open(llm_response_path))
@@ -81,7 +81,7 @@ def evaluate_one_llm(llm_response_path,worker_num: Optional[int] = 1):
     return summary
 
 def evaluate_results(llm_response_dir,worker_num: Optional[int] = 1):
-    os.makedirs(behavior.action_seq_result_path, exist_ok=True)
+    os.makedirs(behavior_eval.action_seq_result_path, exist_ok=True)
     for filename in os.listdir(llm_response_dir):
         file_path = os.path.join(llm_response_dir, filename)
         if os.path.isfile(file_path):

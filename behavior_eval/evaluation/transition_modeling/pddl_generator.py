@@ -1,4 +1,4 @@
-from behavior.evaluation.transition_modeling.transition_modeling_evaluator import TransitionModelingEvaluator
+from behavior_eval.evaluation.transition_modeling.transition_modeling_evaluator import TransitionModelingEvaluator
 import os
 import json
 import fire

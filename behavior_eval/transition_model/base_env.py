@@ -2,12 +2,12 @@ from igibson.utils.ig_logging import IGLogReader
 from igibson.utils.utils import parse_config
 import os
 import igibson
-import behavior
+import behavior_eval
 import json
 
 class BaseEnv:
     def defalt_init(self,demo_name):
-        with open(behavior.demo_stats_path, "r") as f:
+        with open(behavior_eval.demo_stats_path, "r") as f:
             demo_stats = json.load(f)
         task=demo_stats[demo_name]["task"]
         task_id=demo_stats[demo_name]["task_id"]

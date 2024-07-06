@@ -2,8 +2,8 @@ import os
 import json
 from typing import Optional
 from multiprocessing import Process, Manager
-import behavior
-from behavior.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
+import behavior_eval
+from behavior_eval.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
 import fire
 
 def get_llm_prompt(demo_name, result_list, lock, output_path):
@@ -20,14 +20,14 @@ def get_llm_prompt(demo_name, result_list, lock, output_path):
             json.dump(list(result_list), f, indent=4)
 
 def generate_prompts(worker_num: Optional[int] = 1):
-    with open(behavior.demo_name_path) as f:
+    with open(behavior_eval.demo_name_path) as f:
         demo_list = json.load(f)
 
     manager = Manager()
     result_list = manager.list()
     lock = manager.Lock()
 
-    output_path = os.path.join(behavior.action_seq_result_path, 'reconstructed_prompts/action_sequence_prompts.json')
+    output_path = os.path.join(behavior_eval.action_seq_result_path, 'reconstructed_prompts/action_sequence_prompts.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     if worker_num > 1:

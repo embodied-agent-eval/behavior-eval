@@ -8,17 +8,17 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 
 setup(
-    name='behavior-eval',  
-    version='1.0',   
-    author='stanford',  
+    name='behavior-eval',
+    version='1.0.1',
+    author='stanford',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/embodied-agent-eval/behavior-eval",    
+    url="https://github.com/embodied-agent-eval/behavior-eval",
     packages=find_packages(),
     python_requires='>=3.8',
     install_requires=[
-        'igibson',
-        'bddl',
+        'igibson @ git+https://github.com/embodied-agent-eval/iGibson.git@master#egg=igibson',
+        'bddl @ git+https://github.com/embodied-agent-eval/bddl.git@v1.0.2#egg=bddl',
     ],
-
 )
+
