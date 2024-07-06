@@ -1,11 +1,11 @@
 import os
 import ast
 import json
-import behavior
+import behavior_eval
 from typing import Optional, Union, Any
-from behavior.evaluation.subgoal_decomposition.resources.prompt_template.meta_prompt import generate_meta_prompt
-from behavior.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
-from behavior.tl_formula.bddl_to_tl import translate_bddl_final_states_into_simplified_tl
+from behavior_eval.evaluation.subgoal_decomposition.resources.prompt_template.meta_prompt import generate_meta_prompt
+from behavior_eval.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
+from behavior_eval.tl_formula.bddl_to_tl import translate_bddl_final_states_into_simplified_tl
 
 def translate_addressable_obj_into_tl_obj(address_obj):
     if '_' not in address_obj:
@@ -38,7 +38,7 @@ def convert_dict_to_list(dict_file_path, list_dict_path):
         json.dump(list_data, f, indent=4)
 
 def get_subgoal_prompt(env: ActionSequenceEvaluator):
-    meta_prompt_file_path = os.path.join(behavior.subgoal_dec_resources_path, 'prompts', 'meta_prompt.json')
+    meta_prompt_file_path = os.path.join(behavior_eval.subgoal_dec_resources_path, 'prompts', 'meta_prompt.json')
     generate_meta_prompt(meta_prompt_file_path)
 
     with open(meta_prompt_file_path, 'r') as f:

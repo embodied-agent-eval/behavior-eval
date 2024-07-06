@@ -1,11 +1,11 @@
 import os
 import json
-import behavior
+import behavior_eval
 import fire
 from multiprocessing import Process, Manager
-import behavior
-from behavior.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
-from behavior.evaluation.subgoal_decomposition.subgoal_prompts_utils import get_subgoal_prompt
+import behavior_eval
+from behavior_eval.evaluation.action_sequence.action_sequence_evaluator import ActionSequenceEvaluator
+from behavior_eval.evaluation.subgoal_decomposition.subgoal_prompts_utils import get_subgoal_prompt
 
 
 def get_llm_output(demo_name, result_list, lock, output_path):
@@ -24,14 +24,14 @@ def get_llm_output(demo_name, result_list, lock, output_path):
             json.dump(list(result_list), f, indent=4)
 
 def generate_prompts(worker_num: int = 1):
-    with open(behavior.demo_name_path) as f:
+    with open(behavior_eval.demo_name_path) as f:
         demo_list = json.load(f)
     
     manager = Manager()
     result_list = manager.list()
     lock = manager.Lock()
 
-    output_path = os.path.join(behavior.subgoal_dec_result_path, 'reconstructed_prompts', 'subgoal_decomposition_prompts.json')
+    output_path = os.path.join(behavior_eval.subgoal_dec_result_path, 'reconstructed_prompts', 'subgoal_decomposition_prompts.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     if worker_num > 1:

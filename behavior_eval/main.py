@@ -1,11 +1,11 @@
 import fire
 from typing import Optional
 <<<<<<< HEAD:behavior/main.py
-from behavior.evaluation.action_sequence.scripts.evaluate_results import evaluate_results as action_sequence_evaluate_results
-from behavior.evaluation.action_sequence.scripts.generate_prompts import generate_prompts as action_sequence_generate_prompts
-from behavior.evaluation.goal_interpretation.scripts.evaluate_results import evaluate_results as goal_interpretation_evaluate_results
-from behavior.evaluation.goal_interpretation.scripts.generate_prompts import generate_prompts as goal_interpretation_generate_prompts
-from behavior.evaluation.subgoal_decomposition.scripts.generate_prompts import generate_prompts as subgoal_decomposition_generate_prompts
+from behavior_eval.evaluation.action_sequence.scripts.evaluate_results import evaluate_results as action_sequence_evaluate_results
+from behavior_eval.evaluation.action_sequence.scripts.generate_prompts import generate_prompts as action_sequence_generate_prompts
+from behavior_eval.evaluation.goal_interpretation.scripts.evaluate_results import evaluate_results as goal_interpretation_evaluate_results
+from behavior_eval.evaluation.goal_interpretation.scripts.generate_prompts import generate_prompts as goal_interpretation_generate_prompts
+from behavior_eval.evaluation.subgoal_decomposition.scripts.generate_prompts import generate_prompts as subgoal_decomposition_generate_prompts
 =======
 from behavior_eval.evaluation.action_sequence.scripts.evaluate_results import evaluate_results as action_sequence_evaluate_results
 from behavior_eval.evaluation.action_sequence.scripts.generate_prompts import generate_prompts as action_sequence_generate_prompts

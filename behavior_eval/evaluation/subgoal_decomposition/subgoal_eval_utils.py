@@ -1,11 +1,11 @@
 import os
 import json
-import behavior
+import behavior_eval
 from typing import List, Dict, Any, Optional, Tuple, Union
-from behavior.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
-from behavior.evaluation.subgoal_decomposition.subgoal_plan import SubgoalPlan, SubgoalPlanHalfJson, SubgoalPlanJSON, SubgoalPlanPlain
-from behavior.evaluation.subgoal_decomposition.checkers import Vocab, SyntacticChecker, SemanticChecker, RuntimeChecker
-from behavior.evaluation.subgoal_decomposition.state_action_translator import StateActionTranslator
+from behavior_eval.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
+from behavior_eval.evaluation.subgoal_decomposition.subgoal_plan import SubgoalPlan, SubgoalPlanHalfJson, SubgoalPlanJSON, SubgoalPlanPlain
+from behavior_eval.evaluation.subgoal_decomposition.checkers import Vocab, SyntacticChecker, SemanticChecker, RuntimeChecker
+from behavior_eval.evaluation.subgoal_decomposition.state_action_translator import StateActionTranslator
 from tl_formula.bddl_to_tl import translate_addressable_obj_into_tl_obj, translate_tl_obj_into_addressable_obj
 
 class EvalStatistics:
@@ -122,7 +122,7 @@ def evaluate_task(demo_name:str, plan_path):
         return report
 
 def get_all_task_list():
-    path = os.path.join(behavior.demo_name_path)
+    path = os.path.join(behavior_eval.demo_name_path)
     with open(path, 'r') as f:
         task_list = json.load(f)
     return task_list
@@ -134,7 +134,7 @@ def get_one_raw_task_goal(demo_name):
 
 
 def get_all_raw_task_goal():
-    error_list_dict_path = os.path.join(behavior.subgoal_dec_resources_path, 'error_list_dict.json')
+    error_list_dict_path = os.path.join(behavior_eval.subgoal_dec_resources_path, 'error_list_dict.json')
     if os.path.exists(error_list_dict_path):
         with open(error_list_dict_path, 'r') as f:
             error_list_dict = json.load(f)

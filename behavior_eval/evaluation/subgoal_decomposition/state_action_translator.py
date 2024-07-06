@@ -5,9 +5,9 @@ import json
 
 from igibson import object_states
 from typing import List, Dict, Any, Optional, Tuple, Union
-from behavior.tl_formula.simple_tl import SimpleTLExpression, SimpleTLNot, SimpleTLPrimitive, Proposition, Action
-from behavior.evolving_graph.evolving_graph import GraphState, EvolvingGraph
-from behavior.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
+from behavior_eval.tl_formula.simple_tl import SimpleTLExpression, SimpleTLNot, SimpleTLPrimitive, Proposition, Action
+from behavior_eval.evolving_graph.evolving_graph import GraphState, EvolvingGraph
+from behavior_eval.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
 
 class Stack:
     def __init__(self) -> None:

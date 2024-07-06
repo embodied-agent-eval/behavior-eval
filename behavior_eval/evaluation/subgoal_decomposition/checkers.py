@@ -2,19 +2,19 @@ import copy
 import json
 import os
 import sys
-import behavior
+import behavior_eval
 from collections import deque
-from behavior.evaluation.subgoal_decomposition.subgoal_plan import SubgoalPlan, SubgoalPlanHalfJson, SubgoalPlanJSON, SubgoalPlanPlain
-from behavior.evaluation.subgoal_decomposition.state_action_translator import StateActionTranslator
-from behavior.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
-from behavior.evolving_graph.evolving_graph import EvolvingGraph, GraphState, ErrorInfo, ErrorType
-from behavior.tl_formula.simple_tl_parser import parse_simple_tl
-from behavior.tl_formula.simple_tl import SimpleTLExpression, SimpleTLNot, SimpleTLPrimitive, Proposition, Action
-from behavior.tl_formula.simple_tl import extract_args, extract_propositions_and_actions, sample_a_determined_path_from_tl_expr
+from behavior_eval.evaluation.subgoal_decomposition.subgoal_plan import SubgoalPlan, SubgoalPlanHalfJson, SubgoalPlanJSON, SubgoalPlanPlain
+from behavior_eval.evaluation.subgoal_decomposition.state_action_translator import StateActionTranslator
+from behavior_eval.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
+from behavior_eval.evolving_graph.evolving_graph import EvolvingGraph, GraphState, ErrorInfo, ErrorType
+from behavior_eval.tl_formula.simple_tl_parser import parse_simple_tl
+from behavior_eval.tl_formula.simple_tl import SimpleTLExpression, SimpleTLNot, SimpleTLPrimitive, Proposition, Action
+from behavior_eval.tl_formula.simple_tl import extract_args, extract_propositions_and_actions, sample_a_determined_path_from_tl_expr
 from typing import List, Dict, Any, Optional, Tuple, Union
 
 class Vocab:
-    def __init__(self, name_mapping: List[Dict[str, str]], relevant_objects: List[str], vocab_path: str=behavior.subgoal_vocab_path):
+    def __init__(self, name_mapping: List[Dict[str, str]], relevant_objects: List[str], vocab_path: str=behavior_eval.subgoal_vocab_path):
         self.vocab_path = vocab_path
         self.vocab = self.load_vocab()
         self.name_mapping = name_mapping

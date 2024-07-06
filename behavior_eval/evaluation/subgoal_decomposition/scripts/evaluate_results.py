@@ -2,10 +2,10 @@ import os
 import ast
 import json
 import fire
-import behavior
+import behavior_eval
 from typing import Optional
 from multiprocessing import Process, Manager
-from behavior.evaluation.subgoal_decomposition.subgoal_eval_utils import evaluate_task, get_all_raw_task_goal, get_all_task_list, EvalStatistics
+from behavior_eval.evaluation.subgoal_decomposition.subgoal_eval_utils import evaluate_task, get_all_raw_task_goal, get_all_task_list, EvalStatistics
 
 def run_llm_response(demo_name, result_dict, lock, llm_plan_path, eval_stat_path):
     report = evaluate_task(demo_name, llm_plan_path)
