@@ -41,6 +41,19 @@ goal_int_resources_path = os.path.expanduser(goal_int_resources_path)
 logger.debug(f"Goal Intention Resource Path: {goal_int_resources_path}")
 
 
+subgoal_dec_result_path = os.environ.get("BEHAVIOR_SUBGOAL_DEC_RESULT", global_config.get("subgoal_dec_result_path"))
+subgoal_dec_result_path = os.path.expanduser(subgoal_dec_result_path)
+logger.debug(f"Subgoal Decomposition Result Path: {subgoal_dec_result_path}")
+
+subgoal_dec_resources_path = os.environ.get("BEHAVIOR_SUBGOAL_DEC_RESOURCE", global_config.get("subgoal_dec_resources_path"))
+subgoal_dec_resources_path = os.path.expanduser(subgoal_dec_resources_path)
+logger.debug(f"Subgoal Decomposition Resource Path: {subgoal_dec_resources_path}")
+
+subgoal_vocab_path = os.environ.get("BEHAVIOR_SUBGOAL_VOCAB", global_config.get("subgoal_vocab_path"))
+subgoal_vocab_path = os.path.expanduser(subgoal_vocab_path)
+logger.debug(f"Subgoal Vocabulary Path: {subgoal_vocab_path}")
+
+
 
 root_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -54,3 +67,9 @@ if not os.path.isabs(goal_int_result_path):
     goal_int_result_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), goal_int_result_path)
 if not os.path.isabs(goal_int_resources_path):
     goal_int_resources_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), goal_int_resources_path)
+if not os.path.isabs(subgoal_dec_result_path):
+    subgoal_dec_result_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), subgoal_dec_result_path)
+if not os.path.isabs(subgoal_dec_resources_path):
+    subgoal_dec_resources_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), subgoal_dec_resources_path)
+if not os.path.isabs(subgoal_vocab_path):
+    subgoal_vocab_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), subgoal_vocab_path)
