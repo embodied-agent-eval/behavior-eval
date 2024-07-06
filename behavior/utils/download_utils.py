@@ -62,21 +62,31 @@ def download_igibson_key():
 #     os.system("tar -zxf {} --strip-components=1 --directory {}".format(tmp_file, behavior.vr_demo_path))
 #     # These datasets come as folders; in these folder there are scenes, so --strip-components are needed.
 
+def git_lfs_pull(repo_path):
+    """
+    Perform git lfs pull in the specified repository path
+    """
+    if os.path.exists(repo_path):
+        log.info(f"Running 'git lfs pull' in {repo_path}")
+        subprocess.run(["git", "lfs", "pull"], cwd=repo_path)
+    else:
+        log.warning(f"Repository path {repo_path} does not exist")
+
+
 from typing import Optional
 def main(download_option: Optional[str] = "all"):
     if download_option=="all":
         download_igibson_key()
         download_ig_dataset()
         download_assets()
-        #download_vr_demos()
     elif download_option=="igibson_key":
         download_igibson_key()
     elif download_option=="ig_dataset":
         download_ig_dataset()
+        git_lfs_pull(igibson.ig_dataset_path)
     elif download_option=="assets":
         download_assets()
-    #
-        #download_vr_demos()
+        git_lfs_pull(igibson.assets_path)
         
 if __name__ == "__main__":
     fire.Fire(main)
