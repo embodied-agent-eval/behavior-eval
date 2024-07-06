@@ -1,4 +1,3 @@
-vr_demo_path: data/virtual_reality
 demo_name_path: data/demo_names.json
 demo_stats_path: data/demo_stats.json
 action_seq_result_path: evaluation/action_sequence/results

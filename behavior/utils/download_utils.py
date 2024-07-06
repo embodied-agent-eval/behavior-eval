@@ -45,22 +45,22 @@ def download_igibson_key():
     urlretrieve(url, key_path,show_progress)
     print("iGibson key downloaded to {}".format(key_path))
 
-def download_vr_demos():
-    """
-    Download behavior100 VR demos
-    """
-    if not os.path.exists(behavior.vr_demo_path):
-        log.info("Creating iGibson dataset folder at {}".format(behavior.vr_demo_path))
-        os.makedirs(behavior.vr_demo_path)
+# def download_vr_demos():
+#     """
+#     Download behavior100 VR demos
+#     """
+#     if not os.path.exists(behavior.vr_demo_path):
+#         log.info("Creating iGibson dataset folder at {}".format(behavior.vr_demo_path))
+#         os.makedirs(behavior.vr_demo_path)
 
-    url = "https://download.cs.stanford.edu/downloads/behavior/behavior_virtual_reality_v0.5.0.tar.gz"
-    file_name = url.split("/")[-1]
-    tmp_file = os.path.join(tempfile.gettempdir(), file_name)
-    log.info("Downloading the behavior100 VR demos from {}".format(url))
-    urlretrieve(url, tmp_file, show_progress)
-    log.info("Decompressing the behavior100 VR demos into {}".format(behavior.vr_demo_path))
-    os.system("tar -zxf {} --strip-components=1 --directory {}".format(tmp_file, behavior.vr_demo_path))
-    # These datasets come as folders; in these folder there are scenes, so --strip-components are needed.
+#     url = "https://download.cs.stanford.edu/downloads/behavior/behavior_virtual_reality_v0.5.0.tar.gz"
+#     file_name = url.split("/")[-1]
+#     tmp_file = os.path.join(tempfile.gettempdir(), file_name)
+#     log.info("Downloading the behavior100 VR demos from {}".format(url))
+#     urlretrieve(url, tmp_file, show_progress)
+#     log.info("Decompressing the behavior100 VR demos into {}".format(behavior.vr_demo_path))
+#     os.system("tar -zxf {} --strip-components=1 --directory {}".format(tmp_file, behavior.vr_demo_path))
+#     # These datasets come as folders; in these folder there are scenes, so --strip-components are needed.
 
 from typing import Optional
 def main(download_option: Optional[str] = "all"):
@@ -68,15 +68,15 @@ def main(download_option: Optional[str] = "all"):
         download_igibson_key()
         download_ig_dataset()
         download_assets()
-        download_vr_demos()
+        #download_vr_demos()
     elif download_option=="igibson_key":
         download_igibson_key()
     elif download_option=="ig_dataset":
         download_ig_dataset()
     elif download_option=="assets":
         download_assets()
-    elif download_option=="vr_demos":
-        download_vr_demos()
+    #
+        #download_vr_demos()
         
 if __name__ == "__main__":
     fire.Fire(main)
