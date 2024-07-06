@@ -1,17 +1,17 @@
 import igibson.object_states as object_states
 import json
-import behavior
+import behavior_eval
 import os
 
 
 
-demo_to_conds_path = f"{behavior.goal_int_resources_path}/data/all_conditions.json"
-demo_to_objs_path = f"{behavior.goal_int_resources_path}/data/all_objects.json"
-demo_names_path = f"{behavior.goal_int_resources_path}/data/100_selected_demos.txt"
-task_to_instructions_path = f"{behavior.goal_int_resources_path}/data/instructions_by_activity_name.json"
-prompt_path = f"{behavior.goal_int_resources_path}/prompts/behavior_goal_interpretation.txt"
-task_to_demo_path = f"{behavior.goal_int_resources_path}/data/task_to_demo.json"
-demo_to_prompt_path = f"{behavior.goal_int_resources_path}/data/llm_prompts.json"
+demo_to_conds_path = f"{behavior_eval.goal_int_resources_path}/data/all_conditions.json"
+demo_to_objs_path = f"{behavior_eval.goal_int_resources_path}/data/all_objects.json"
+demo_names_path = f"{behavior_eval.goal_int_resources_path}/data/100_selected_demos.txt"
+task_to_instructions_path = f"{behavior_eval.goal_int_resources_path}/data/instructions_by_activity_name.json"
+prompt_path = f"{behavior_eval.goal_int_resources_path}/prompts/behavior_goal_interpretation.txt"
+task_to_demo_path = f"{behavior_eval.goal_int_resources_path}/data/task_to_demo.json"
+demo_to_prompt_path = f"{behavior_eval.goal_int_resources_path}/data/llm_prompts.json"
 
 
 
@@ -527,12 +527,12 @@ def evaluate_results(llm_response_dir):
         
         ALL_METRICS[model_name], sorted_model_results_evaluated = evaluate_dataset(result_reference_list)
         
-        error_analysis_save_path = f"{behavior.goal_int_result_path}/error_analysis/{model_name}_error_analysis.json"
+        error_analysis_save_path = f"{behavior_eval.goal_int_result_path}/error_analysis/{model_name}_error_analysis.json"
         os.makedirs(os.path.dirname(error_analysis_save_path), exist_ok=True)
         with open(error_analysis_save_path, 'w') as json_file:
             json.dump(sorted_model_results_evaluated, json_file, indent=4)
     
-    print(f"results saved to {behavior.goal_int_result_path}/error_analysis/")
+    print(f"results saved to {behavior_eval.goal_int_result_path}/error_analysis/")
 
 if __name__ == "__main__":
     evaluate_results()

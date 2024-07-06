@@ -1,14 +1,14 @@
-from behavior.transition_model.base_env import BaseEnv
+from behavior_eval.transition_model.base_env import BaseEnv
 from igibson.envs.igibson_env import iGibsonEnv
 from igibson.objects.multi_object_wrappers import ObjectMultiplexer,ObjectGrouper
 from igibson.objects.articulated_object import URDFObject
 from igibson.object_states.on_floor import RoomFloor
-from behavior.evaluation.transition_modeling.prompts.prompts import prompt2 as prompt
+from behavior_eval.evaluation.transition_modeling.prompts.prompts import prompt2 as prompt
 from bddl.config import get_definition_filename
 import os
 import json
 import re
-from behavior.evaluation.transition_modeling.logic_score import calculate_logic_score
+from behavior_eval.evaluation.transition_modeling.logic_score import calculate_logic_score
 DOMAIN_FILE_PATH = "igibson/evaluation/transition_modeling/data/resources/behavior_new.pddl"
 HUMAN_ANNOTATION_PATH="igibson/evaluation/data/action_sequence_human_annotations"
 GT_DATA_PATH="igibson/evaluation/transition_modeling/data/resources/problem_pddl.json"

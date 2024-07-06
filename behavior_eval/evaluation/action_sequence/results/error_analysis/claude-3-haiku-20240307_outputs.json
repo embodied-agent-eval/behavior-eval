@@ -1,0 +1,3964 @@
+[
+    {
+        "identifier": "assembling_gift_baskets_0_Beechwood_0_int_0_2021-10-26_12-46-37",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": true
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": true,
+                "all_goal_satisfied_graph": true,
+                "tot_predicates": 4.0,
+                "tot_edge_predicates": 4.0,
+                "tot_node_predicates": 0.0,
+                "satisfied_predicates": 4.0,
+                "satisfied_edge_predicates": 4.0,
+                "satisfied_node_predicates": 0.0,
+                "pure_edge_predicates": 4,
+                "pure_node_predicates": 0,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 4,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['onfloor', 'basket_0', 'room_floor_living_room_0']",
+                "['onfloor', 'basket_1', 'room_floor_living_room_0']",
+                "['onfloor', 'basket_2', 'room_floor_living_room_0']",
+                "['onfloor', 'basket_3', 'room_floor_living_room_0']",
+                "['ontop', 'candle_0', 'breakfast_table_13']",
+                "['ontop', 'candle_1', 'breakfast_table_13']",
+                "['ontop', 'candle_2', 'breakfast_table_13']",
+                "['ontop', 'candle_3', 'breakfast_table_13']",
+                "['ontop', 'cookie_0', 'breakfast_table_13']",
+                "['ontop', 'cookie_1', 'breakfast_table_13']",
+                "['ontop', 'cookie_2', 'breakfast_table_13']",
+                "['ontop', 'cookie_3', 'breakfast_table_13']",
+                "['ontop', 'cheese_0', 'coffee_table_12']",
+                "['ontop', 'cheese_1', 'coffee_table_12']",
+                "['ontop', 'cheese_2', 'coffee_table_12']",
+                "['ontop', 'cheese_3', 'coffee_table_12']",
+                "['ontop', 'bow_0', 'coffee_table_12']",
+                "['ontop', 'bow_1', 'coffee_table_12']",
+                "['ontop', 'bow_2', 'coffee_table_12']",
+                "['ontop', 'bow_3', 'coffee_table_12']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_living_room_0']"
+            ],
+            "target_state": [
+                "['forpairs', 'basket.n.01', '-', 'basket.n.01', 'candle.n.01', '-', 'candle.n.01', 'inside', 'candle.n.01', 'basket.n.01']",
+                "['forpairs', 'basket.n.01', '-', 'basket.n.01', 'cheese.n.01', '-', 'cheese.n.01', 'inside', 'cheese.n.01', 'basket.n.01']",
+                "['forpairs', 'basket.n.01', '-', 'basket.n.01', 'cookie.n.01', '-', 'cookie.n.01', 'inside', 'cookie.n.01', 'basket.n.01']",
+                "['forpairs', 'basket.n.01', '-', 'basket.n.01', 'bow.n.08', '-', 'bow.n.08', 'inside', 'bow.n.08', 'basket.n.01']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "unsatisfied": []
+            },
+            "objects": {
+                "basket.n.01_1": {
+                    "name": "basket_0",
+                    "category": "basket.n.01"
+                },
+                "basket.n.01_2": {
+                    "name": "basket_1",
+                    "category": "basket.n.01"
+                },
+                "basket.n.01_3": {
+                    "name": "basket_2",
+                    "category": "basket.n.01"
+                },
+                "basket.n.01_4": {
+                    "name": "basket_3",
+                    "category": "basket.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_living_room_0",
+                    "category": "floor.n.01"
+                },
+                "candle.n.01_1": {
+                    "name": "candle_0",
+                    "category": "candle.n.01"
+                },
+                "candle.n.01_2": {
+                    "name": "candle_1",
+                    "category": "candle.n.01"
+                },
+                "candle.n.01_3": {
+                    "name": "candle_2",
+                    "category": "candle.n.01"
+                },
+                "candle.n.01_4": {
+                    "name": "candle_3",
+                    "category": "candle.n.01"
+                },
+                "cookie.n.01_1": {
+                    "name": "cookie_0",
+                    "category": "cookie.n.01"
+                },
+                "cookie.n.01_2": {
+                    "name": "cookie_1",
+                    "category": "cookie.n.01"
+                },
+                "cookie.n.01_3": {
+                    "name": "cookie_2",
+                    "category": "cookie.n.01"
+                },
+                "cookie.n.01_4": {
+                    "name": "cookie_3",
+                    "category": "cookie.n.01"
+                },
+                "cheese.n.01_1": {
+                    "name": "cheese_0",
+                    "category": "cheese.n.01"
+                },
+                "cheese.n.01_2": {
+                    "name": "cheese_1",
+                    "category": "cheese.n.01"
+                },
+                "cheese.n.01_3": {
+                    "name": "cheese_2",
+                    "category": "cheese.n.01"
+                },
+                "cheese.n.01_4": {
+                    "name": "cheese_3",
+                    "category": "cheese.n.01"
+                },
+                "bow.n.08_1": {
+                    "name": "bow_0",
+                    "category": "bow.n.08"
+                },
+                "bow.n.08_2": {
+                    "name": "bow_1",
+                    "category": "bow.n.08"
+                },
+                "bow.n.08_3": {
+                    "name": "bow_2",
+                    "category": "bow.n.08"
+                },
+                "bow.n.08_4": {
+                    "name": "bow_3",
+                    "category": "bow.n.08"
+                },
+                "table.n.02_1": {
+                    "name": "breakfast_table_13",
+                    "category": "table.n.02"
+                },
+                "table.n.02_2": {
+                    "name": "coffee_table_12",
+                    "category": "table.n.02"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 4,
+                    "satisfied": 4,
+                    "satisfied_rate": 1.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "candle_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_0",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "candle_1",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_1",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "candle_2",
+                    "execution_success": true,
+                    "step": 4
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_2",
+                    "execution_success": true,
+                    "step": 5
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "candle_3",
+                    "execution_success": true,
+                    "step": 6
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_3",
+                    "execution_success": true,
+                    "step": 7
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cookie_0",
+                    "execution_success": true,
+                    "step": 8
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_0",
+                    "execution_success": true,
+                    "step": 9
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cookie_1",
+                    "execution_success": true,
+                    "step": 10
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_1",
+                    "execution_success": true,
+                    "step": 11
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cookie_2",
+                    "execution_success": true,
+                    "step": 12
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_2",
+                    "execution_success": true,
+                    "step": 13
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cookie_3",
+                    "execution_success": true,
+                    "step": 14
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_3",
+                    "execution_success": true,
+                    "step": 15
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cheese_0",
+                    "execution_success": true,
+                    "step": 16
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_0",
+                    "execution_success": true,
+                    "step": 17
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cheese_1",
+                    "execution_success": true,
+                    "step": 18
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_1",
+                    "execution_success": true,
+                    "step": 19
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cheese_2",
+                    "execution_success": true,
+                    "step": 20
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_2",
+                    "execution_success": true,
+                    "step": 21
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cheese_3",
+                    "execution_success": true,
+                    "step": 22
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_3",
+                    "execution_success": true,
+                    "step": 23
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "bow_0",
+                    "execution_success": true,
+                    "step": 24
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_0",
+                    "execution_success": true,
+                    "step": 25
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "bow_1",
+                    "execution_success": true,
+                    "step": 26
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_1",
+                    "execution_success": true,
+                    "step": 27
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "bow_2",
+                    "execution_success": true,
+                    "step": 28
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_2",
+                    "execution_success": true,
+                    "step": 29
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "bow_3",
+                    "execution_success": true,
+                    "step": 30
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_3",
+                    "execution_success": true,
+                    "step": 31
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "candle_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "candle_1"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_1"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "candle_2"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_2"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "candle_3"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_3"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cookie_0"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_0"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cookie_1"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_1"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cookie_2"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_2"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cookie_3"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_3"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cheese_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cheese_1"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_1"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cheese_2"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_2"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cheese_3"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "basket_3"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "bow_0"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_0"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "bow_1"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_1"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "bow_2"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_2"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "bow_3"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "basket_3"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "bottling_fruit_0_Wainscott_0_int_0_2021-05-24_19-46-46",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "Object is inside a closed object"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 5.0,
+                "tot_edge_predicates": 2.0,
+                "tot_node_predicates": 3.0,
+                "satisfied_predicates": 1.0,
+                "satisfied_edge_predicates": 0.0,
+                "satisfied_node_predicates": 1.0,
+                "pure_edge_predicates": 2,
+                "pure_node_predicates": 3,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 1,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['inside', 'strawberry_0', 'fridge_97']",
+                "['inside', 'peach_0', 'fridge_97']",
+                "['not', 'sliced', 'strawberry_0']",
+                "['not', 'sliced', 'peach_0']",
+                "['ontop', 'jar_0', 'countertop_84']",
+                "['ontop', 'jar_1', 'countertop_84']",
+                "['ontop', 'carving_knife_0', 'countertop_84']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_kitchen_0']"
+            ],
+            "target_state": [
+                "['exists', 'jar.n.01', '-', 'jar.n.01', 'and', 'inside', 'strawberry_0', 'jar.n.01', 'not', 'inside', 'peach_0', 'jar.n.01']",
+                "['exists', 'jar.n.01', '-', 'jar.n.01', 'and', 'inside', 'peach_0', 'jar.n.01', 'not', 'inside', 'strawberry_0', 'jar.n.01']",
+                "['forall', 'jar.n.01', '-', 'jar.n.01', 'not', 'open', 'jar.n.01']",
+                "['sliced', 'strawberry_0']",
+                "['sliced', 'peach_0']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    2
+                ],
+                "unsatisfied": [
+                    0,
+                    1,
+                    3,
+                    4
+                ]
+            },
+            "objects": {
+                "strawberry.n.01_1": {
+                    "name": "strawberry_0",
+                    "category": "strawberry.n.01"
+                },
+                "electric_refrigerator.n.01_1": {
+                    "name": "fridge_97",
+                    "category": "electric_refrigerator.n.01"
+                },
+                "peach.n.03_1": {
+                    "name": "peach_0",
+                    "category": "peach.n.03"
+                },
+                "countertop.n.01_1": {
+                    "name": "countertop_84",
+                    "category": "countertop.n.01"
+                },
+                "jar.n.01_1": {
+                    "name": "jar_0",
+                    "category": "jar.n.01"
+                },
+                "jar.n.01_2": {
+                    "name": "jar_1",
+                    "category": "jar.n.01"
+                },
+                "carving_knife.n.01_1": {
+                    "name": "carving_knife_0",
+                    "category": "carving_knife.n.01"
+                },
+                "cabinet.n.01_1": {
+                    "name": "bottom_cabinet_no_top_80",
+                    "category": "cabinet.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_kitchen_0",
+                    "category": "floor.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 2,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "open": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                },
+                "sliced": {
+                    "total": 2,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "carving_knife_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "SLICE",
+                    "object": "strawberry_0",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Object is inside a closed object"
+                        }
+                    ],
+                    "step": 1
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "carving_knife_0"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "strawberry_0"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "peach_0"
+                },
+                {
+                    "action": "RIGHT_RELEASE",
+                    "object": "carving_knife_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "strawberry_0_part_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "jar_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "peach_0_part_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "jar_1"
+                },
+                {
+                    "action": "CLOSE",
+                    "object": "jar_0"
+                },
+                {
+                    "action": "CLOSE",
+                    "object": "jar_1"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "boxing_books_up_for_storage_0_Benevolence_1_int_0_2021-09-10_15-35-47",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": true
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": true,
+                "all_goal_satisfied_graph": true,
+                "tot_predicates": 1.0,
+                "tot_edge_predicates": 1.0,
+                "tot_node_predicates": 0.0,
+                "satisfied_predicates": 1.0,
+                "satisfied_edge_predicates": 1.0,
+                "satisfied_node_predicates": 0.0,
+                "pure_edge_predicates": 1,
+                "pure_node_predicates": 0,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 1,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['onfloor', 'notebook_59', 'room_floor_living_room_0']",
+                "['onfloor', 'notebook_60', 'room_floor_living_room_0']",
+                "['onfloor', 'notebook_61', 'room_floor_living_room_0']",
+                "['onfloor', 'notebook_62', 'room_floor_living_room_0']",
+                "['onfloor', 'notebook_63', 'room_floor_living_room_0']",
+                "['ontop', 'hardback_64', 'shelf_0']",
+                "['ontop', 'hardback_65', 'shelf_0']",
+                "['onfloor', 'carton_66', 'room_floor_living_room_0']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_living_room_0']"
+            ],
+            "target_state": [
+                "['forall', 'book.n.02', '-', 'book.n.02', 'inside', 'book.n.02', 'carton_66']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    0
+                ],
+                "unsatisfied": []
+            },
+            "objects": {
+                "book.n.02_1": {
+                    "name": "notebook_59",
+                    "category": "book.n.02"
+                },
+                "book.n.02_2": {
+                    "name": "notebook_60",
+                    "category": "book.n.02"
+                },
+                "book.n.02_3": {
+                    "name": "notebook_61",
+                    "category": "book.n.02"
+                },
+                "book.n.02_4": {
+                    "name": "notebook_62",
+                    "category": "book.n.02"
+                },
+                "book.n.02_5": {
+                    "name": "notebook_63",
+                    "category": "book.n.02"
+                },
+                "book.n.02_6": {
+                    "name": "hardback_64",
+                    "category": "book.n.02"
+                },
+                "book.n.02_7": {
+                    "name": "hardback_65",
+                    "category": "book.n.02"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_living_room_0",
+                    "category": "floor.n.01"
+                },
+                "shelf.n.01_1": {
+                    "name": "shelf_0",
+                    "category": "shelf.n.01"
+                },
+                "carton.n.02_1": {
+                    "name": "carton_66",
+                    "category": "carton.n.02"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_59",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_60",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_61",
+                    "execution_success": true,
+                    "step": 4
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66",
+                    "execution_success": true,
+                    "step": 5
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_62",
+                    "execution_success": true,
+                    "step": 6
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66",
+                    "execution_success": true,
+                    "step": 7
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_63",
+                    "execution_success": true,
+                    "step": 8
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66",
+                    "execution_success": true,
+                    "step": 9
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "hardback_64",
+                    "execution_success": true,
+                    "step": 10
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66",
+                    "execution_success": true,
+                    "step": 11
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "hardback_65",
+                    "execution_success": true,
+                    "step": 12
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66",
+                    "execution_success": true,
+                    "step": 13
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_59"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_60"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_61"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_62"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_63"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "hardback_64"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "hardback_65"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "carton_66"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "bringing_in_wood_0_Benevolence_1_int_0_2021-09-15_18-42-25",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": true
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": true,
+                "all_goal_satisfied_graph": true,
+                "tot_predicates": 1.0,
+                "tot_edge_predicates": 1.0,
+                "tot_node_predicates": 0.0,
+                "satisfied_predicates": 1.0,
+                "satisfied_edge_predicates": 1.0,
+                "satisfied_node_predicates": 0.0,
+                "pure_edge_predicates": 1,
+                "pure_node_predicates": 0,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 1,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['onfloor', 'plywood_0', 'room_floor_living_room_0']",
+                "['onfloor', 'plywood_1', 'room_floor_living_room_0']",
+                "['onfloor', 'plywood_2', 'room_floor_living_room_0']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_living_room_0']"
+            ],
+            "target_state": [
+                "['forall', 'plywood.n.01', '-', 'plywood.n.01', 'onfloor', 'plywood.n.01', 'room_floor_kitchen_0']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    0
+                ],
+                "unsatisfied": []
+            },
+            "objects": {
+                "plywood.n.01_1": {
+                    "name": "plywood_0",
+                    "category": "plywood.n.01"
+                },
+                "plywood.n.01_2": {
+                    "name": "plywood_1",
+                    "category": "plywood.n.01"
+                },
+                "plywood.n.01_3": {
+                    "name": "plywood_2",
+                    "category": "plywood.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_living_room_0",
+                    "category": "floor.n.01"
+                },
+                "floor.n.01_2": {
+                    "name": "room_floor_kitchen_0",
+                    "category": "floor.n.01"
+                }
+            },
+            "predicate_info": {
+                "onfloor": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "plywood_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "room_floor_kitchen_0",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "plywood_1",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "RIGHT_PLACE_ONTOP",
+                    "object": "room_floor_kitchen_0",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "plywood_2",
+                    "execution_success": true,
+                    "step": 4
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "room_floor_kitchen_0",
+                    "execution_success": true,
+                    "step": 5
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "plywood_0"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "room_floor_kitchen_0"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "plywood_1"
+                },
+                {
+                    "action": "RIGHT_PLACE_ONTOP",
+                    "object": "room_floor_kitchen_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "plywood_2"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "room_floor_kitchen_0"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "brushing_lint_off_clothing_0_Pomaria_2_int_0_2021-06-04_17-41-56",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "Robot is not holding anything (PLACE)"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 2.0,
+                "tot_edge_predicates": 1.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 1.0,
+                "satisfied_edge_predicates": 0.0,
+                "satisfied_node_predicates": 1.0,
+                "pure_edge_predicates": 1,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 1,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['onfloor', 'sweater_36', 'room_floor_bedroom_0']",
+                "['onfloor', 'sweater_37', 'room_floor_bedroom_0']",
+                "['ontop', 'sweater_38', 'bed_11']",
+                "['ontop', 'sweater_39', 'bed_11']",
+                "['dusty', 'sweater_36']",
+                "['dusty', 'sweater_37']",
+                "['dusty', 'sweater_38']",
+                "['dusty', 'sweater_39']",
+                "['onfloor', 'scrub_brush_40', 'room_floor_bedroom_0']",
+                "['not', 'dusty', 'scrub_brush_40']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_bedroom_0']"
+            ],
+            "target_state": [
+                "['forall', 'sweater.n.01', '-', 'sweater.n.01', 'not', 'dusty', 'sweater.n.01']",
+                "['forall', 'sweater.n.01', '-', 'sweater.n.01', 'ontop', 'sweater.n.01', 'bed_11']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    0
+                ],
+                "unsatisfied": [
+                    1
+                ]
+            },
+            "objects": {
+                "sweater.n.01_1": {
+                    "name": "sweater_36",
+                    "category": "sweater.n.01"
+                },
+                "sweater.n.01_2": {
+                    "name": "sweater_37",
+                    "category": "sweater.n.01"
+                },
+                "sweater.n.01_3": {
+                    "name": "sweater_38",
+                    "category": "sweater.n.01"
+                },
+                "sweater.n.01_4": {
+                    "name": "sweater_39",
+                    "category": "sweater.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_bedroom_0",
+                    "category": "floor.n.01"
+                },
+                "bed.n.01_1": {
+                    "name": "bed_11",
+                    "category": "bed.n.01"
+                },
+                "scrub_brush.n.01_1": {
+                    "name": "scrub_brush_40",
+                    "category": "scrub_brush.n.01"
+                }
+            },
+            "predicate_info": {
+                "ontop": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "scrub_brush_40",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sweater_36",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sweater_37",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sweater_38",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sweater_39",
+                    "execution_success": true,
+                    "step": 4
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "bed_11",
+                    "execution_success": true,
+                    "step": 5
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "bed_11",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Robot is not holding anything (PLACE)"
+                        }
+                    ],
+                    "step": 6
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "scrub_brush_40"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sweater_36"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sweater_37"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sweater_38"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sweater_39"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "bed_11"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "bed_11"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "sweater_36"
+                },
+                {
+                    "action": "RIGHT_PLACE_ONTOP",
+                    "object": "bed_11"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "sweater_37"
+                },
+                {
+                    "action": "RIGHT_PLACE_ONTOP",
+                    "object": "bed_11"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "chopping_vegetables_0_Rs_int_0_2021-05-25_22-01-16",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "Object is inside a closed object"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 4.0,
+                "tot_edge_predicates": 2.0,
+                "tot_node_predicates": 2.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 0,
+                "pure_node_predicates": 0,
+                "mixed_predicates": 4,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['ontop', 'tomato_61', 'countertop_26']",
+                "['ontop', 'tomato_62', 'countertop_26']",
+                "['ontop', 'mushroom_63', 'countertop_26']",
+                "['ontop', 'mushroom_64', 'countertop_26']",
+                "['ontop', 'chestnut_65', 'countertop_26']",
+                "['ontop', 'chestnut_66', 'countertop_26']",
+                "['inside', 'vidalia_onion_67', 'fridge_40']",
+                "['inside', 'vidalia_onion_68', 'fridge_40']",
+                "['ontop', 'carving_knife_69', 'countertop_26']",
+                "['inside', 'casserole_70', 'top_cabinet_50']",
+                "['inside', 'casserole_71', 'top_cabinet_50']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_kitchen_0']"
+            ],
+            "target_state": [
+                "['forall', 'tomato.n.01', '-', 'tomato.n.01', 'and', 'exists', 'dish.n.01', '-', 'dish.n.01', 'inside', 'tomato.n.01', 'dish.n.01', 'sliced', 'tomato.n.01']",
+                "['forall', 'mushroom.n.05', '-', 'mushroom.n.05', 'and', 'exists', 'dish.n.01', '-', 'dish.n.01', 'inside', 'mushroom.n.05', 'dish.n.01', 'sliced', 'mushroom.n.05']",
+                "['forall', 'chestnut.n.03', '-', 'chestnut.n.03', 'and', 'exists', 'dish.n.01', '-', 'dish.n.01', 'inside', 'chestnut.n.03', 'dish.n.01', 'sliced', 'chestnut.n.03']",
+                "['forall', 'vidalia_onion.n.01', '-', 'vidalia_onion.n.01', 'and', 'exists', 'dish.n.01', '-', 'dish.n.01', 'inside', 'vidalia_onion.n.01', 'dish.n.01', 'sliced', 'vidalia_onion.n.01']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            },
+            "objects": {
+                "tomato.n.01_1": {
+                    "name": "tomato_61",
+                    "category": "tomato.n.01"
+                },
+                "tomato.n.01_2": {
+                    "name": "tomato_62",
+                    "category": "tomato.n.01"
+                },
+                "mushroom.n.05_1": {
+                    "name": "mushroom_63",
+                    "category": "mushroom.n.05"
+                },
+                "mushroom.n.05_2": {
+                    "name": "mushroom_64",
+                    "category": "mushroom.n.05"
+                },
+                "chestnut.n.03_1": {
+                    "name": "chestnut_65",
+                    "category": "chestnut.n.03"
+                },
+                "chestnut.n.03_2": {
+                    "name": "chestnut_66",
+                    "category": "chestnut.n.03"
+                },
+                "countertop.n.01_1": {
+                    "name": "countertop_26",
+                    "category": "countertop.n.01"
+                },
+                "vidalia_onion.n.01_1": {
+                    "name": "vidalia_onion_67",
+                    "category": "vidalia_onion.n.01"
+                },
+                "vidalia_onion.n.01_2": {
+                    "name": "vidalia_onion_68",
+                    "category": "vidalia_onion.n.01"
+                },
+                "electric_refrigerator.n.01_1": {
+                    "name": "fridge_40",
+                    "category": "electric_refrigerator.n.01"
+                },
+                "knife.n.01_1": {
+                    "name": "carving_knife_69",
+                    "category": "knife.n.01"
+                },
+                "dish.n.01_1": {
+                    "name": "casserole_70",
+                    "category": "dish.n.01"
+                },
+                "dish.n.01_2": {
+                    "name": "casserole_71",
+                    "category": "dish.n.01"
+                },
+                "cabinet.n.01_1": {
+                    "name": "top_cabinet_50",
+                    "category": "cabinet.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_42",
+                    "category": "sink.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_kitchen_0",
+                    "category": "floor.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 4,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "sliced": {
+                    "total": 4,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "carving_knife_69",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "SLICE",
+                    "object": "tomato_61",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "SLICE",
+                    "object": "tomato_62",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "SLICE",
+                    "object": "mushroom_63",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "SLICE",
+                    "object": "mushroom_64",
+                    "execution_success": true,
+                    "step": 4
+                },
+                {
+                    "action": "SLICE",
+                    "object": "chestnut_65",
+                    "execution_success": true,
+                    "step": 5
+                },
+                {
+                    "action": "SLICE",
+                    "object": "chestnut_66",
+                    "execution_success": true,
+                    "step": 6
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "casserole_70",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Object is inside a closed object"
+                        }
+                    ],
+                    "step": 7
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "carving_knife_69"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "tomato_61"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "tomato_62"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "mushroom_63"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "mushroom_64"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "chestnut_65"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "chestnut_66"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "casserole_70"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "casserole_71"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "vidalia_onion_67"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "vidalia_onion_67"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "casserole_70"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "vidalia_onion_68"
+                },
+                {
+                    "action": "SLICE",
+                    "object": "vidalia_onion_68"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "casserole_71"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_a_car_0_Ihlen_0_int_0_2021-09-11_16-37-11",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.WRONG_TEMPORAL_ORDER": "Temporal order is wrong"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 3.0,
+                "tot_edge_predicates": 2.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 2.0,
+                "satisfied_edge_predicates": 2.0,
+                "satisfied_node_predicates": 0.0,
+                "pure_edge_predicates": 2,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 2,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['onfloor', 'car_0', 'room_floor_garage_0']",
+                "['ontop', 'rag_0', 'shelf_16']",
+                "['not', 'soaked', 'rag_0']",
+                "['ontop', 'soap_0', 'shelf_16']",
+                "['dusty', 'car_0']",
+                "['onfloor', 'bucket_0', 'room_floor_garage_0']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_garage_0']"
+            ],
+            "target_state": [
+                "['not', 'dusty', 'car_0']",
+                "['inside', 'soap_0', 'bucket_0']",
+                "['inside', 'rag_0', 'bucket_0']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    1,
+                    2
+                ],
+                "unsatisfied": [
+                    0
+                ]
+            },
+            "objects": {
+                "car.n.01_1": {
+                    "name": "car_0",
+                    "category": "car.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_garage_0",
+                    "category": "floor.n.01"
+                },
+                "rag.n.01_1": {
+                    "name": "rag_0",
+                    "category": "rag.n.01"
+                },
+                "shelf.n.01_1": {
+                    "name": "shelf_16",
+                    "category": "shelf.n.01"
+                },
+                "soap.n.01_1": {
+                    "name": "soap_0",
+                    "category": "soap.n.01"
+                },
+                "bucket.n.01_1": {
+                    "name": "bucket_0",
+                    "category": "bucket.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_38",
+                    "category": "sink.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 2,
+                    "satisfied": 2,
+                    "satisfied_rate": 1.0
+                },
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bucket_0",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "soap_0",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "bucket_0",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "car_0",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "No cleaner in inventory or object not in toggled on cleaner (CLEAN_DUST)"
+                        },
+                        {
+                            "error_type": "ErrorType.WRONG_TEMPORAL_ORDER",
+                            "error_reason": "Temporal order is wrong"
+                        }
+                    ],
+                    "step": 4
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bucket_0"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "soap_0"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "bucket_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "car_0"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_barbecue_grill_0_Ihlen_0_int_0_2021-09-10_16-02-39",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.WRONG_TEMPORAL_ORDER": "Temporal order is wrong"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 2.0,
+                "tot_edge_predicates": 0.0,
+                "tot_node_predicates": 2.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 0,
+                "pure_node_predicates": 2,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['onfloor', 'grill_50', 'room_floor_garage_0']",
+                "['stained', 'grill_50']",
+                "['dusty', 'grill_50']",
+                "['ontop', 'bucket_52', 'breakfast_table_14']",
+                "['ontop', 'rag_51', 'breakfast_table_14']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_garage_0']"
+            ],
+            "target_state": [
+                "['not', 'stained', 'grill_50']",
+                "['not', 'dusty', 'grill_50']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0,
+                    1
+                ]
+            },
+            "objects": {
+                "grill.n.02_1": {
+                    "name": "grill_50",
+                    "category": "grill.n.02"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_garage_0",
+                    "category": "floor.n.01"
+                },
+                "rag.n.01_1": {
+                    "name": "rag_51",
+                    "category": "rag.n.01"
+                },
+                "bucket.n.01_1": {
+                    "name": "bucket_52",
+                    "category": "bucket.n.01"
+                },
+                "table.n.02_1": {
+                    "name": "breakfast_table_14",
+                    "category": "table.n.02"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_32",
+                    "category": "sink.n.01"
+                }
+            },
+            "predicate_info": {
+                "stained": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_51",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "grill_50",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "grill_50",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "No cleaner in inventory or object not in toggled on cleaner (CLEAN_DUST)"
+                        },
+                        {
+                            "error_type": "ErrorType.WRONG_TEMPORAL_ORDER",
+                            "error_reason": "Temporal order is wrong"
+                        },
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "No soaked cleaner in inventory or object not in toggled on cleaner (CLEAN_STAIN)"
+                        }
+                    ],
+                    "step": 2
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_51"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "grill_50"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "grill_50"
+                },
+                {
+                    "action": "LEFT_RELEASE",
+                    "object": "rag_51"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_bathrooms_0_Benevolence_0_int_1_2021-06-12_19-33-28",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": true
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": true,
+                "all_goal_satisfied_graph": true,
+                "tot_predicates": 5.0,
+                "tot_edge_predicates": 0.5,
+                "tot_node_predicates": 4.5,
+                "satisfied_predicates": 5.0,
+                "satisfied_edge_predicates": 0.5,
+                "satisfied_node_predicates": 4.5,
+                "pure_edge_predicates": 0,
+                "pure_node_predicates": 4,
+                "mixed_predicates": 1,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 4,
+                "satisfied_mixed_predicates": 1
+            },
+            "initial_state": [
+                "['stained', 'sink_7']",
+                "['stained', 'bathtub_4']",
+                "['stained', 'toilet_6']",
+                "['stained', 'room_floor_bathroom_0']",
+                "['inside', 'soap_0', 'sink_7']",
+                "['inside', 'toothbrush_0', 'bathtub_4']",
+                "['onfloor', 'bucket_0', 'room_floor_bathroom_0']",
+                "['not', 'soaked', 'rag_0']",
+                "['onfloor', 'rag_0', 'room_floor_bathroom_0']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_bathroom_0']"
+            ],
+            "target_state": [
+                "['not', 'stained', 'toilet_6']",
+                "['not', 'stained', 'bathtub_4']",
+                "['not', 'stained', 'sink_7']",
+                "['not', 'stained', 'room_floor_bathroom_0']",
+                "['and', 'soaked', 'rag_0', 'inside', 'rag_0', 'bucket_0']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4
+                ],
+                "unsatisfied": []
+            },
+            "objects": {
+                "sink.n.01_1": {
+                    "name": "sink_7",
+                    "category": "sink.n.01"
+                },
+                "bathtub.n.01_1": {
+                    "name": "bathtub_4",
+                    "category": "bathtub.n.01"
+                },
+                "toilet.n.02_1": {
+                    "name": "toilet_6",
+                    "category": "toilet.n.02"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_bathroom_0",
+                    "category": "floor.n.01"
+                },
+                "bucket.n.01_1": {
+                    "name": "bucket_0",
+                    "category": "bucket.n.01"
+                },
+                "soap.n.01_1": {
+                    "name": "soap_0",
+                    "category": "soap.n.01"
+                },
+                "brush.n.02_1": {
+                    "name": "toothbrush_0",
+                    "category": "brush.n.02"
+                },
+                "rag.n.01_1": {
+                    "name": "rag_0",
+                    "category": "rag.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                },
+                "stained": {
+                    "total": 4,
+                    "satisfied": 4,
+                    "satisfied_rate": 1.0
+                },
+                "soaked": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "rag_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "sink_7",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "TOGGLE_ON",
+                    "object": "sink_7",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "SOAK",
+                    "object": "rag_0",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "TOGGLE_OFF",
+                    "object": "sink_7",
+                    "execution_success": true,
+                    "step": 4
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_0",
+                    "execution_success": true,
+                    "step": 5
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "toilet_6",
+                    "execution_success": true,
+                    "step": 6
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bathtub_4",
+                    "execution_success": true,
+                    "step": 7
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sink_7",
+                    "execution_success": true,
+                    "step": 8
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_bathroom_0",
+                    "execution_success": true,
+                    "step": 9
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bucket_0",
+                    "execution_success": true,
+                    "step": 10
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "rag_0"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "sink_7"
+                },
+                {
+                    "action": "TOGGLE_ON",
+                    "object": "sink_7"
+                },
+                {
+                    "action": "SOAK",
+                    "object": "rag_0"
+                },
+                {
+                    "action": "TOGGLE_OFF",
+                    "object": "sink_7"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "toilet_6"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bathtub_4"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "sink_7"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_bathroom_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bucket_0"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_bathtub_0_Pomaria_0_int_0_2021-09-10_16-22-10",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "No soaked cleaner in inventory or object not in toggled on cleaner (CLEAN_STAIN)"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 1.0,
+                "tot_edge_predicates": 0.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 0,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['stained', 'bathtub_35']",
+                "['onfloor', 'soap_0', 'room_floor_bathroom_0']",
+                "['onfloor', 'bucket_0', 'room_floor_bathroom_0']",
+                "['inside', 'scrub_brush_0', 'bathtub_35']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_bathroom_0']"
+            ],
+            "target_state": [
+                "['not', 'stained', 'bathtub_35']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0
+                ]
+            },
+            "objects": {
+                "sink.n.01_1": {
+                    "name": "sink_38",
+                    "category": "sink.n.01"
+                },
+                "bathtub.n.01_1": {
+                    "name": "bathtub_35",
+                    "category": "bathtub.n.01"
+                },
+                "soap.n.01_1": {
+                    "name": "soap_0",
+                    "category": "soap.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_bathroom_0",
+                    "category": "floor.n.01"
+                },
+                "bucket.n.01_1": {
+                    "name": "bucket_0",
+                    "category": "bucket.n.01"
+                },
+                "scrub_brush.n.01_1": {
+                    "name": "scrub_brush_0",
+                    "category": "scrub_brush.n.01"
+                }
+            },
+            "predicate_info": {
+                "stained": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "scrub_brush_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bathtub_35",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "No soaked cleaner in inventory or object not in toggled on cleaner (CLEAN_STAIN)"
+                        }
+                    ],
+                    "step": 1
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "scrub_brush_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bathtub_35"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_bedroom_0_Benevolence_2_int_0_2021-06-06_18-10-59",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "Target object is closed (PLACE_INSIDE)"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 6.0,
+                "tot_edge_predicates": 5.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 1.0,
+                "satisfied_edge_predicates": 1.0,
+                "satisfied_node_predicates": 0.0,
+                "pure_edge_predicates": 5,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 1,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['dusty', 'bottom_cabinet_2']",
+                "['dusty', 'bottom_cabinet_0']",
+                "['ontop', 'jeans_46', 'bed_10']",
+                "['ontop', 'jeans_47', 'bed_10']",
+                "['onfloor', 'necklace_48', 'room_floor_bedroom_1']",
+                "['onfloor', 'cologne_49', 'room_floor_bedroom_1']",
+                "['ontop', 'painting_50', 'bed_10']",
+                "['not', 'dusty', 'vacuum_51']",
+                "['onfloor', 'vacuum_51', 'room_floor_bedroom_1']",
+                "['onfloor', 'hand_towel_52', 'room_floor_bedroom_1']",
+                "['onfloor', 'sheet_53', 'room_floor_bedroom_1']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_bedroom_1']"
+            ],
+            "target_state": [
+                "['forall', 'apparel.n.01', '-', 'apparel.n.01', 'exists', 'cabinet.n.01', '-', 'cabinet.n.01', 'inside', 'apparel.n.01', 'cabinet.n.01']",
+                "['and', 'inside', 'necklace_48', 'bottom_cabinet_2', 'inside', 'cologne_49', 'bottom_cabinet_2']",
+                "['ontop', 'sheet_53', 'bed_10']",
+                "['forall', 'cabinet.n.01', '-', 'cabinet.n.01', 'not', 'dusty', 'cabinet.n.01']",
+                "['nextto', 'vacuum_51', 'bed_10']",
+                "['ontop', 'painting_50', 'sheet_53']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    4
+                ],
+                "unsatisfied": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    5
+                ]
+            },
+            "objects": {
+                "floor.n.01_1": {
+                    "name": "room_floor_bedroom_1",
+                    "category": "floor.n.01"
+                },
+                "apparel.n.01_1": {
+                    "name": "jeans_46",
+                    "category": "apparel.n.01"
+                },
+                "apparel.n.01_2": {
+                    "name": "jeans_47",
+                    "category": "apparel.n.01"
+                },
+                "bed.n.01_1": {
+                    "name": "bed_10",
+                    "category": "bed.n.01"
+                },
+                "jewelry.n.01_1": {
+                    "name": "necklace_48",
+                    "category": "jewelry.n.01"
+                },
+                "perfume.n.02_1": {
+                    "name": "cologne_49",
+                    "category": "perfume.n.02"
+                },
+                "painting.n.01_1": {
+                    "name": "painting_50",
+                    "category": "painting.n.01"
+                },
+                "vacuum.n.04_1": {
+                    "name": "vacuum_51",
+                    "category": "vacuum.n.04"
+                },
+                "hand_towel.n.01_1": {
+                    "name": "hand_towel_52",
+                    "category": "hand_towel.n.01"
+                },
+                "sheet.n.03_1": {
+                    "name": "sheet_53",
+                    "category": "sheet.n.03"
+                },
+                "cabinet.n.01_1": {
+                    "name": "bottom_cabinet_2",
+                    "category": "cabinet.n.01"
+                },
+                "cabinet.n.01_2": {
+                    "name": "bottom_cabinet_0",
+                    "category": "cabinet.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 2,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "ontop": {
+                    "total": 2,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "nextto": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                },
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "jeans_46",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_2",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Target object is closed (PLACE_INSIDE)"
+                        }
+                    ],
+                    "step": 1
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "jeans_46"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_2"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "jeans_47"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_2"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "necklace_48"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_2"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cologne_49"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_2"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "sheet_53"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "bed_10"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "painting_50"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "sheet_53"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "vacuum_51"
+                },
+                {
+                    "action": "LEFT_PLACE_NEXTTO",
+                    "object": "bed_10"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_2"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_0"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_carpets_0_Wainscott_1_int_0_2021-09-11_01-12-41",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.WRONG_TEMPORAL_ORDER": "Temporal order is wrong"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 1.0,
+                "tot_edge_predicates": 0.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 0,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['stained', 'room_floor_corridor_0']",
+                "['onfloor', 'hand_towel_102', 'room_floor_utility_room_0']",
+                "['inside', 'shampoo_103', 'top_cabinet_50']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_corridor_0']"
+            ],
+            "target_state": [
+                "['not', 'stained', 'room_floor_corridor_0']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0
+                ]
+            },
+            "objects": {
+                "floor.n.01_1": {
+                    "name": "room_floor_corridor_0",
+                    "category": "floor.n.01"
+                },
+                "floor.n.01_2": {
+                    "name": "room_floor_utility_room_0",
+                    "category": "floor.n.01"
+                },
+                "hand_towel.n.01_1": {
+                    "name": "hand_towel_102",
+                    "category": "hand_towel.n.01"
+                },
+                "shampoo.n.01_1": {
+                    "name": "shampoo_103",
+                    "category": "shampoo.n.01"
+                },
+                "cabinet.n.01_1": {
+                    "name": "top_cabinet_50",
+                    "category": "cabinet.n.01"
+                },
+                "washer.n.03_1": {
+                    "name": "washer_49",
+                    "category": "washer.n.03"
+                },
+                "dryer.n.01_1": {
+                    "name": "dryer_48",
+                    "category": "dryer.n.01"
+                },
+                "door.n.01_1": {
+                    "name": "door_80",
+                    "category": "door.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_51",
+                    "category": "sink.n.01"
+                }
+            },
+            "predicate_info": {
+                "stained": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "hand_towel_102",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "room_floor_corridor_0",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "LEFT_RELEASE",
+                    "object": "hand_towel_102",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Robot is not holding anything (RELEASE)"
+                        },
+                        {
+                            "error_type": "ErrorType.WRONG_TEMPORAL_ORDER",
+                            "error_reason": "Temporal order is wrong"
+                        }
+                    ],
+                    "step": 2
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "hand_towel_102"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "room_floor_corridor_0"
+                },
+                {
+                    "action": "LEFT_RELEASE",
+                    "object": "hand_towel_102"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "hand_towel_102"
+                },
+                {
+                    "action": "RIGHT_PLACE_ONTOP",
+                    "object": "room_floor_corridor_0"
+                },
+                {
+                    "action": "RIGHT_RELEASE",
+                    "object": "hand_towel_102"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_corridor_0"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_closet_0_Beechwood_1_int_0_2021-10-25_19-50-32",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "Target object is closed (PLACE_INSIDE)"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 7.0,
+                "tot_edge_predicates": 4.0,
+                "tot_node_predicates": 3.0,
+                "satisfied_predicates": 1.0,
+                "satisfied_edge_predicates": 1.0,
+                "satisfied_node_predicates": 0.0,
+                "pure_edge_predicates": 4,
+                "pure_node_predicates": 3,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 1,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['dusty', 'shelf_31']",
+                "['dusty', 'bottom_cabinet_30']",
+                "['onfloor', 'bracelet_0', 'room_floor_closet_0']",
+                "['onfloor', 'necklace_0', 'room_floor_closet_0']",
+                "['dusty', 'room_floor_closet_0']",
+                "['onfloor', 'hat_0', 'room_floor_closet_0']",
+                "['onfloor', 'sandal_0', 'room_floor_closet_0']",
+                "['onfloor', 'sandal_1', 'room_floor_closet_0']",
+                "['onfloor', 'umbrella_0', 'room_floor_closet_0']",
+                "['inside', 'paper_towel_0', 'bottom_cabinet_44']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_bedroom_0']"
+            ],
+            "target_state": [
+                "['forall', 'jewelry.n.01', '-', 'jewelry.n.01', 'inside', 'jewelry.n.01', 'bottom_cabinet_30']",
+                "['not', 'inside', 'umbrella_0', 'bottom_cabinet_30']",
+                "['or', 'inside', 'hat_0', 'bottom_cabinet_44', 'ontop', 'hat_0', 'shelf_31']",
+                "['forall', 'sandal.n.01', '-', 'sandal.n.01', 'and', 'nextto', 'sandal.n.01', 'shelf_31', 'onfloor', 'sandal.n.01', 'room_floor_closet_0']",
+                "['not', 'dusty', 'bottom_cabinet_30']",
+                "['not', 'dusty', 'shelf_31']",
+                "['not', 'dusty', 'room_floor_closet_0']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    1
+                ],
+                "unsatisfied": [
+                    0,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            },
+            "objects": {
+                "shelf.n.01_1": {
+                    "name": "shelf_31",
+                    "category": "shelf.n.01"
+                },
+                "cabinet.n.01_1": {
+                    "name": "bottom_cabinet_44",
+                    "category": "cabinet.n.01"
+                },
+                "cabinet.n.01_2": {
+                    "name": "bottom_cabinet_1",
+                    "category": "cabinet.n.01"
+                },
+                "cabinet.n.01_3": {
+                    "name": "bottom_cabinet_30",
+                    "category": "cabinet.n.01"
+                },
+                "jewelry.n.01_1": {
+                    "name": "bracelet_0",
+                    "category": "jewelry.n.01"
+                },
+                "jewelry.n.01_2": {
+                    "name": "necklace_0",
+                    "category": "jewelry.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_closet_0",
+                    "category": "floor.n.01"
+                },
+                "floor.n.01_2": {
+                    "name": "room_floor_bedroom_0",
+                    "category": "floor.n.01"
+                },
+                "hat.n.01_1": {
+                    "name": "hat_0",
+                    "category": "hat.n.01"
+                },
+                "sandal.n.01_1": {
+                    "name": "sandal_0",
+                    "category": "sandal.n.01"
+                },
+                "sandal.n.01_2": {
+                    "name": "sandal_1",
+                    "category": "sandal.n.01"
+                },
+                "umbrella.n.01_1": {
+                    "name": "umbrella_0",
+                    "category": "umbrella.n.01"
+                },
+                "towel.n.01_1": {
+                    "name": "paper_towel_0",
+                    "category": "towel.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 3,
+                    "satisfied": 1,
+                    "satisfied_rate": 0.3333333333333333
+                },
+                "ontop": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "nextto": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "onfloor": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "dusty": {
+                    "total": 3,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "bracelet_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_30",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Target object is closed (PLACE_INSIDE)"
+                        }
+                    ],
+                    "step": 1
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "bracelet_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_30"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "necklace_0"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_30"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "umbrella_0"
+                },
+                {
+                    "action": "LEFT_PLACE_NEXTTO",
+                    "object": "shelf_31"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "hat_0"
+                },
+                {
+                    "action": "RIGHT_PLACE_ONTOP",
+                    "object": "shelf_31"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "sandal_0"
+                },
+                {
+                    "action": "LEFT_PLACE_NEXTTO",
+                    "object": "shelf_31"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "sandal_1"
+                },
+                {
+                    "action": "RIGHT_PLACE_NEXTTO",
+                    "object": "shelf_31"
+                },
+                {
+                    "action": "TOGGLE_ON",
+                    "object": "bottom_cabinet_30"
+                },
+                {
+                    "action": "TOGGLE_ON",
+                    "object": "shelf_31"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_30"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "shelf_31"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_closet_0"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_cupboards_0_Wainscott_1_int_1_2021-08-25_16-40-44",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "Object is inside a closed object"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 5.0,
+                "tot_edge_predicates": 4.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 4,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['inside', 'notebook_102', 'bottom_cabinet_28']",
+                "['inside', 'hardback_103', 'bottom_cabinet_25']",
+                "['inside', 'hardback_104', 'bottom_cabinet_25']",
+                "['inside', 'pen_105', 'bottom_cabinet_28']",
+                "['inside', 'highlighter_106', 'bottom_cabinet_25']",
+                "['inside', 'highlighter_107', 'bottom_cabinet_25']",
+                "['inside', 'screwdriver_108', 'bottom_cabinet_24']",
+                "['inside', 'scrub_brush_109', 'bottom_cabinet_28']",
+                "['inside', 'rag_110', 'bottom_cabinet_28']",
+                "['ontop', 'detergent_111', 'bed_58']",
+                "['onfloor', 'trash_can_112', 'room_floor_bedroom_0']",
+                "['ontop', 'bucket_113', 'bed_58']",
+                "['dusty', 'bottom_cabinet_28']",
+                "['dusty', 'bottom_cabinet_25']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_bedroom_0']"
+            ],
+            "target_state": [
+                "['forall', 'cabinet.n.01', '-', 'cabinet.n.01', 'not', 'dusty', 'cabinet.n.01']",
+                "['forall', 'book.n.02', '-', 'book.n.02', 'forall', 'cabinet.n.01', '-', 'cabinet.n.01', 'not', 'inside', 'book.n.02', 'cabinet.n.01']",
+                "['inside', 'screwdriver_108', 'trash_can_112']",
+                "['forall', 'marker.n.03', '-', 'marker.n.03', 'inside', 'marker.n.03', 'bucket_113']",
+                "['inside', 'pen_105', 'bucket_113']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4
+                ]
+            },
+            "objects": {
+                "book.n.02_1": {
+                    "name": "notebook_102",
+                    "category": "book.n.02"
+                },
+                "book.n.02_2": {
+                    "name": "hardback_103",
+                    "category": "book.n.02"
+                },
+                "book.n.02_3": {
+                    "name": "hardback_104",
+                    "category": "book.n.02"
+                },
+                "cabinet.n.01_1": {
+                    "name": "bottom_cabinet_28",
+                    "category": "cabinet.n.01"
+                },
+                "cabinet.n.01_2": {
+                    "name": "bottom_cabinet_25",
+                    "category": "cabinet.n.01"
+                },
+                "cabinet.n.01_3": {
+                    "name": "bottom_cabinet_24",
+                    "category": "cabinet.n.01"
+                },
+                "pen.n.01_1": {
+                    "name": "pen_105",
+                    "category": "pen.n.01"
+                },
+                "marker.n.03_1": {
+                    "name": "highlighter_106",
+                    "category": "marker.n.03"
+                },
+                "marker.n.03_2": {
+                    "name": "highlighter_107",
+                    "category": "marker.n.03"
+                },
+                "screwdriver.n.01_1": {
+                    "name": "screwdriver_108",
+                    "category": "screwdriver.n.01"
+                },
+                "scrub_brush.n.01_1": {
+                    "name": "scrub_brush_109",
+                    "category": "scrub_brush.n.01"
+                },
+                "rag.n.01_1": {
+                    "name": "rag_110",
+                    "category": "rag.n.01"
+                },
+                "cleansing_agent.n.01_1": {
+                    "name": "detergent_111",
+                    "category": "cleansing_agent.n.01"
+                },
+                "bin.n.01_1": {
+                    "name": "trash_can_112",
+                    "category": "bin.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_bedroom_0",
+                    "category": "floor.n.01"
+                },
+                "bucket.n.01_1": {
+                    "name": "bucket_113",
+                    "category": "bucket.n.01"
+                },
+                "bed.n.01_1": {
+                    "name": "bed_58",
+                    "category": "bed.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 4,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "screwdriver_108",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Object is inside a closed object"
+                        }
+                    ],
+                    "step": 0
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "screwdriver_108"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "trash_can_112"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "pen_105"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bucket_113"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "highlighter_106"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bucket_113"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "highlighter_107"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bucket_113"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_110"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_28"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "notebook_102"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_28"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "hardback_103"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_25"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "hardback_104"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_25"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "scrub_brush_109"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "bottom_cabinet_28"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_28"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_25"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_floors_0_Merom_0_int_1_2021-06-23_16-12-28",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": "object agent.n.01_1 not found",
+                "arguments": null,
+                "execution_success": false
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": null,
+                "tot_predicates": 2.0,
+                "tot_edge_predicates": 0.0,
+                "tot_node_predicates": 2.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 0,
+                "pure_node_predicates": 2,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['dusty', 'room_floor_bathroom_0']",
+                "['stained', 'room_floor_bathroom_0']",
+                "['onfloor', 'broom_0', 'room_floor_bathroom_0']",
+                "['onfloor', 'dustpan_0', 'room_floor_bathroom_0']",
+                "['onfloor', 'toothpaste_0', 'room_floor_bathroom_0']",
+                "['onfloor', 'scrub_brush_0', 'room_floor_bathroom_0']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_bathroom_0']"
+            ],
+            "target_state": [
+                "['not', 'stained', 'room_floor_bathroom_0']",
+                "['not', 'dusty', 'room_floor_bathroom_0']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0,
+                    1
+                ]
+            },
+            "objects": {
+                "floor.n.01_1": {
+                    "name": "room_floor_bathroom_0",
+                    "category": "floor.n.01"
+                },
+                "broom.n.01_1": {
+                    "name": "broom_0",
+                    "category": "broom.n.01"
+                },
+                "dustpan.n.02_1": {
+                    "name": "dustpan_0",
+                    "category": "dustpan.n.02"
+                },
+                "cleansing_agent.n.01_1": {
+                    "name": "toothpaste_0",
+                    "category": "cleansing_agent.n.01"
+                },
+                "scrub_brush.n.01_1": {
+                    "name": "scrub_brush_0",
+                    "category": "scrub_brush.n.01"
+                },
+                "door.n.01_1": {
+                    "name": "door_65",
+                    "category": "door.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_48",
+                    "category": "sink.n.01"
+                }
+            },
+            "predicate_info": {
+                "stained": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": null,
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "broom_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_bathroom_0"
+                },
+                {
+                    "action": "LEFT_PLACE_NEXTTO",
+                    "object": "room_floor_bathroom_0"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "dustpan_0"
+                },
+                {
+                    "action": "RIGHT_PLACE_NEXTTO",
+                    "object": "room_floor_bathroom_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "scrub_brush_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_bathroom_0"
+                },
+                {
+                    "action": "LEFT_PLACE_NEXTTO",
+                    "object": "room_floor_bathroom_0"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "agent.n.01_1"
+                },
+                {
+                    "action": "RIGHT_PLACE_NEXTTO",
+                    "object": "room_floor_bathroom_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_bathroom_0"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_freezer_0_Pomaria_1_int_0_2021-10-26_12-59-25",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": "action LEFT_PLACE_OUTSIDE not found",
+                "arguments": null,
+                "execution_success": false
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": null,
+                "tot_predicates": 2.0,
+                "tot_edge_predicates": 1.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 1,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['stained', 'fridge_20']",
+                "['inside', 'pop_0', 'fridge_20']",
+                "['inside', 'pop_1', 'fridge_20']",
+                "['inside', 'pop_2', 'fridge_20']",
+                "['ontop', 'toothpaste_0', 'breakfast_table_6']",
+                "['ontop', 'hand_towel_0', 'breakfast_table_6']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_kitchen_0']"
+            ],
+            "target_state": [
+                "['not', 'stained', 'fridge_20']",
+                "['forall', 'food.n.01', '-', 'food.n.01', 'not', 'inside', 'food.n.01', 'fridge_20']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0,
+                    1
+                ]
+            },
+            "objects": {
+                "electric_refrigerator.n.01_1": {
+                    "name": "fridge_20",
+                    "category": "electric_refrigerator.n.01"
+                },
+                "food.n.01_1": {
+                    "name": "pop_0",
+                    "category": "food.n.01"
+                },
+                "food.n.01_2": {
+                    "name": "pop_1",
+                    "category": "food.n.01"
+                },
+                "food.n.01_3": {
+                    "name": "pop_2",
+                    "category": "food.n.01"
+                },
+                "cleansing_agent.n.01_1": {
+                    "name": "toothpaste_0",
+                    "category": "cleansing_agent.n.01"
+                },
+                "table.n.02_1": {
+                    "name": "breakfast_table_6",
+                    "category": "table.n.02"
+                },
+                "towel.n.01_1": {
+                    "name": "hand_towel_0",
+                    "category": "towel.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_kitchen_0",
+                    "category": "floor.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_37",
+                    "category": "sink.n.01"
+                },
+                "countertop.n.01_1": {
+                    "name": "countertop_31",
+                    "category": "countertop.n.01"
+                },
+                "stove.n.01_1": {
+                    "name": "burner_64",
+                    "category": "stove.n.01"
+                },
+                "door.n.01_1": {
+                    "name": "door_70",
+                    "category": "door.n.01"
+                },
+                "chair.n.01_1": {
+                    "name": "straight_chair_7",
+                    "category": "chair.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "stained": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": null,
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "pop_0"
+                },
+                {
+                    "action": "LEFT_PLACE_OUTSIDE",
+                    "object": "fridge_20"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "pop_1"
+                },
+                {
+                    "action": "RIGHT_PLACE_OUTSIDE",
+                    "object": "fridge_20"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "pop_2"
+                },
+                {
+                    "action": "LEFT_PLACE_OUTSIDE",
+                    "object": "fridge_20"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "fridge_20"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_garage_0_Ihlen_0_int_0_2021-08-24_17-40-48",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": true,
+                "ErrorType.ADDITIONAL_STEP": "Object is not dusty or stained (CLEAN)"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": true,
+                "all_goal_satisfied_graph": true,
+                "tot_predicates": 5.0,
+                "tot_edge_predicates": 2.0,
+                "tot_node_predicates": 3.0,
+                "satisfied_predicates": 5.0,
+                "satisfied_edge_predicates": 2.0,
+                "satisfied_node_predicates": 3.0,
+                "pure_edge_predicates": 2,
+                "pure_node_predicates": 3,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 2,
+                "satisfied_pure_node_predicates": 3,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['onfloor', 'carton_0', 'room_floor_garage_0']",
+                "['onfloor', 'newspaper_0', 'room_floor_garage_0']",
+                "['onfloor', 'newspaper_1', 'room_floor_garage_0']",
+                "['onfloor', 'cruet_0', 'room_floor_garage_0']",
+                "['onfloor', 'cruet_1', 'room_floor_garage_0']",
+                "['dusty', 'room_floor_garage_0']",
+                "['stained', 'room_floor_garage_0']",
+                "['dusty', 'bottom_cabinet_15']",
+                "['onfloor', 'broom_0', 'room_floor_garage_0']",
+                "['ontop', 'rag_0', 'breakfast_table_14']",
+                "['onfloor', 'trash_can_0', 'room_floor_garage_0']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_storage_room_0']"
+            ],
+            "target_state": [
+                "['not', 'dusty', 'room_floor_garage_0']",
+                "['not', 'dusty', 'bottom_cabinet_15']",
+                "['not', 'stained', 'bottom_cabinet_15']",
+                "['forall', 'newspaper.n.03', '-', 'newspaper.n.03', 'or', 'inside', 'newspaper.n.03', 'trash_can_0', 'not', 'onfloor', 'newspaper.n.03', 'room_floor_garage_0']",
+                "['forall', 'bottle.n.01', '-', 'bottle.n.01', 'ontop', 'bottle.n.01', 'breakfast_table_14']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    0,
+                    1,
+                    2,
+                    3,
+                    4
+                ],
+                "unsatisfied": []
+            },
+            "objects": {
+                "box.n.01_1": {
+                    "name": "carton_0",
+                    "category": "box.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_garage_0",
+                    "category": "floor.n.01"
+                },
+                "floor.n.01_2": {
+                    "name": "room_floor_storage_room_0",
+                    "category": "floor.n.01"
+                },
+                "newspaper.n.03_1": {
+                    "name": "newspaper_0",
+                    "category": "newspaper.n.03"
+                },
+                "newspaper.n.03_2": {
+                    "name": "newspaper_1",
+                    "category": "newspaper.n.03"
+                },
+                "bottle.n.01_1": {
+                    "name": "cruet_0",
+                    "category": "bottle.n.01"
+                },
+                "bottle.n.01_2": {
+                    "name": "cruet_1",
+                    "category": "bottle.n.01"
+                },
+                "cabinet.n.01_1": {
+                    "name": "bottom_cabinet_15",
+                    "category": "cabinet.n.01"
+                },
+                "broom.n.01_1": {
+                    "name": "broom_0",
+                    "category": "broom.n.01"
+                },
+                "rag.n.01_1": {
+                    "name": "rag_0",
+                    "category": "rag.n.01"
+                },
+                "table.n.02_1": {
+                    "name": "breakfast_table_14",
+                    "category": "table.n.02"
+                },
+                "bin.n.01_1": {
+                    "name": "trash_can_0",
+                    "category": "bin.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_32",
+                    "category": "sink.n.01"
+                },
+                "shelf.n.01_1": {
+                    "name": "shelf_23",
+                    "category": "shelf.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                },
+                "onfloor": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                },
+                "ontop": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                },
+                "dusty": {
+                    "total": 2,
+                    "satisfied": 2,
+                    "satisfied_rate": 1.0
+                },
+                "stained": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "broom_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_garage_0",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_15",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "LEFT_RELEASE",
+                    "object": "broom_0",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "rag_0",
+                    "execution_success": true,
+                    "step": 4
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_15",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.ADDITIONAL_STEP",
+                            "error_reason": "Object is not dusty or stained (CLEAN)"
+                        }
+                    ],
+                    "step": 5
+                },
+                {
+                    "action": "RIGHT_RELEASE",
+                    "object": "rag_0",
+                    "execution_success": true,
+                    "step": 6
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "newspaper_0",
+                    "execution_success": true,
+                    "step": 7
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "trash_can_0",
+                    "execution_success": true,
+                    "step": 8
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "newspaper_1",
+                    "execution_success": true,
+                    "step": 9
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "trash_can_0",
+                    "execution_success": true,
+                    "step": 10
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cruet_0",
+                    "execution_success": true,
+                    "step": 11
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "breakfast_table_14",
+                    "execution_success": true,
+                    "step": 12
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cruet_1",
+                    "execution_success": true,
+                    "step": 13
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "breakfast_table_14",
+                    "execution_success": true,
+                    "step": 14
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "broom_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "room_floor_garage_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_15"
+                },
+                {
+                    "action": "LEFT_RELEASE",
+                    "object": "broom_0"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "rag_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "bottom_cabinet_15"
+                },
+                {
+                    "action": "RIGHT_RELEASE",
+                    "object": "rag_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "newspaper_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "trash_can_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "newspaper_1"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "trash_can_0"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cruet_0"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "breakfast_table_14"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "cruet_1"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "breakfast_table_14"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_high_chair_0_Wainscott_0_int_0_2021-06-05_18-03-15",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "Object is inside a closed object"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 1.0,
+                "tot_edge_predicates": 0.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 0,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['dusty', 'highchair_0']",
+                "['inside', 'paper_towel_0', 'bottom_cabinet_no_top_80']",
+                "['onfloor', 'highchair_0', 'room_floor_dining_room_0']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_kitchen_0']"
+            ],
+            "target_state": [
+                "['not', 'dusty', 'highchair_0']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0
+                ]
+            },
+            "objects": {
+                "highchair.n.01_1": {
+                    "name": "highchair_0",
+                    "category": "highchair.n.01"
+                },
+                "piece_of_cloth.n.01_1": {
+                    "name": "paper_towel_0",
+                    "category": "piece_of_cloth.n.01"
+                },
+                "cabinet.n.01_1": {
+                    "name": "bottom_cabinet_no_top_80",
+                    "category": "cabinet.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_82",
+                    "category": "sink.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_kitchen_0",
+                    "category": "floor.n.01"
+                },
+                "floor.n.01_2": {
+                    "name": "room_floor_dining_room_0",
+                    "category": "floor.n.01"
+                }
+            },
+            "predicate_info": {
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "paper_towel_0",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Object is inside a closed object"
+                        }
+                    ],
+                    "step": 0
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "paper_towel_0"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "highchair_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "highchair_0"
+                },
+                {
+                    "action": "LEFT_RELEASE",
+                    "object": "paper_towel_0"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_kitchen_cupboard_0_Pomaria_1_int_0_2021-10-26_13-05-36",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": false,
+                "ErrorType.MISSING_STEP": "Target object is closed (PLACE_INSIDE)"
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 3.0,
+                "tot_edge_predicates": 2.0,
+                "tot_node_predicates": 1.0,
+                "satisfied_predicates": 0,
+                "satisfied_edge_predicates": 0,
+                "satisfied_node_predicates": 0,
+                "pure_edge_predicates": 2,
+                "pure_node_predicates": 1,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 0,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['dusty', 'top_cabinet_25']",
+                "['dusty', 'top_cabinet_24']",
+                "['ontop', 'paper_towel_0', 'countertop_31']",
+                "['ontop', 'soap_0', 'countertop_31']",
+                "['inside', 'bowl_1', 'top_cabinet_24']",
+                "['inside', 'cup_0', 'top_cabinet_24']",
+                "['inside', 'cup_1', 'top_cabinet_25']",
+                "['ontop', 'bowl_0', 'countertop_31']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_kitchen_0']"
+            ],
+            "target_state": [
+                "['forall', 'cabinet.n.01', '-', 'cabinet.n.01', 'not', 'dusty', 'cabinet.n.01']",
+                "['exists', 'cabinet.n.01', '-', 'cabinet.n.01', 'forall', 'bowl.n.01', '-', 'bowl.n.01', 'and', 'inside', 'bowl.n.01', 'cabinet.n.01', 'not', 'inside', 'cup_0', 'cabinet.n.01']",
+                "['exists', 'cabinet.n.01', '-', 'cabinet.n.01', 'forall', 'cup.n.01', '-', 'cup.n.01', 'and', 'inside', 'cup.n.01', 'cabinet.n.01', 'not', 'inside', 'bowl_0', 'cabinet.n.01']"
+            ],
+            "satisfication_info": {
+                "satisfied": [],
+                "unsatisfied": [
+                    0,
+                    1,
+                    2
+                ]
+            },
+            "objects": {
+                "cabinet.n.01_1": {
+                    "name": "top_cabinet_25",
+                    "category": "cabinet.n.01"
+                },
+                "cabinet.n.01_2": {
+                    "name": "top_cabinet_24",
+                    "category": "cabinet.n.01"
+                },
+                "countertop.n.01_1": {
+                    "name": "countertop_31",
+                    "category": "countertop.n.01"
+                },
+                "piece_of_cloth.n.01_1": {
+                    "name": "paper_towel_0",
+                    "category": "piece_of_cloth.n.01"
+                },
+                "cleansing_agent.n.01_1": {
+                    "name": "soap_0",
+                    "category": "cleansing_agent.n.01"
+                },
+                "bowl.n.01_1": {
+                    "name": "bowl_0",
+                    "category": "bowl.n.01"
+                },
+                "bowl.n.01_2": {
+                    "name": "bowl_1",
+                    "category": "bowl.n.01"
+                },
+                "cup.n.01_1": {
+                    "name": "cup_0",
+                    "category": "cup.n.01"
+                },
+                "cup.n.01_2": {
+                    "name": "cup_1",
+                    "category": "cup.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_37",
+                    "category": "sink.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_kitchen_0",
+                    "category": "floor.n.01"
+                }
+            },
+            "predicate_info": {
+                "inside": {
+                    "total": 2,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                },
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "paper_towel_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "top_cabinet_25",
+                    "execution_success": true,
+                    "step": 1
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "soap_0",
+                    "execution_success": true,
+                    "step": 2
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "top_cabinet_24",
+                    "execution_success": true,
+                    "step": 3
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "bowl_0",
+                    "execution_success": true,
+                    "step": 4
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "top_cabinet_24",
+                    "execution_success": false,
+                    "errors": [
+                        {
+                            "error_type": "ErrorType.MISSING_STEP",
+                            "error_reason": "Target object is closed (PLACE_INSIDE)"
+                        }
+                    ],
+                    "step": 5
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "paper_towel_0"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "top_cabinet_25"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "soap_0"
+                },
+                {
+                    "action": "LEFT_PLACE_ONTOP",
+                    "object": "top_cabinet_24"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "bowl_0"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "top_cabinet_24"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cup_0"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "top_cabinet_24"
+                },
+                {
+                    "action": "RIGHT_GRASP",
+                    "object": "cup_1"
+                },
+                {
+                    "action": "RIGHT_PLACE_INSIDE",
+                    "object": "top_cabinet_25"
+                },
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "bowl_1"
+                },
+                {
+                    "action": "LEFT_PLACE_INSIDE",
+                    "object": "top_cabinet_24"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "top_cabinet_25"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "top_cabinet_24"
+                }
+            ]
+        }
+    },
+    {
+        "identifier": "cleaning_microwave_oven_0_Benevolence_1_int_0_2021-09-11_01-27-10",
+        "llm_rst": {
+            "error_type": {
+                "parsing": null,
+                "hullucination": null,
+                "arguments": null,
+                "execution_success": true
+            },
+            "goal_rst": {
+                "all_goal_satisfied_ig": false,
+                "all_goal_satisfied_graph": false,
+                "tot_predicates": 2.0,
+                "tot_edge_predicates": 0.0,
+                "tot_node_predicates": 2.0,
+                "satisfied_predicates": 1.0,
+                "satisfied_edge_predicates": 0.0,
+                "satisfied_node_predicates": 1.0,
+                "pure_edge_predicates": 0,
+                "pure_node_predicates": 2,
+                "mixed_predicates": 0,
+                "satisfied_pure_edge_predicates": 0,
+                "satisfied_pure_node_predicates": 1,
+                "satisfied_mixed_predicates": 0
+            },
+            "initial_state": [
+                "['dusty', 'microwave_36']",
+                "['stained', 'microwave_36']",
+                "['ontop', 'rag_0', 'countertop_18']",
+                "['onfloor', 'trash_can_0', 'room_floor_kitchen_0']",
+                "['onfloor', 'agent.n.01_1', 'room_floor_kitchen_0']"
+            ],
+            "target_state": [
+                "['not', 'dusty', 'microwave_36']",
+                "['not', 'stained', 'microwave_36']"
+            ],
+            "satisfication_info": {
+                "satisfied": [
+                    0
+                ],
+                "unsatisfied": [
+                    1
+                ]
+            },
+            "objects": {
+                "microwave.n.02_1": {
+                    "name": "microwave_36",
+                    "category": "microwave.n.02"
+                },
+                "rag.n.01_1": {
+                    "name": "rag_0",
+                    "category": "rag.n.01"
+                },
+                "countertop.n.01_1": {
+                    "name": "countertop_18",
+                    "category": "countertop.n.01"
+                },
+                "ashcan.n.01_1": {
+                    "name": "trash_can_0",
+                    "category": "ashcan.n.01"
+                },
+                "floor.n.01_1": {
+                    "name": "room_floor_kitchen_0",
+                    "category": "floor.n.01"
+                },
+                "cabinet.n.01_1": {
+                    "name": "bottom_cabinet_no_top_15",
+                    "category": "cabinet.n.01"
+                },
+                "sink.n.01_1": {
+                    "name": "sink_19",
+                    "category": "sink.n.01"
+                }
+            },
+            "predicate_info": {
+                "dusty": {
+                    "total": 1,
+                    "satisfied": 1,
+                    "satisfied_rate": 1.0
+                },
+                "stained": {
+                    "total": 1,
+                    "satisfied": 0,
+                    "satisfied_rate": 0.0
+                }
+            },
+            "execution_info": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_0",
+                    "execution_success": true,
+                    "step": 0
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "microwave_36",
+                    "execution_success": true,
+                    "step": 1
+                }
+            ],
+            "parsed_actions": [
+                {
+                    "action": "LEFT_GRASP",
+                    "object": "rag_0"
+                },
+                {
+                    "action": "CLEAN",
+                    "object": "microwave_36"
+                }
+            ]
+        }
+    }
+]
