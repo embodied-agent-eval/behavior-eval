@@ -26,7 +26,7 @@ def worker_task(queue, result_list, lock, output_path):
         demo_name = task
         get_llm_prompt(demo_name, result_list, lock, output_path)
 
-def generate_prompts(worker_num: Optional[int] = 1):
+def generate_prompts(worker_num: Optional[int] = 1, result_dir: Optional[str] = './results'):
     with open(behavior_eval.demo_name_path) as f:
         demo_list = json.load(f)
 
@@ -34,7 +34,7 @@ def generate_prompts(worker_num: Optional[int] = 1):
     result_list = manager.list()
     lock = manager.Lock()
 
-    output_path = os.path.join(behavior_eval.action_seq_result_path, 'reconstructed_prompts/action_sequence_prompts.json')
+    output_path = os.path.join(result_dir, 'action_sequence_prompts.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     

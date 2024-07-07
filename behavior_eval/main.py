@@ -5,14 +5,17 @@ from behavior_eval.evaluation.action_sequence.scripts.generate_prompts import ge
 from behavior_eval.evaluation.goal_interpretation.scripts.evaluate_results import evaluate_results as goal_interpretation_evaluate_results
 from behavior_eval.evaluation.goal_interpretation.scripts.generate_prompts import generate_prompts as goal_interpretation_generate_prompts
 from behavior_eval.evaluation.subgoal_decomposition.scripts.generate_prompts import generate_prompts as subgoal_decomposition_generate_prompts
-def main(module:Optional[str]="action_sequence",func:Optional[str]="generate_prompts",worker_num:Optional[int]=1,llm_response_dir:Optional[str]=None):
+import os
+def main(module:Optional[str]="action_sequence",func:Optional[str]="generate_prompts",worker_num:Optional[int]=1,llm_response_dir:Optional[str]=None,result_dir:Optional[str]='./results'):
     """
     module: goal_interpretation,action_sequence,subgoal_decomposition,transition_modeling
     func: evaluate_results,generate_prompts
     worker_num: number of workers for multiprocessing
     llm_response_dir: directory containing llm responses (helm outputs)
+    result_dir: directory to store results
     """
-    
+    result_dir = os.path.join(result_dir,module,func)
+    os.makedirs(result_dir,exist_ok=True)
     if func=="evaluate_results":
         if llm_response_dir is None:
             return "llm_response_dir is required for evaluate_results"
@@ -22,9 +25,9 @@ def main(module:Optional[str]="action_sequence",func:Optional[str]="generate_pro
         return f"Invalid module {module}, must be goal_interpretation,action_sequence,subgoal_decomposition,transition_modeling"
     if module == "action_sequence":
         if func == "evaluate_results":
-            action_sequence_evaluate_results(llm_response_dir,worker_num)
+            action_sequence_evaluate_results(llm_response_dir,worker_num,result_dir)
         elif func == "generate_prompts":
-            action_sequence_generate_prompts(worker_num)
+            action_sequence_generate_prompts(worker_num,result_dir)
     elif module == "goal_interpretation":
         if func == "evaluate_results":
             goal_interpretation_evaluate_results(llm_response_dir)

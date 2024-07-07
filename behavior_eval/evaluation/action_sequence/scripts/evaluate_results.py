@@ -27,13 +27,13 @@ def worker_task(queue, result_list, lock, output_path):
         demo_name, actions_raw = task
         evaluate_llm_response(demo_name, result_list, lock, output_path, actions_raw)
 
-def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1):
+def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1, result_dir: Optional[str] = './results'):
     manager = Manager()
     result_list = manager.list()
     lock = manager.Lock()
 
     llm_response_name = os.path.basename(llm_response_path).split('.')[0]
-    output_path = os.path.join(behavior_eval.action_seq_result_path, f'error_analysis/{llm_response_name}.json')
+    output_path = os.path.join(result_dir, f'error_analysis/{llm_response_name}.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     llm_response = json.load(open(llm_response_path))
@@ -93,13 +93,13 @@ def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1):
         json.dump(summary, f, indent=4)
     return summary
 
-def evaluate_results(llm_response_dir, worker_num: Optional[int] = 1):
-    os.makedirs(behavior_eval.action_seq_result_path, exist_ok=True)
+def evaluate_results(llm_response_dir, worker_num: Optional[int] = 1,result_dir: Optional[str] = './results'):
+    os.makedirs(result_dir, exist_ok=True)
     for filename in os.listdir(llm_response_dir):
         file_path = os.path.join(llm_response_dir, filename)
         if os.path.isfile(file_path):
             print(f"Processing file: {file_path}")
-            evaluate_one_llm(file_path, worker_num)
+            evaluate_one_llm(file_path, worker_num, result_dir)
 
 if __name__ == '__main__':
     fire.Fire(evaluate_results)
