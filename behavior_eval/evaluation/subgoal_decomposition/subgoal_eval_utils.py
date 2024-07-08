@@ -1,150 +1,235 @@
 import os
+import re
+import ast
 import json
 import behavior_eval
-from typing import List, Dict, Any, Optional, Tuple, Union
-from behavior_eval.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
-from behavior_eval.evaluation.subgoal_decomposition.subgoal_plan import SubgoalPlan, SubgoalPlanHalfJson, SubgoalPlanJSON, SubgoalPlanPlain
-from behavior_eval.evaluation.subgoal_decomposition.checkers import Vocab, SyntacticChecker, SemanticChecker, RuntimeChecker
-from behavior_eval.evaluation.subgoal_decomposition.state_action_translator import StateActionTranslator
-from tl_formula.bddl_to_tl import translate_addressable_obj_into_tl_obj, translate_tl_obj_into_addressable_obj
+import time
+from typing import Dict, Any, List, Union, Tuple
 
-class EvalStatistics:
-    def __init__(self, task_list: List[str], log_path: str) -> None:
-        self.task_list = task_list
-        self.log_path = log_path
-        self.eval_rst_dict = self.init_eval_rst_dict()
+class SimpleVocab:
+    def __init__(self, vocab_path=os.path.join(behavior_eval.subgoal_dec_resources_path, 'base_vocabulary.json')):
+        self.vocab_path = vocab_path
+        self.vocab = self.load_vocab()
+        self.predicate_list = self.get_predicate_list(self.vocab)
+        self.state_param_dict = self.get_state_param_dict(self.vocab)
+        self.quantifiers = ['forpairs', 'forn', 'exists', 'forall', 'fornpairs']
     
-    def init_eval_rst_dict(self) -> Dict[str, Dict[str, Any]]:
-        if os.path.exists(self.log_path):
-            with open(self.log_path, 'r') as f:
-                eval_dict = json.load(f)
-            return eval_dict
-        
-        eval_dict = {}
-        for task_name in self.task_list:
-            eval_dict[task_name] = {
-                'success': False,
-                'info': None,
-                'goal_info': None
-            }
-        return eval_dict
+    def load_vocab(self):
+        with open(self.vocab_path, 'r') as f:
+            vocab = json.load(f)
+        return vocab
     
-    def update_eval_rst_dict(self, task_name:str, success:bool, error_info:Union[str, None], goal_info: Union[Dict[str, Any], None]=None):
-        self.eval_rst_dict[task_name]['success'] = success
-        self.eval_rst_dict[task_name]['info'] = error_info
-        self.eval_rst_dict[task_name]['goal_info'] = goal_info
+    def get_predicate_list(self, vocab):
+        states = self.get_states(vocab)
+        return states
     
-    def get_eval_rst_dict(self) -> Dict[str, Dict[str, Any]]:
-        return self.eval_rst_dict
+    def get_state_param_dict(self, vocab):
+        return vocab['state_param']
     
-    def check_evaluated_task(self, task_name:str) -> bool:
-        if self.eval_rst_dict[task_name]['success'] == False and self.eval_rst_dict[task_name]['info'] is None:
-            return False
-        return True
+    @staticmethod
+    def get_states(vocab: Dict[str, Any]) -> List[str]:
+        return vocab['states']
     
-    def save_eval_rst_dict(self):
-        with open(self.log_path, 'w') as f:
-            json.dump(self.eval_rst_dict, f, indent=4)
+class GoalAnalyzer:
+    def __init__(self, task_name:str, vocab:SimpleVocab, goal_info: Dict[str, Any]) -> None:
+        self.task_name = task_name
+        self.vocab = vocab
+        self.goal_success = goal_info['success']
+        self.subgoal_list = goal_info['subgoals']
+        self.subgoal_states = goal_info['subgoal_success']
+        self.special_states = {'toggled_on': 'toggledon'}
+        pass
+    
+    def check_in_quantifiers(self, subgoal):
+        for part in subgoal:
+            if part.lower() in self.vocab.quantifiers:
+                return True
+        return False
+    
 
-class EvalSubgoalPlan:
-    def __init__(self, demo_path:str, plan_path:str, json_format:Optional[bool]=False) -> None:
-        self.env = EvalGraphEnv(demo_name=demo_path)
-        self.igibson_name_mapping = self.env.get_name_mapping()
-        self.igibson_relevant_objects = self.env.get_relevant_obj_list(self.igibson_name_mapping)
-        self.category_map = self.get_tl_category(self.igibson_name_mapping) #type:ignore
-        self.tl_name_mapping = self.get_tl_name_mapping(self.igibson_name_mapping, self.category_map) #type:ignore
-        self.tl_relevant_objects = [obj['name'] for obj in self.tl_name_mapping]
-        self.task_name = self.env.task.behavior_activity #type:ignore
-        # self.subgoal_plan = SubgoalPlanPlain(plan_path, self.task_name) if not json_format else SubgoalPlanJSON(plan_path, self.task_name)
-        try:
-            self.subgoal_plan = SubgoalPlanHalfJson(plan_path, self.task_name)
-        except Exception as e:
-            raise e
-    
-    def get_tl_category(self, igibson_name_mapping:List[Dict[str, str]]) -> Dict[str, str]:
-        category_map = {}
-        for pair in igibson_name_mapping:
-            category = pair['category']
-            category_map[category] = category.replace('.', '_')
-        return category_map
-
-
-    def get_tl_name_mapping(self, igibson_name_mapping:List[Dict[str, str]], category_map: Dict[str, str]) -> List[Dict[str, str]]:
-        tl_name_mapping = []
-        for pair in igibson_name_mapping:
-            obj_name = pair['name']
-            obj_category = pair['category']
-            tl_obj_name = translate_addressable_obj_into_tl_obj(obj_name)
-            tl_obj_category = category_map[obj_category]
-            tl_obj = {'name': tl_obj_name, 'category': tl_obj_category}
-            tl_name_mapping.append(tl_obj)
-        return tl_name_mapping
-    
-    def evaluate_subgoal_plan(self):
-        vocab = Vocab(self.tl_name_mapping, self.tl_relevant_objects)
-        syntactic_checker = SyntacticChecker(self.subgoal_plan, vocab)
-        syntactic_rst = syntactic_checker.run_result
-        if not syntactic_rst:
-            syntactic_report = syntactic_checker.report()
-            error_type = syntactic_report['error_type']
-            error_category = ''
-            if error_type == 'NotParseable':
-                error_category = 'NotParseable'
-            elif error_type == 'UnknownPrimitive':
-                error_category = 'Hallucination'
+    def check_goal_stats(self):
+        tot_node_num_fail = 0
+        tot_edge_num_fail = 0
+        tot_node_num_success = 0
+        tot_edge_num_success = 0
+        for i, subgoal in enumerate(self.subgoal_list):
+            # is_quantifier = self.check_in_quantifiers(subgoal)
+            node_num = 0
+            edge_num = 0
+            is_node_goal = False
+            is_edge_goal = False
+            for part in subgoal:
+                if part in self.special_states:
+                    part = self.special_states[part]
+                if part in self.vocab.state_param_dict:
+                    param_num = self.vocab.state_param_dict[part]
+                    if param_num == 1:
+                        is_node_goal = True
+                    elif param_num == 2:
+                        is_edge_goal = True
+            if is_node_goal and is_edge_goal:
+                node_num += 0.5
+                edge_num += 0.5
+            elif is_edge_goal:
+                edge_num += 1
+            elif is_node_goal:
+                node_num += 1
+            if self.subgoal_states[i]:
+                tot_node_num_success += node_num
+                tot_edge_num_success += edge_num
             else:
-                assert False, 'Unknown error type'
-            error_tuple = (error_category, syntactic_report, None)
-            return error_tuple
-        tl_expression = syntactic_checker.get_parsed_tl_expression()
-        semantic_checker = SemanticChecker(self.subgoal_plan, vocab, tl_expression, True)
-        semantic_rst = semantic_checker.run_result
-        if not semantic_rst:
-            semantic_report = semantic_checker.report()
-            error_tuple = ('Hallucination', semantic_report, None)
-            return error_tuple
-        runtime_checker = RuntimeChecker(self.env, self.subgoal_plan, vocab, tl_expression, True)
-        runtime_report = runtime_checker.report()
-        runtime_rst = runtime_checker.run_result
-        if not runtime_rst:
-            error_category = 'Runtime' if not runtime_checker.executable else 'GoalUnreachable'
-            error_tuple = (error_category, runtime_checker.executable, runtime_report, runtime_checker.goal_info)
-            return error_tuple
-        return ('Correct', runtime_checker.executable, runtime_checker.feasible_action_seqs, runtime_report, runtime_checker.goal_info)
+                tot_node_num_fail += node_num
+                tot_edge_num_fail += edge_num
+                
+        return tot_node_num_fail, tot_edge_num_fail, tot_node_num_success, tot_edge_num_success
 
-def evaluate_task(demo_name:str, plan_path):
-    try:
-        eval_subgoal_plan = EvalSubgoalPlan(demo_name, plan_path)
-        report = eval_subgoal_plan.evaluate_subgoal_plan()
-    except Exception as e:
-        report = ('NotParseable', str(e), None)
-    finally:
-        return report
+def traj_eval_stats(eval_stat_path):
+    model_name = os.path.basename(eval_stat_path).split('.')[0]
+    with open(eval_stat_path, 'r') as f:
+        stats = json.load(f)
+    num_correct = 0
+    parse_errors = 0
+    hallucination_errors = 0
+    runtime_errors = 0
+    goal_errors = 0
+    incorrect_param_length_num = 0
+    obj_not_in_scene_num = 0
+    unknown_primitive_num = 0
+    executable_num = 0
+    tot_runtime_errors = 0
+    missing_step_errors = 0
+    additional_step_errors = 0
+    affordance_errors = 0
+    wrong_temporal_order_errors = 0
+    for task, task_info in stats.items():
+        success = task_info['success']
+        if success:
+            num_correct += 1
+        info = task_info['info']
+        assert info is not None, f'info is None for task {task}'
+        info = ast.literal_eval(info)
+        error_type = info[0]
+        if error_type == 'NotParseable' or error_type == 'Hallucination':
+            if error_type == 'NotParseable':
+                parse_errors += 1
+            elif error_type == 'Hallucination':
+                hallucination_errors += 1
+                error_dict = info[1]
+                if 'error_type' in error_dict and error_dict['error_type'] == 'UnknownPrimitive':
+                    unknown_primitive_num += 1
+                else:
+                    if not error_dict['IncorrectParamLength']:
+                        incorrect_param_length_num += 1
+                    if not error_dict['ObjectNotInScene']:
+                        obj_not_in_scene_num += 1
+        elif error_type == 'GoalUnreachable':
+            goal_errors += 1
+            executable_num += 1
+        
+        else:
+            if error_type == 'Runtime':
+                runtime_errors += 1
+                executable = info[1]
+                if executable:
+                    executable_num += 1
+            else:
+                executable_num += 1
+            runtime_report = info[-1]
+            get_one_additional = False
+            for error in runtime_report:
+                error_info = error['error_info']
+                error_type = error_info['error_type']
+                real_info = error_info['error_info']
+                tot_runtime_errors += len(error_type)
+                for t in error_type:
+                    if 'missing_step' in t.lower():
+                        missing_step_errors += 1
+                    elif 'additional_step' in t.lower():
+                        if not get_one_additional:
+                            additional_step_errors += 1
+                            get_one_additional = True
+                    elif 'affordance' in t.lower():
+                        affordance_errors += 1
+                    elif 'wrong_temporal_order' in t.lower():
+                        wrong_temporal_order_errors += 1
+    tot_num = len(stats)
+    traj_stats = {
+        "model_name": model_name,
+        "time": time.strftime('%H-%M-%S', time.localtime(time.time())),
+        "test_tot_num": tot_num,
+        "correct_rate": num_correct/tot_num*100,
+        "executable_rate": executable_num/tot_num*100,
+        "parse_rate": parse_errors/tot_num*100,
+        "hallucination_rate": (hallucination_errors-incorrect_param_length_num)/tot_num*100,
+        "incorrect_len_rate": incorrect_param_length_num/tot_num*100,
+        "wrong_temporal_rate": wrong_temporal_order_errors/tot_num*100,
+        "missing_step_rate":missing_step_errors/tot_num*100,
+        "affordance_rate": affordance_errors/tot_num*100,
+        "additional_steps_rate": additional_step_errors/tot_num*100,
+    }
+    return traj_stats
 
-def get_all_task_list():
-    path = os.path.join(behavior_eval.demo_name_path)
-    with open(path, 'r') as f:
-        task_list = json.load(f)
-    return task_list
-
-def get_one_raw_task_goal(demo_name):
-    env = EvalGraphEnv(demo_name)
-    success_dict = env.action_env.cur_state.check_success(env.task)
-    return success_dict
-
-
-def get_all_raw_task_goal():
-    error_list_dict_path = os.path.join(behavior_eval.subgoal_dec_resources_path, 'error_list_dict.json')
-    if os.path.exists(error_list_dict_path):
-        with open(error_list_dict_path, 'r') as f:
-            error_list_dict = json.load(f)
-    else:
-        error_list_dict = {}
-    task_list = get_all_task_list()
-    real_task_list = [task_name for task_name in task_list if not task_name in error_list_dict.keys()]
-    if len(real_task_list) == 0:
-        return
-    for task_name in real_task_list:
-        error_list_dict[task_name] = get_one_raw_task_goal(task_name)
-    with open(error_list_dict_path, 'w') as f:
-        json.dump(error_list_dict, f, indent=4)
+def goal_eval_stats(eval_stat_path):
+    error_list_path = os.path.join(behavior_eval.subgoal_dec_resources_path, 'error_list_dict.json')
+    assert os.path.exists(error_list_path), f'Error list dict not found at {error_list_path}'
+    with open(error_list_path, 'r') as f:
+        error_list = json.load(f)
+    model_name = os.path.basename(eval_stat_path).split('.')[0]
+    with open(eval_stat_path, 'r') as f:
+        stats = json.load(f)
+    all_goal_statisfied_num = 0
+    tot_num = 0
+    tot_node_goals = 0
+    tot_edge_goals = 0
+    satified_goals = 0
+    satisfied_nodes = 0
+    satisfied_edges = 0
+    vocab = SimpleVocab()
+    for task_name, stat_info in stats.items():
+        try:
+            goal_info = stat_info['goal_info']
+            if goal_info is not None :
+                goal_analyzer = GoalAnalyzer(task_name, vocab, goal_info)
+                node_num_fail, edge_num_fail, node_num_success, edge_num_success = goal_analyzer.check_goal_stats()
+                tot_node_goals += node_num_fail + node_num_success
+                tot_edge_goals += edge_num_fail + edge_num_success
+                satified_goals += node_num_success + edge_num_success
+                satisfied_nodes += node_num_success
+                satisfied_edges += edge_num_success
+            elif goal_info is None and task_name in error_list:
+                goal_info = error_list[task_name]
+                goal_analyzer = GoalAnalyzer(task_name, vocab, goal_info)
+                node_num_fail, edge_num_fail, node_num_success, edge_num_success = goal_analyzer.check_goal_stats()
+                tot_node_goals += node_num_fail + node_num_success
+                tot_edge_goals += edge_num_fail + edge_num_success
+                satified_goals += node_num_success + edge_num_success
+                satisfied_nodes += node_num_success
+                satisfied_edges += edge_num_success
+            else:
+                continue
+            if goal_analyzer.goal_success:
+                all_goal_statisfied_num += 1
+        except Exception as e:
+            print(f'Error in task: {task_name}\n')
+            print(f'{e}\n')
+            continue
+    tot_num = tot_node_goals + tot_edge_goals
+    node_goal_success_rate = (satisfied_nodes / tot_node_goals) * 100
+    edge_goal_success_rate = (satisfied_edges / tot_edge_goals) * 100
+    overall_goal_success_rate = ((satified_goals) / tot_num) * 100
+    goal_stats = {
+        "model_name": model_name,
+        "time": time.strftime('%H-%M-%S', time.localtime(time.time())),
+        "test_tot_num": len(stats),
+        "all_goal_satisfied": all_goal_statisfied_num,
+        "total_goals": tot_num,
+        "total_node_goals": tot_node_goals,
+        "total_edge_goals": tot_edge_goals,
+        "satisfied_goals": satified_goals,
+        "satisfied_nodes": satisfied_nodes,
+        "satisfied_edges": satisfied_edges,
+        "node_goal_success_rate": node_goal_success_rate,
+        "edge_goal_success_rate": edge_goal_success_rate,
+        "overall_goal_success_rate": overall_goal_success_rate
+    }
+    return goal_stats

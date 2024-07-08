@@ -9,6 +9,13 @@ from behavior_eval.evaluation.subgoal_decomposition.subgoal_prompts_utils import
 
 
 def get_llm_output(demo_name, result_list, lock, output_path):
+    with lock:
+        if os.path.exists(output_path):
+            with open(output_path, 'r') as f:
+                logs = json.load(f)
+            if demo_name in logs:
+                print(f'Demo {demo_name} has been processed before.')
+                return
     env = ActionSequenceEvaluator(demo_name=demo_name)
     try:
         prompt = get_subgoal_prompt(env)
