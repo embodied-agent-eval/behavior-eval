@@ -4,7 +4,7 @@ import json
 import fire
 import behavior_eval
 from typing import Optional
-from multiprocessing import Process, Manager
+from multiprocessing import Process, Manager, Queue
 from behavior_eval.evaluation.subgoal_decomposition.subgoal_sim_utils import evaluate_task, get_all_raw_task_goal, get_all_task_list, EvalStatistics
 from behavior_eval.evaluation.subgoal_decomposition.subgoal_eval_utils import traj_eval_stats, goal_eval_stats
 
@@ -19,13 +19,22 @@ def simulate_llm_response(demo_name, lock, llm_plan_path, eval_stat_path):
             eval_statistics.update_eval_rst_dict(demo_name, True, str(report[:-1]), goal_info)
         eval_statistics.save_eval_rst_dict()
 
-def simulate_one_llm(llm_response_path, worker_num: int=1):
+def worker_task(queue, lock, eval_stat_path):
+    while True:
+        task = queue.get()
+        if task is None:
+            break
+        demo_name, llm_plan_path = task
+        simulate_llm_response(demo_name, lock, llm_plan_path, eval_stat_path)
+
+
+def simulate_one_llm(llm_response_path, worker_num: int=1, result_dir: str='./results'):
     get_all_raw_task_goal()
     manager = Manager()
     lock = manager.Lock()
 
     llm_name = os.path.basename(llm_response_path).split('.')[0]
-    eval_stat_path = os.path.join(behavior_eval.subgoal_dec_result_path, 'error_analysis', f' {llm_name}.json')
+    eval_stat_path = os.path.join(result_dir, 'error_analysis', f' {llm_name}.json')
     os.makedirs(os.path.dirname(eval_stat_path), exist_ok=True)
 
     task_list = get_all_task_list()
@@ -34,11 +43,17 @@ def simulate_one_llm(llm_response_path, worker_num: int=1):
 
     if worker_num > 1:
         worker_num = min(worker_num, len(real_task_list))
+        task_queue = Queue()
         workers = []
         for i in range(worker_num):
-            worker = Process(target=simulate_llm_response, args=(real_task_list[i], lock, llm_response_path, eval_stat_path))
+            worker = Process(target=worker_task, args=(task_queue, lock, eval_stat_path))
             worker.start()
             workers.append(worker)
+        
+        for demo_name in real_task_list:
+            task_queue.put((demo_name, llm_response_path))
+        for i in range(worker_num):
+            task_queue.put(None)
         for worker in workers:
             worker.join()
     else:
@@ -54,18 +69,18 @@ def simulate_one_llm(llm_response_path, worker_num: int=1):
     summary['traj_stats'] = traj_stats
     summary['goal_stats'] = goal_stats
 
-    summary_path = os.path.join(behavior_eval.subgoal_dec_result_path, 'summary', f'{llm_name}.json')
+    summary_path = os.path.join(result_dir, 'summary', f'{llm_name}.json')
     os.makedirs(os.path.dirname(summary_path), exist_ok=True)
     with open(summary_path, 'w') as f:
         json.dump(summary, f, indent=4)
     return summary
 
-def evaluate_results(llm_response_dir, worker_num: int=1):
-    os.makedirs(behavior_eval.subgoal_dec_result_path, exist_ok=True)
+def evaluate_results(llm_response_dir, worker_num: int=1, result_dir: str='./results'):
+    os.makedirs(result_dir, exist_ok=True)
     for file_name in os.listdir(llm_response_dir):
         file_path = os.path.join(llm_response_dir, file_name)
         if os.path.isfile(file_path) and file_path.endswith('.json'):
-            simulate_one_llm(file_path, worker_num)
+            simulate_one_llm(file_path, worker_num, result_dir)
 
 if  __name__ == '__main__':
     fire.Fire(evaluate_results)
