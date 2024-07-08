@@ -1,0 +1,7 @@
+include README.md
+include *.json
+include *.xml
+include *.txt
+include global_config.yaml
+recursive-include igibson *.dll *.pyd
+recursive-include behavior_eval *.json *.xml *.yaml

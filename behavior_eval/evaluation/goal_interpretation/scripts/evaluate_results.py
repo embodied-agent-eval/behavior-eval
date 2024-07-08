@@ -7,7 +7,6 @@ import os
 
 demo_to_conds_path = f"{behavior_eval.goal_int_resources_path}/data/all_conditions.json"
 demo_to_objs_path = f"{behavior_eval.goal_int_resources_path}/data/all_objects.json"
-demo_names_path = f"{behavior_eval.goal_int_resources_path}/data/100_selected_demos.txt"
 task_to_instructions_path = f"{behavior_eval.goal_int_resources_path}/data/instructions_by_activity_name.json"
 prompt_path = f"{behavior_eval.goal_int_resources_path}/prompts/behavior_goal_interpretation.txt"
 task_to_demo_path = f"{behavior_eval.goal_int_resources_path}/data/task_to_demo.json"
@@ -30,8 +29,8 @@ with open(task_to_instructions_path, 'r') as json_file:
 with open(task_to_demo_path, 'r') as json_file:
     task_to_demos = json.load(json_file)
 
-with open(demo_names_path, 'r') as file:
-    demo_names = file.read().splitlines()
+with open(behavior_eval.demo_name_path, 'r') as file:
+    demo_names = json.load(file)
     
     
         
