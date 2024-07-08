@@ -14,6 +14,7 @@ def main(module:str="action_sequence",func:str="generate_prompts",worker_num:int
     worker_num: number of workers for multiprocessing
     llm_response_dir: directory containing llm responses (helm outputs)
     result_dir: directory to store results
+    result_dir: directory to store results
     """
     result_dir = os.path.join(result_dir, module, func)
     os.makedirs(result_dir,exist_ok=True)
@@ -26,6 +27,7 @@ def main(module:str="action_sequence",func:str="generate_prompts",worker_num:int
         return f"Invalid module {module}, must be goal_interpretation,action_sequence,subgoal_decomposition,transition_modeling"
     if module == "action_sequence":
         if func == "evaluate_results":
+            action_sequence_evaluate_results(llm_response_dir,worker_num,result_dir)
             action_sequence_evaluate_results(llm_response_dir,worker_num,result_dir)
         elif func == "generate_prompts":
             action_sequence_generate_prompts(worker_num,result_dir)
