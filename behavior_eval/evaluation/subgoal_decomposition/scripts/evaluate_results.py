@@ -34,7 +34,7 @@ def simulate_one_llm(llm_response_path, worker_num: int=1, result_dir: str='./re
     lock = manager.Lock()
 
     llm_name = os.path.basename(llm_response_path).split('.')[0]
-    eval_stat_path = os.path.join(result_dir, 'error_analysis', f' {llm_name}.json')
+    eval_stat_path = os.path.join(result_dir, 'error_analysis', f'{llm_name}.json')
     os.makedirs(os.path.dirname(eval_stat_path), exist_ok=True)
 
     task_list = get_all_task_list()
