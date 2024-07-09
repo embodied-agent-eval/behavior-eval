@@ -12,7 +12,7 @@ from typing import List
 import lark
 from lark import Transformer, v_args
 
-import simple_tl as tl
+import behavior_eval.tl_formula.simple_tl as tl
 
 grammar = r"""
 
