@@ -1,12 +1,13 @@
 import logging
 import os
 import yaml
-
+import igibson
 # Configure logging
 logger = logging.getLogger(__name__)
 
 __version__ = "1.0"
 
+igibson.behavior_eval_mode=True
 # Load global configuration
 config_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "global_config.yaml")
 logger.debug(f"Loading configuration from {config_path}")
