@@ -6,7 +6,7 @@ from behavior_eval.evolving_graph.eval_evolving_graph_env import EvalGraphEnv
 from behavior_eval.evaluation.subgoal_decomposition.subgoal_plan import SubgoalPlan, SubgoalPlanHalfJson, SubgoalPlanJSON, SubgoalPlanPlain
 from behavior_eval.evaluation.subgoal_decomposition.checkers import Vocab, SyntacticChecker, SemanticChecker, RuntimeChecker
 from behavior_eval.evaluation.subgoal_decomposition.state_action_translator import StateActionTranslator
-from tl_formula.bddl_to_tl import translate_addressable_obj_into_tl_obj, translate_tl_obj_into_addressable_obj
+from behavior_eval.tl_formula.bddl_to_tl import translate_addressable_obj_into_tl_obj, translate_tl_obj_into_addressable_obj
 
 class EvalStatistics:
     def __init__(self, task_list: List[str], log_path: str) -> None:

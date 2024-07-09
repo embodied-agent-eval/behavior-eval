@@ -23,20 +23,20 @@ def git_lfs_pull(repo_path):
         log.warning(f"Repository path {repo_path} does not exist")
 
 def download_igibson_key():
-            """
-            Download iGibson key
-            """
-            key_path = igibson.key_path  # Path to the iGibson key
-            url = "https://storage.googleapis.com/gibson_scenes/igibson.key"
+    """
+    Download iGibson key
+    """
+    key_path = igibson.key_path  # Path to the iGibson key
+    url = "https://storage.googleapis.com/gibson_scenes/igibson.key"
 
-            # Ensure the parent directory of key_path exists
-            if not os.path.exists(os.path.dirname(key_path)):
-                os.makedirs(os.path.dirname(key_path))
+    # Ensure the parent directory of key_path exists
+    if not os.path.exists(os.path.dirname(key_path)):
+        os.makedirs(os.path.dirname(key_path))
 
-            # Download the file
-            print("Downloading iGibson key from {}".format(url))
-            urlretrieve(url, key_path,show_progress)
-            print("iGibson key downloaded to {}".format(key_path))
+    # Download the file
+    print("Downloading iGibson key from {}".format(url))
+    urlretrieve(url, key_path,show_progress)
+    print("iGibson key downloaded to {}".format(key_path))
 
 def main():
     
