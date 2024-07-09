@@ -154,18 +154,21 @@ def traj_eval_stats(eval_stat_path):
                         wrong_temporal_order_errors += 1
     tot_num = len(stats)
     traj_stats = {
-        "model_name": model_name,
-        "time": time.strftime('%H-%M-%S', time.localtime(time.time())),
-        "test_tot_num": tot_num,
-        "correct_rate": num_correct/tot_num*100,
-        "executable_rate": executable_num/tot_num*100,
-        "parse_rate": parse_errors/tot_num*100,
-        "hallucination_rate": (hallucination_errors-incorrect_param_length_num)/tot_num*100,
-        "incorrect_len_rate": incorrect_param_length_num/tot_num*100,
-        "wrong_temporal_rate": wrong_temporal_order_errors/tot_num*100,
-        "missing_step_rate":missing_step_errors/tot_num*100,
-        "affordance_rate": affordance_errors/tot_num*100,
-        "additional_steps_rate": additional_step_errors/tot_num*100,
+        "model": model_name,
+        # "test_tot_num": tot_num,
+        # "correct_rate": num_correct/tot_num*100,
+        "execution_success_rate": executable_num/tot_num*100,
+        "grammar_error": {
+            "parsing": parse_errors/tot_num*100,
+            "hallucination": (hallucination_errors-incorrect_param_length_num)/tot_num*100,
+            "predicate-arg_num": incorrect_param_length_num/tot_num*100,
+        },
+        "runtime_error": {
+            "wrong_order": wrong_temporal_order_errors/tot_num*100,
+            "missing_step":missing_step_errors/tot_num*100,
+            "affordance": affordance_errors/tot_num*100,
+            "additional_step": additional_step_errors/tot_num*100,
+        }
     }
     return traj_stats
 
@@ -218,18 +221,17 @@ def goal_eval_stats(eval_stat_path):
     edge_goal_success_rate = (satisfied_edges / tot_edge_goals) * 100
     overall_goal_success_rate = ((satified_goals) / tot_num) * 100
     goal_stats = {
-        "model_name": model_name,
-        "time": time.strftime('%H-%M-%S', time.localtime(time.time())),
-        "test_tot_num": len(stats),
-        "all_goal_satisfied": all_goal_statisfied_num,
-        "total_goals": tot_num,
-        "total_node_goals": tot_node_goals,
-        "total_edge_goals": tot_edge_goals,
-        "satisfied_goals": satified_goals,
-        "satisfied_nodes": satisfied_nodes,
-        "satisfied_edges": satisfied_edges,
-        "node_goal_success_rate": node_goal_success_rate,
-        "edge_goal_success_rate": edge_goal_success_rate,
-        "overall_goal_success_rate": overall_goal_success_rate
+        "model": model_name,
+        # "test_tot_num": len(stats),
+        # "all_goal_satisfied": all_goal_statisfied_num,
+        # "total_goals": tot_num,
+        # "total_node_goals": tot_node_goals,
+        # "total_edge_goals": tot_edge_goals,
+        # "satisfied_goals": satified_goals,
+        # "satisfied_nodes": satisfied_nodes,
+        # "satisfied_edges": satisfied_edges,
+        "state_goal": node_goal_success_rate,
+        "relation_goal": edge_goal_success_rate,
+        "total": overall_goal_success_rate
     }
     return goal_stats
