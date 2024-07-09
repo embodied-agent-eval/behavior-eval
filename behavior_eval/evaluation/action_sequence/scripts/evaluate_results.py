@@ -33,7 +33,7 @@ def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1, result_di
     lock = manager.Lock()
 
     llm_response_name = os.path.basename(llm_response_path).split('.')[0]
-    output_path = os.path.join(result_dir, f'error_analysis/{llm_response_name}.json')
+    output_path = os.path.join(result_dir, f'log/{llm_response_name}.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     llm_response = json.load(open(llm_response_path))
@@ -87,11 +87,82 @@ def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1, result_di
                                 summary[k][kk] = summary[k].get(kk, 0) + int(vv)
                             else:
                                 summary[k][kk] = summary[k].get(kk, 0) + 1
+
+# {
+#     "error_type": {
+#         "execution_success": 22,
+#         "ErrorType.MISSING_STEP": 34,
+#         "parsing": 4,
+#         "arguments": 23,
+#         "ErrorType.WRONG_TEMPORAL_ORDER": 1,
+#         "ErrorType.ADDITIONAL_STEP": 2,
+#         "ErrorType.AFFORDANCE_ERROR": 8,
+#         "hullucination": 7
+#     },
+#     "goal_rst": {
+#         "all_goal_satisfied_ig": 17,
+#         "all_goal_satisfied_graph": 16,
+#         "tot_predicates": 366.0,
+#         "tot_edge_predicates": 266.0,
+#         "tot_node_predicates": 100.0,
+#         "satisfied_predicates": 81.0,
+#         "satisfied_edge_predicates": 60.0,
+#         "satisfied_node_predicates": 21.0
+#     }
+# }
+    organized_summary = {
+    "error_type": {
+        "execution_success": summary["error_type"].get("execution_success", 0),
+        "ErrorType.MISSING_STEP": summary["error_type"].get("ErrorType.MISSING_STEP", 0),
+        "ErrorType.WRONG_TEMPORAL_ORDER": summary["error_type"].get("ErrorType.WRONG_TEMPORAL_ORDER", 0),
+        "hullucination": summary["error_type"].get("hullucination", 0),
+        "parsing": summary["error_type"].get("parsing", 0),
+        "arguments": summary["error_type"].get("arguments", 0),
+        "ErrorType.ADDITIONAL_STEP": summary["error_type"].get("ErrorType.ADDITIONAL_STEP", 0),
+        "ErrorType.AFFORDANCE_ERROR": summary["error_type"].get("ErrorType.AFFORDANCE_ERROR", 0)
+    },
+    "goal_rst": {
+        "all_goal_satisfied_ig": summary["goal_rst"].get("all_goal_satisfied_ig", 0),
+        "all_goal_satisfied_graph": summary["goal_rst"].get("all_goal_satisfied_graph", 0),
+        "tot_predicates": summary["goal_rst"].get("tot_predicates", 0),
+        "tot_edge_predicates": summary["goal_rst"].get("tot_edge_predicates", 0),
+        "tot_node_predicates": summary["goal_rst"].get("tot_node_predicates", 0),
+        "satisfied_predicates": summary["goal_rst"].get("satisfied_predicates", 0),
+        "satisfied_edge_predicates": summary["goal_rst"].get("satisfied_edge_predicates", 0),
+        "satisfied_node_predicates": summary["goal_rst"].get("satisfied_node_predicates", 0)
+    }
+}
+    total_task=len(result_list)
+    
+    # round to 1 decimal places
+    new_summary={
+        "goal_evaluation": {
+            "goal_success_rate": round(organized_summary["goal_rst"]["all_goal_satisfied_graph"]/total_task*100,1) if total_task!=0 else 0,
+            "state_goal": round(organized_summary["goal_rst"]["satisfied_node_predicates"]/organized_summary["goal_rst"]["tot_node_predicates"]*100,1) if organized_summary["goal_rst"]["tot_node_predicates"]!=0 else 0,
+            "relation_goal": round(organized_summary["goal_rst"]["satisfied_edge_predicates"]/organized_summary["goal_rst"]["tot_edge_predicates"]*100,1) if organized_summary["goal_rst"]["tot_edge_predicates"]!=0 else 0,
+            "action_goal": 0,
+            "total": round(organized_summary["goal_rst"]["satisfied_predicates"]/organized_summary["goal_rst"]["tot_predicates"]*100,1) if organized_summary["goal_rst"]["tot_predicates"]!=0 else 0,
+        },
+        "trajectory_evaluation": {
+        "execution_success_rate": round(organized_summary["error_type"]["execution_success"]/total_task*100,1),
+        "grammar_error": {
+            "parsing": round(organized_summary["error_type"]["parsing"]/total_task*100,1) if total_task!=0 else 0,
+            "hallucination": round(organized_summary["error_type"]["hullucination"]/total_task*100,1) if total_task!=0 else 0,
+            "predicate-argument_number": round(organized_summary["error_type"]["arguments"]/total_task*100,1) if total_task!=0 else 0,
+        },
+        "runtime_error": {
+            "wrong_order": round(organized_summary["error_type"]["ErrorType.WRONG_TEMPORAL_ORDER"]/total_task*100,1) if total_task!=0 else 0,
+            "missing_step": round(organized_summary["error_type"]["ErrorType.MISSING_STEP"]/total_task*100,1) if total_task!=0 else 0,
+            "affordance": round(organized_summary["error_type"]["ErrorType.AFFORDANCE_ERROR"]/total_task*100,1) if total_task!=0 else 0,
+            "additional_step": round(organized_summary["error_type"]["ErrorType.ADDITIONAL_STEP"]/total_task*100,1) if total_task!=0 else 0
+        }
+        },
+    }
                                 
-    output_path = output_path.replace('error_analysis/', 'summary/')
+    output_path = output_path.replace('log/', 'summary/')
     with open(output_path, 'w') as f:
-        json.dump(summary, f, indent=4)
-    return summary
+        json.dump(new_summary, f, indent=4)
+    return new_summary
 
 def evaluate_results(llm_response_dir, worker_num: Optional[int] = 1,result_dir: Optional[str] = './results'):
     os.makedirs(result_dir, exist_ok=True)
