@@ -47,7 +47,7 @@ There might be issues during the installation of iGibson. Please see the system 
 
 We have successfully tested the installation on Linux servers, Windows 10+, and Mac OS X.
 
-To minimize potential issues, we recommend the following steps:
+To minimize and identify the potential issues, we recommend the following steps:
 
 1. **Create a Conda Virtual Environment**.
 2. **Install CMake Using Conda**: 
