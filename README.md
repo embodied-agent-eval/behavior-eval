@@ -3,12 +3,6 @@
 
 ## Step 1: Install `behavior_eval`, `iGibson`, and `bddl`
 
-### For all users:
-1. Install `behavior_eval`:
-   ```
-   pip install behavior_eval
-   ```
-
 ### For Windows users:
 1. Clone the `iGibson` repository:
    ```
@@ -18,15 +12,25 @@
    ```
    cd iGibson
    ```
-3. Install `iGibson` in editable mode:
+3. Install `iGibson`:
+   In editable mode:
    ```
    pip install -e .
    ```
-4. Reinstall `behavior_eval`:
+   Or user mode:
+   ```
+   pip install .
+   ```
+5. Install `behavior_eval`:
    ```
    pip install behavior_eval
    ```
-
+### For other users:
+1. Install `behavior_eval` directly:
+   ```
+   pip install behavior_eval
+   ```
+   
 ## Step 2: Download Assets for `iGibson`
 ```
 python -m behavior_eval.utils.download_utils
