@@ -1,8 +1,8 @@
-# Installation and Usage Guide for `behavior_eval`
+# Installation and Usage Guide for `behavior-eval`
 
 ## Installation
 
-### Step 1: Install `behavior_eval`, `iGibson`, and `bddl`
+### Step 1: Install `behavior-eval`, `iGibson`, and `bddl`
 
 #### For Windows Users:
 
@@ -23,16 +23,16 @@
      ```
      pip install .
      ```
-4. Install `behavior_eval`:
+4. Install `behavior-eval`:
    ```
-   pip install behavior_eval
+   pip install behavior-eval
    ```
 
 #### For Other Users:
 
-1. Install `behavior_eval` directly:
+1. Install `behavior-eval` directly:
    ```
-   pip install behavior_eval
+   pip install behavior-eval
    ```
 
 ### Step 2: Download Assets for `iGibson`
