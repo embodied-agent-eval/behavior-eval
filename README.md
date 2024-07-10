@@ -43,14 +43,21 @@ python -m behavior_eval.utils.download_utils
 
 ### Note:
 
-There might be issues during the installation of `iGibson`. Please see the system requirements section of the [iGibson installation guide](https://stanfordvl.github.io/iGibson/installation.html).
+There might be issues during the installation of iGibson. Please see the system requirements section of the [iGibson installation guide](https://stanfordvl.github.io/iGibson/installation.html).
 
-We tested the installation on Linux servers, Windows 10+, and Mac OS X.
+We have successfully tested the installation on Linux servers, Windows 10+, and Mac OS X.
 
-It's recommended to use a conda virtual environment and install `cmake` using conda:
-```
-conda install cmake
-```
+To minimize potential issues, we recommend the following steps:
+
+1. **Create a Conda Virtual Environment**.
+2. **Install CMake Using Conda**: 
+   ```
+   conda install cmake
+   ```
+3. **Use pip Install with Verbose Mode**:
+   ```
+   pip install -v behavior-eval
+   ```
 
 ## Usage
 
