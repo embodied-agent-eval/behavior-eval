@@ -54,7 +54,7 @@ conda install cmake
 
 ## Usage
 
-To run `behavior_eval`, use the following command:
+To run `behavior-eval`, use the following command:
 
 ```
 python -m behavior_eval.main
