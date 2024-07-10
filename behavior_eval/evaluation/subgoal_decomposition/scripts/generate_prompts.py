@@ -46,7 +46,7 @@ def generate_prompts(worker_num: int = 1, result_dir: str = './results'):
     result_list = manager.list()
     lock = manager.Lock()
 
-    output_path = os.path.join(result_dir, 'reconstructed_prompts', 'subgoal_decomposition_prompts.json')
+    output_path = os.path.join(result_dir, 'subgoal_decomposition_prompts.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     if worker_num > 1:
