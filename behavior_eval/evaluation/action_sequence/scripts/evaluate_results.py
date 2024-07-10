@@ -148,7 +148,7 @@ def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1, result_di
         "grammar_error": {
             "parsing": round(organized_summary["error_type"]["parsing"]/total_task*100,1) if total_task!=0 else 0,
             "hallucination": round(organized_summary["error_type"]["hullucination"]/total_task*100,1) if total_task!=0 else 0,
-            "predicate-argument_number": round(organized_summary["error_type"]["arguments"]/total_task*100,1) if total_task!=0 else 0,
+            "predicate_argument_number": round(organized_summary["error_type"]["arguments"]/total_task*100,1) if total_task!=0 else 0,
         },
         "runtime_error": {
             "wrong_order": round(organized_summary["error_type"]["ErrorType.WRONG_TEMPORAL_ORDER"]/total_task*100,1) if total_task!=0 else 0,
