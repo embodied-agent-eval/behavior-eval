@@ -1,10 +1,11 @@
-
 # Installation and Usage Guide for `behavior_eval`
 
 ## Installation
+
 ### Step 1: Install `behavior_eval`, `iGibson`, and `bddl`
 
-#### For Windows users:
+#### For Windows Users:
+
 1. Clone the `iGibson` repository:
    ```
    git clone https://github.com/embodied-agent-eval/iGibson.git --recursive
@@ -14,37 +15,53 @@
    cd iGibson
    ```
 3. Install `iGibson`:
-   
-   You can install in editable mode
-   ```
-   pip install -e .
-   ```
-   or user mode
-   ```
-   pip install .
-   ```
+   - Editable mode:
+     ```
+     pip install -e .
+     ```
+   - User mode:
+     ```
+     pip install .
+     ```
 4. Install `behavior_eval`:
    ```
    pip install behavior_eval
    ```
-#### For other users:
+
+#### For Other Users:
+
 1. Install `behavior_eval` directly:
    ```
    pip install behavior_eval
    ```
-   
+
 ### Step 2: Download Assets for `iGibson`
+
 ```
 python -m behavior_eval.utils.download_utils
 ```
 
+### Note:
+
+There might be issues during the installation of `iGibson`. Please see the system requirements section of the [iGibson installation guide](https://stanfordvl.github.io/iGibson/installation.html).
+
+We tested the installation on Linux servers, Windows 10+, and Mac OS X.
+
+It's recommended to use a conda virtual environment and install `cmake` using conda:
+```
+conda install cmake
+```
+
 ## Usage
+
 To run `behavior_eval`, use the following command:
+
 ```
 python -m behavior_eval.main
 ```
 
 ### Parameters:
+
 - `module`: Specifies the module to use. Options are:
   - `goal_interpretation`
   - `action_sequence`
@@ -58,6 +75,7 @@ python -m behavior_eval.main
 - `result_dir`: Directory to store results.
 
 ### Example Usage:
+
 1. To generate prompts using the `action_sequence` module:
    ```
    python -m behavior_eval.main --module=action_sequence --func=generate_prompts
