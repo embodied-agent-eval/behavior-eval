@@ -1,7 +1,7 @@
 import os
 import json
 import fire
-from igibson.evaluation.transition_modeling.transition_modeling_evaluator import TransitionModelingEvaluator
+from behavior_eval.evaluation.transition_modeling.transition_modeling_evaluator import TransitionModelingEvaluator
 from collections import defaultdict
 def evaluate_transition_modeling(demo_dir,demo_name,output_dir):
     os.makedirs(output_dir,exist_ok=True)

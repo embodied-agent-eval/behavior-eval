@@ -1,6 +1,6 @@
 import fire
 from multiprocessing import Process
-from igibson.evaluation.transition_modeling.scripts.get_prompt_transition_modling import get_transition_modling_prompt
+from behavior_eval.evaluation.transition_modeling.scripts.get_prompt_transition_modling import get_transition_modling_prompt
 import  os
 import json
 
