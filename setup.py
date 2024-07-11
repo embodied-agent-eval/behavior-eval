@@ -3,6 +3,7 @@ import sys
 from setuptools import setup, find_packages
 from setuptools.command.install import install as _install
 from setuptools.command.develop import develop as _develop
+from setuptools.command.egg_info import egg_info as _egg_info
 
 def is_package_installed(package_name, version=None):
     try:
@@ -15,8 +16,8 @@ def is_package_installed(package_name, version=None):
     except (pkg_resources.DistributionNotFound, pkg_resources.VersionConflict):
         return False
 
-def install_package(package_name, url):
-    if not is_package_installed(package_name):
+def install_package(package_name, url, version=None):
+    if not is_package_installed(package_name, version):
         process = subprocess.Popen([sys.executable, "-m", "pip", "install", url],
                                    stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE,
@@ -35,31 +36,29 @@ def install_package(package_name, url):
             sys.stderr.write(stderr)
             sys.stderr.flush()
 
+def custom_command():
+    print("Running custom installation steps...")
+    install_package("igibson", "git+https://github.com/embodied-agent-eval/iGibson.git@master#egg=igibson")
+    install_package("bddl", "git+https://github.com/embodied-agent-eval/bddl.git@v1.0.2#egg=bddl")
+
 class CustomInstallCommand(_install):
-    """Customized setuptools install command to run custom installation logic."""
     def run(self):
-        # Execute the original install command
         _install.run(self)
-        
-        # Execute custom installation steps
-        print("Running custom installation steps...")
-        install_package("igibson", "git+https://github.com/embodied-agent-eval/iGibson.git@master#egg=igibson")
-        install_package("bddl", "git+https://github.com/embodied-agent-eval/bddl.git@v1.0.2#egg=bddl")
+        custom_command()
 
 class CustomDevelopCommand(_develop):
-    """Customized setuptools develop command to run custom installation logic."""
     def run(self):
-        # Execute the original develop command
         _develop.run(self)
-        
-        # Execute custom installation steps
-        print("Running custom develop steps...")
-        install_package("igibson", "git+https://github.com/embodied-agent-eval/iGibson.git@master#egg=igibson")
-        install_package("bddl", "git+https://github.com/embodied-agent-eval/bddl.git@v1.0.2#egg=bddl")
+        custom_command()
+
+class CustomEggInfoCommand(_egg_info):
+    def run(self):
+        _egg_info.run(self)
+        custom_command()
 
 setup(
     name='behavior-eval',
-    version='1.0.0',
+    version='1.0.1',
     author='stanford',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
@@ -78,5 +77,6 @@ setup(
     cmdclass={
         'install': CustomInstallCommand,
         'develop': CustomDevelopCommand,
+        'egg_info': CustomEggInfoCommand,
     },
 )
