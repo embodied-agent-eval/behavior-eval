@@ -58,7 +58,7 @@ class CustomEggInfoCommand(_egg_info):
 
 setup(
     name='behavior-eval',
-    version='1.0.1',
+    version='1.0.2',
     author='stanford',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
