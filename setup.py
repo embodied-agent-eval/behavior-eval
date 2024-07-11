@@ -1,6 +1,8 @@
 import subprocess
 import sys
 from setuptools import setup, find_packages
+from setuptools.command.install import install as _install
+from setuptools.command.develop import develop as _develop
 
 def is_package_installed(package_name, version=None):
     try:
@@ -33,8 +35,27 @@ def install_package(package_name, url):
             sys.stderr.write(stderr)
             sys.stderr.flush()
 
-install_package("igibson", "git+https://github.com/embodied-agent-eval/iGibson.git@master#egg=igibson")
-install_package("bddl", "git+https://github.com/embodied-agent-eval/bddl.git@v1.0.2#egg=bddl")
+class CustomInstallCommand(_install):
+    """Customized setuptools install command to run custom installation logic."""
+    def run(self):
+        # Execute the original install command
+        _install.run(self)
+        
+        # Execute custom installation steps
+        print("Running custom installation steps...")
+        install_package("igibson", "git+https://github.com/embodied-agent-eval/iGibson.git@master#egg=igibson")
+        install_package("bddl", "git+https://github.com/embodied-agent-eval/bddl.git@v1.0.2#egg=bddl")
+
+class CustomDevelopCommand(_develop):
+    """Customized setuptools develop command to run custom installation logic."""
+    def run(self):
+        # Execute the original develop command
+        _develop.run(self)
+        
+        # Execute custom installation steps
+        print("Running custom develop steps...")
+        install_package("igibson", "git+https://github.com/embodied-agent-eval/iGibson.git@master#egg=igibson")
+        install_package("bddl", "git+https://github.com/embodied-agent-eval/bddl.git@v1.0.2#egg=bddl")
 
 setup(
     name='behavior-eval',
@@ -51,7 +72,11 @@ setup(
     ],
     include_package_data=True,
     package_data={
-        'igibson': ['*.dll','*.pyd'],
-        '': ['*.json', '*.xml', '*.md','*.yaml'],
+        'igibson': ['*.dll', '*.pyd'],
+        '': ['*.json', '*.xml', '*.md', '*.yaml'],
+    },
+    cmdclass={
+        'install': CustomInstallCommand,
+        'develop': CustomDevelopCommand,
     },
 )
