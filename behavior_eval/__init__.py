@@ -68,4 +68,4 @@ try:
     import igibson
     igibson.behavior_eval_mode = True
 except ImportError:
-    print("igibson is not installed, please install igibson using python -m behavior_eval.install_igibson")
+    print("igibson is not installed, please install igibson using python -m behavior_eval.utils.install_igibson_utils")

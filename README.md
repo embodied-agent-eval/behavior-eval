@@ -9,8 +9,17 @@ conda activate behavior-eval
 ```
 
 ### Step 2: Install `behavior-eval`
+
+You can install from pip:
 ```
 pip install behavior-eval
+```
+
+You can also install from source and use editable mode if you want to modify the source files:
+```
+git clone https://github.com/embodied-agent-eval/behavior-eval.git
+cd behavior-eval
+pip install -e .
 ```
 
 ### Step 3: Install `iGibson`
@@ -27,10 +36,22 @@ To minimize and identify potential issues, we recommend:
    ```
 
 3. **Install `iGibson`**: 
+   We provided a script for automatically installing `iGibson`:
    ```
    python -m behavior_eval.utils.install_igibson_utils
    ```
+   
+   You can also do it on your own:
+   ```
+   git clone https://github.com/embodied-agent-eval/iGibson.git --recursive
+   cd iGibson
+   pip install -e .  # If you want to use editable mode
+   # or
+   pip install .  # Recommended
+   ```
+
 We've successfully tested the installation on Linux servers, Windows 10+, and Mac OS X.
+
 ### Step 4: Download Assets for `iGibson`
 ```
 python -m behavior_eval.utils.download_utils
@@ -39,7 +60,6 @@ python -m behavior_eval.utils.download_utils
 ## Usage
 
 To run `behavior-eval`, use the following command:
-
 ```
 python -m behavior_eval.main
 ```
