@@ -61,8 +61,8 @@ def simulate_one_llm(llm_response_path, worker_num: int=1, result_dir: str='./re
             simulate_llm_response(demo_name, lock, llm_response_path, eval_stat_path)
     print(f'Results saved to {eval_stat_path}')
     summary = {
-        "traj_stats": {},
-        "goal_stats": {}
+        "trajectory_evaluation": {},
+        "goal_evaluation": {}
     }
     traj_stats = traj_eval_stats(eval_stat_path)
     goal_stats = goal_eval_stats(eval_stat_path)

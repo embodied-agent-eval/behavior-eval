@@ -154,20 +154,17 @@ def traj_eval_stats(eval_stat_path):
                         wrong_temporal_order_errors += 1
     tot_num = len(stats)
     traj_stats = {
-        "model": model_name,
-        # "test_tot_num": tot_num,
-        # "correct_rate": num_correct/tot_num*100,
-        "execution_success_rate": executable_num/tot_num*100,
+        "execution_success_rate": round(executable_num/tot_num, 4) if tot_num > 0 else 0,
         "grammar_error": {
-            "parsing": parse_errors/tot_num*100,
-            "hallucination": (hallucination_errors-incorrect_param_length_num)/tot_num*100,
-            "predicate-arg_num": incorrect_param_length_num/tot_num*100,
+            "parsing": round(parse_errors/tot_num, 4) if tot_num > 0 else 0,
+            "hallucination": round((hallucination_errors-incorrect_param_length_num)/tot_num, 4) if tot_num > 0 else 0,
+            "predicate_argument_number": round(incorrect_param_length_num/tot_num, 4) if tot_num > 0 else 0,
         },
         "runtime_error": {
-            "wrong_order": wrong_temporal_order_errors/tot_num*100,
-            "missing_step":missing_step_errors/tot_num*100,
-            "affordance": affordance_errors/tot_num*100,
-            "additional_step": additional_step_errors/tot_num*100,
+            "wrong_order": round(wrong_temporal_order_errors/tot_num, 4) if tot_num > 0 else 0,
+            "missing_step": round(missing_step_errors/tot_num, 4) if tot_num > 0 else 0,
+            "affordance": round(affordance_errors/tot_num, 4) if tot_num > 0 else 0,
+            "additional_step": round(additional_step_errors/tot_num, 4) if tot_num > 0 else 0,
         }
     }
     return traj_stats
@@ -181,6 +178,7 @@ def goal_eval_stats(eval_stat_path):
     with open(eval_stat_path, 'r') as f:
         stats = json.load(f)
     all_goal_statisfied_num = 0
+    num_success = 0
     tot_num = 0
     tot_node_goals = 0
     tot_edge_goals = 0
@@ -190,6 +188,9 @@ def goal_eval_stats(eval_stat_path):
     vocab = SimpleVocab()
     for task_name, stat_info in stats.items():
         try:
+            success = stat_info['success']
+            if success:
+                num_success += 1
             goal_info = stat_info['goal_info']
             if goal_info is not None :
                 goal_analyzer = GoalAnalyzer(task_name, vocab, goal_info)
@@ -217,21 +218,14 @@ def goal_eval_stats(eval_stat_path):
             print(f'{e}\n')
             continue
     tot_num = tot_node_goals + tot_edge_goals
-    node_goal_success_rate = (satisfied_nodes / tot_node_goals) * 100
-    edge_goal_success_rate = (satisfied_edges / tot_edge_goals) * 100
-    overall_goal_success_rate = ((satified_goals) / tot_num) * 100
+    node_goal_success_rate = (satisfied_nodes / tot_node_goals)
+    edge_goal_success_rate = (satisfied_edges / tot_edge_goals)
+    overall_goal_success_rate = ((satified_goals) / tot_num)
     goal_stats = {
-        "model": model_name,
-        # "test_tot_num": len(stats),
-        # "all_goal_satisfied": all_goal_statisfied_num,
-        # "total_goals": tot_num,
-        # "total_node_goals": tot_node_goals,
-        # "total_edge_goals": tot_edge_goals,
-        # "satisfied_goals": satified_goals,
-        # "satisfied_nodes": satisfied_nodes,
-        # "satisfied_edges": satisfied_edges,
-        "state_goal": node_goal_success_rate,
-        "relation_goal": edge_goal_success_rate,
-        "total": overall_goal_success_rate
+        "task_success_rate": round(num_success/len(stats), 4) if len(stats) > 0 else 0,
+        "state_goal": round(node_goal_success_rate, 4) if tot_node_goals > 0 else 0,
+        "relation_goal": round(edge_goal_success_rate, 4) if tot_edge_goals > 0 else 0,
+        "action_goal": round(0, 4),
+        "total_goal": round(overall_goal_success_rate, 4) if tot_num > 0 else 0
     }
     return goal_stats
