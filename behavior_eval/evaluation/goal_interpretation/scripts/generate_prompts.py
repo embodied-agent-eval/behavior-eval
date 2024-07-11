@@ -4,28 +4,15 @@ import os
 import behavior_eval
 
 
-# define the prompt save path
-
-prompt_save_path = f"{behavior_eval.goal_int_result_path}/reconstructed_prompts/goal_interpretation_prompts.json"
-os.makedirs(os.path.dirname(prompt_save_path), exist_ok=True)
-
-
-# Fixed paths (you should not have to change these paths)
-demo_to_conds_path = f"{behavior_eval.goal_int_resources_path}/data/all_conditions.json"
-demo_to_objs_path = f"{behavior_eval.goal_int_resources_path}/data/all_objects.json"
-task_to_instructions_path = f"{behavior_eval.goal_int_resources_path}/data/instructions_by_activity_name.json"
-prompt_path = f"{behavior_eval.goal_int_resources_path}/prompt_template/behavior_goal_interpretation.txt"
-task_to_demo_path = f"{behavior_eval.goal_int_resources_path}/data/task_to_demo.json"
 
 
 
-
-def generate_prompts():
+def generate_prompts(result_dir):
     '''
     This script is used to generate GPT prompts for goal conditions for the demos in the dataset.
     
     ----------------------------Required Inputs----------------------------
-    base prompt to be modified (prompt_path)
+    base prompt to be modified (prompt_template_path)
     relevant objects (with all possible states) (demo_to_objs_path)
     initial and goal conditions (demo_to_conds_path)
     task instructions (task_to_instructions_path)
@@ -38,6 +25,22 @@ def generate_prompts():
     ------------------------------------------------------------------------
     
     '''
+    
+    
+    # define the prompt save path
+
+    prompt_save_path = f"{result_dir}/reconstructed_prompts/goal_interpretation_prompts.json"
+    os.makedirs(os.path.dirname(prompt_save_path), exist_ok=True)
+
+
+    # Fixed paths (you should not have to change these paths)
+    demo_to_conds_path = f"{behavior_eval.goal_int_resources_path}/data/all_conditions.json"
+    demo_to_objs_path = f"{behavior_eval.goal_int_resources_path}/data/all_objects.json"
+    task_to_instructions_path = f"{behavior_eval.goal_int_resources_path}/data/instructions_by_activity_name.json"
+    prompt_template_path = f"{behavior_eval.goal_int_resources_path}/prompt_template/behavior_goal_interpretation.txt"
+    task_to_demo_path = f"{behavior_eval.goal_int_resources_path}/data/task_to_demo.json"
+
+
     with open(demo_to_conds_path, 'r') as json_file:
         demo_to_conds = json.load(json_file)
 
@@ -71,7 +74,7 @@ def generate_prompts():
         objects_string = '\n'.join(f"{key}: {value}" for key, value in objects.items())
         instructions_string = json.dumps({"Task Name": task_name, "Goal Instructions": instructions}, indent=4)
         
-        generic_prompt = open(prompt_path, 'r').read()
+        generic_prompt = open(prompt_template_path, 'r').read()
         
         prompt = generic_prompt.replace('<object_in_scene>', objects_string)
         prompt = prompt.replace('<all_initial_states>', initial_conditions_string)

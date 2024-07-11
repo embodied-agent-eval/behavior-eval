@@ -4,37 +4,6 @@ import behavior_eval
 import os
 
 
-
-demo_to_conds_path = f"{behavior_eval.goal_int_resources_path}/data/all_conditions.json"
-demo_to_objs_path = f"{behavior_eval.goal_int_resources_path}/data/all_objects.json"
-task_to_instructions_path = f"{behavior_eval.goal_int_resources_path}/data/instructions_by_activity_name.json"
-prompt_path = f"{behavior_eval.goal_int_resources_path}/prompts/behavior_goal_interpretation.txt"
-task_to_demo_path = f"{behavior_eval.goal_int_resources_path}/data/task_to_demo.json"
-demo_to_prompt_path = f"{behavior_eval.goal_int_resources_path}/data/llm_prompts.json"
-
-
-
-with open(demo_to_conds_path, 'r') as json_file:
-    demo_to_conds = json.load(json_file)
-
-with open(demo_to_objs_path, 'r') as json_file:
-    demo_to_objs = json.load(json_file)
-
-with open(demo_to_prompt_path, 'r') as json_file:
-    demo_to_prompt = json.load(json_file)
-
-with open(task_to_instructions_path, 'r') as json_file:
-    task_to_instructions = json.load(json_file)
-    
-with open(task_to_demo_path, 'r') as json_file:
-    task_to_demos = json.load(json_file)
-
-with open(behavior_eval.demo_name_path, 'r') as file:
-    demo_names = json.load(file)
-    
-    
-        
-
 object_states = {
     "node_states": [
         "Cooked",
@@ -55,29 +24,53 @@ object_states = {
         "Under"
     ]
 }
+class goal_interpretation_data():
+    def __init__(self):
+        self.demo_to_conds_path = f"{behavior_eval.goal_int_resources_path}/data/all_conditions.json"
+        self.demo_to_objs_path = f"{behavior_eval.goal_int_resources_path}/data/all_objects.json"
+        self.task_to_instructions_path = f"{behavior_eval.goal_int_resources_path}/data/instructions_by_activity_name.json"
+        self.prompt_path = f"{behavior_eval.goal_int_resources_path}/prompts/behavior_goal_interpretation.txt"
+        self.task_to_demo_path = f"{behavior_eval.goal_int_resources_path}/data/task_to_demo.json"
+        self.demo_to_prompt_path = f"{behavior_eval.goal_int_resources_path}/data/llm_prompts.json"
+        
+        with open(self.demo_to_conds_path, 'r') as json_file:
+            self.demo_to_conds = json.load(json_file)
+
+        with open(self.demo_to_objs_path, 'r') as json_file:
+            self.demo_to_objs = json.load(json_file)
+
+        with open(self.demo_to_prompt_path, 'r') as json_file:
+            self.demo_to_prompt = json.load(json_file)
+
+        with open(self.task_to_instructions_path, 'r') as json_file:
+            self.task_to_instructions = json.load(json_file)
+            
+        with open(self.task_to_demo_path, 'r') as json_file:
+            self.task_to_demos = json.load(json_file)
+
+        with open(behavior_eval.demo_name_path, 'r') as file:
+            self.demo_names = json.load(file)
+            
 
 
 
-all_models = [
-    "claude-3-haiku-20240307", 
-    "claude-3-opus-20240229", 
-    "claude-3-sonnet-2024022", 
-    "gemini-1.0-pro", 
-    "gemini-1.5-flash-preview-0514", 
-    "gemini-1.5-pro-preview-0409", 
-    "gpt-3.5-turbo-0125", 
-    "gpt-4-turbo-2024-04-09", 
-    "gpt-4o-2024-05-13", 
-    "llama-3-8b-chat", 
-    "llama-3-70b-chat", 
-    "mistral-large-2402", 
-    "mixtral-8x22b-instruct-v0.1",
-    "cohere-command-r",
-    "cohere-command-r-plus"
-]
-
-
-
+        self.all_models = [
+            "claude-3-haiku-20240307", 
+            "claude-3-opus-20240229", 
+            "claude-3-sonnet-2024022", 
+            "gemini-1.0-pro", 
+            "gemini-1.5-flash-preview-0514", 
+            "gemini-1.5-pro-preview-0409", 
+            "gpt-3.5-turbo-0125", 
+            "gpt-4-turbo-2024-04-09", 
+            "gpt-4o-2024-05-13", 
+            "llama-3-8b-chat", 
+            "llama-3-70b-chat", 
+            "mistral-large-2402", 
+            "mixtral-8x22b-instruct-v0.1",
+            "cohere-command-r",
+            "cohere-command-r-plus"
+        ]
 
 
 def is_node_condition(condition):
@@ -126,29 +119,6 @@ def is_state_condition(state, condition):
         return condition[0] == state.lower()
     
 
-
-def compute_metrics_by_state(all_satisfied_conditions, all_unsatisfied_conditions, predicted_conditions):
-    """Compute metrics for each state separately."""
-    node_state_results = {}
-    edge_state_results = {}
-    
-    for state in object_states["node_states"]:
-        node_state_results[state] = compute_metrics(
-            [condition for condition in all_satisfied_conditions if is_state_condition(state, condition)],
-            [condition for condition in all_unsatisfied_conditions if is_state_condition(state, condition)],
-            [condition for condition in predicted_conditions if is_state_condition(state, condition)],
-            keep_conditions=False
-        )
-    
-    for state in object_states["edge_states"]:
-        edge_state_results[state] = compute_metrics(
-            [condition for condition in all_satisfied_conditions if is_state_condition(state, condition)],
-            [condition for condition in all_unsatisfied_conditions if is_state_condition(state, condition)],
-            [condition for condition in predicted_conditions if is_state_condition(state, condition)],
-            keep_conditions=False
-        )
-    
-    return node_state_results, edge_state_results
             
 
 def compute_confusion_metrics(all_satisfied_conditions, all_unsatisfied_conditions, all_false_positive_conditions, predicted_conditions, keep_conditions=True):
@@ -180,9 +150,29 @@ def compute_confusion_metrics(all_satisfied_conditions, all_unsatisfied_conditio
             'f1_score': f1_score
         }
         
-        
 
-
+# def compute_metrics_by_state(all_satisfied_conditions, all_unsatisfied_conditions, predicted_conditions):
+#     """Compute metrics for each state separately."""
+#     node_state_results = {}
+#     edge_state_results = {}
+    
+#     for state in object_states["node_states"]:
+#         node_state_results[state] = compute_confusion_metrics(
+#             [condition for condition in all_satisfied_conditions if is_state_condition(state, condition)],
+#             [condition for condition in all_unsatisfied_conditions if is_state_condition(state, condition)],
+#             [condition for condition in predicted_conditions if is_state_condition(state, condition)],
+#             keep_conditions=False
+#         )
+    
+#     for state in object_states["edge_states"]:
+#         edge_state_results[state] = compute_confusion_metrics(
+#             [condition for condition in all_satisfied_conditions if is_state_condition(state, condition)],
+#             [condition for condition in all_unsatisfied_conditions if is_state_condition(state, condition)],
+#             [condition for condition in predicted_conditions if is_state_condition(state, condition)],
+#             keep_conditions=False
+#         )
+    
+#     return node_state_results, edge_state_results
 
 # Grammatical Error Checks
 
@@ -208,9 +198,9 @@ def contains_valid_state(condition):
     # if the state is neither a valid node state nor a valid edge state, return False
     return False
 
-def contains_valid_objects(condition, demo):
+def contains_valid_objects(condition, demo, DATA):
     """check if a conditions contains valid objects from the demo"""
-    legal_objects = list(demo_to_objs[demo].keys())
+    legal_objects = list(DATA.demo_to_objs[demo].keys())
     used_objects = []
     if condition[0] == "not":
         if len(condition[1]) == 2:
@@ -307,7 +297,7 @@ def dataset_error_analysis(all_satisfied_conditions: list, all_unsatisfied_condi
 
 
 
-def per_demo_error_analysis(demo, all_satisfied_conditions, all_unsatisfied_conditions, all_false_positive_conditions, predicted_conditions):
+def per_demo_error_analysis(demo, all_satisfied_conditions, all_unsatisfied_conditions, all_false_positive_conditions, predicted_conditions, DATA):
     """Compute metrics for node and edge conditions separately."""
     
     grammatically_valid_predicted_conditions = []
@@ -315,13 +305,13 @@ def per_demo_error_analysis(demo, all_satisfied_conditions, all_unsatisfied_cond
     state_hallucination = []
     object_hallucination = []
     for condition in predicted_conditions:
-        if contains_valid_state(condition) and is_of_correct_length(condition) and contains_valid_objects(condition, demo):
+        if contains_valid_state(condition) and is_of_correct_length(condition) and contains_valid_objects(condition, demo, DATA):
             grammatically_valid_predicted_conditions.append(condition)
         if not is_of_correct_length(condition):
             wrong_length.append(condition)
         if not contains_valid_state(condition):
             state_hallucination.append(condition)
-        if not contains_valid_objects(condition, demo):
+        if not contains_valid_objects(condition, demo, DATA):
             object_hallucination.append(condition)
             
     
@@ -434,7 +424,7 @@ def check_satisfaction(predicted_conditions, ground_truth_conditions):
 
 
 # define the evaluate dataset function
-def evaluate_dataset(result_reference_list):
+def evaluate_dataset(result_reference_list, DATA):
     all_satisfied_conditions = []
     all_unsatisfied_conditions = []
     all_predicted_conditions = []
@@ -452,7 +442,7 @@ def evaluate_dataset(result_reference_list):
         model_pred = tuple["llm_output"]
         
         satisfied_conditions, unsatisfied_conditions, false_positive_conditions, flattened_predicted_conditions = evaluate_goals(model_pred, goal_conds)
-        model_results_evaluated[demo] = per_demo_error_analysis(demo, satisfied_conditions, unsatisfied_conditions, false_positive_conditions, flattened_predicted_conditions)
+        model_results_evaluated[demo] = per_demo_error_analysis(demo, satisfied_conditions, unsatisfied_conditions, false_positive_conditions, flattened_predicted_conditions, DATA)
         num_object_hallucination += model_results_evaluated[demo]["grammatical_errors"]["object_hallucination_num"]
         
         all_satisfied_conditions.extend(satisfied_conditions)
@@ -478,7 +468,7 @@ def evaluate_dataset(result_reference_list):
 
 
 
-def evaluate_results(llm_response_dir):
+def evaluate_results(llm_response_dir, result_dir):
     '''
     This script is used to evaluate performance of the 15 LLMs in the Embodied Agents Eval Paper.
     
@@ -496,11 +486,13 @@ def evaluate_results(llm_response_dir):
     ------------------------------------------------------------------------
     
     '''
-    
+        
+        
+    DATA = goal_interpretation_data()
 
     ALL_RESULTS = {}
 
-    for model_name in all_models:
+    for model_name in DATA.all_models:
         save_path = f"{llm_response_dir}/{model_name}_outputs.json"
         with open(save_path, 'r') as json_file:
             ALL_RESULTS[model_name] = json.load(json_file)
@@ -508,13 +500,14 @@ def evaluate_results(llm_response_dir):
     
     ALL_METRICS = {}
 
-    for model_name in all_models:
+    for model_name in DATA.all_models:
         model_results = ALL_RESULTS[model_name]
         
         result_reference_list = []
-        for demo in demo_names:
-            goal_conds = demo_to_conds[demo]['goal_conditions']
-            model_pred = model_results[demo]    
+        for demo in DATA.demo_names:
+            goal_conds = DATA.demo_to_conds[demo]['goal_conditions']
+            model_pred = model_results[demo]
+            # model_pred = [i for i in model_results if i['identifier'] == demo][0]['llm_output']    
             result_reference_list.append(
                 {   
                     "identifier": demo,
@@ -524,14 +517,14 @@ def evaluate_results(llm_response_dir):
             )    
         
         
-        ALL_METRICS[model_name], sorted_model_results_evaluated = evaluate_dataset(result_reference_list)
+        ALL_METRICS[model_name], sorted_model_results_evaluated = evaluate_dataset(result_reference_list, DATA)
         
-        error_analysis_save_path = f"{behavior_eval.goal_int_result_path}/error_analysis/{model_name}_error_analysis.json"
+        error_analysis_save_path = f"{result_dir}/error_analysis/{model_name}_error_analysis.json"
         os.makedirs(os.path.dirname(error_analysis_save_path), exist_ok=True)
         with open(error_analysis_save_path, 'w') as json_file:
             json.dump(sorted_model_results_evaluated, json_file, indent=4)
     
-    print(f"results saved to {behavior_eval.goal_int_result_path}/error_analysis/")
+    print(f"results saved to {result_dir}/error_analysis/")
 
 if __name__ == "__main__":
     evaluate_results()
