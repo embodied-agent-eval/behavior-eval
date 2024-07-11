@@ -1,12 +1,13 @@
 import logging
 import os
 import yaml
-
+import igibson
 # Configure logging
 logger = logging.getLogger(__name__)
 
 __version__ = "1.0"
 
+igibson.behavior_eval_mode=True
 # Load global configuration
 config_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "global_config.yaml")
 logger.debug(f"Loading configuration from {config_path}")
@@ -39,7 +40,13 @@ subgoal_vocab_path = os.environ.get("BEHAVIOR_SUBGOAL_VOCAB", global_config.get(
 subgoal_vocab_path = os.path.expanduser(subgoal_vocab_path)
 logger.debug(f"Subgoal Vocabulary Path: {subgoal_vocab_path}")
 
+trans_model_resources_path = os.environ.get("BEHAVIOR_TRANSITION_MODEL_RESOURCE", global_config.get("trans_model_resources_path"))
+trans_model_resources_path = os.path.expanduser(trans_model_resources_path)
+logger.debug(f"Transition Model Resource Path: {trans_model_resources_path}")
 
+action_seq_resources_path=os.environ.get("BEHAVIOR_ACTION_SEQ_RESOURCE",global_config.get("action_seq_resources_path"))
+action_seq_resources_path=os.path.expanduser(action_seq_resources_path)
+logger.debug(f"Action Sequence Resource Path: {action_seq_resources_path}")
 
 root_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -53,3 +60,7 @@ if not os.path.isabs(subgoal_dec_resources_path):
     subgoal_dec_resources_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), subgoal_dec_resources_path)
 if not os.path.isabs(subgoal_vocab_path):
     subgoal_vocab_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), subgoal_vocab_path)
+if not os.path.isabs(trans_model_resources_path):
+    trans_model_resources_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), trans_model_resources_path)
+if not os.path.isabs(action_seq_resources_path):
+    action_seq_resources_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), action_seq_resources_path)

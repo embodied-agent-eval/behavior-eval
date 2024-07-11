@@ -1,58 +1,53 @@
 from behavior_eval.transition_model.base_env import BaseEnv
-from igibson.envs.igibson_env import iGibsonEnv
-from igibson.objects.multi_object_wrappers import ObjectMultiplexer,ObjectGrouper
-from igibson.objects.articulated_object import URDFObject
-from igibson.object_states.on_floor import RoomFloor
-from behavior_eval.evaluation.transition_modeling.prompts.prompts import prompt2 as prompt
-from bddl.config import get_definition_filename
+from behavior_eval.evaluation.transition_modeling.resources.prompt_templates.prompts import prompt2 as prompt
+import behavior_eval
 import os
+from bddl.config import get_definition_filename
 import json
 import re
 from behavior_eval.evaluation.transition_modeling.logic_score import calculate_logic_score
-DOMAIN_FILE_PATH = "igibson/evaluation/transition_modeling/data/resources/behavior_new.pddl"
-HUMAN_ANNOTATION_PATH="igibson/evaluation/data/action_sequence_human_annotations"
-GT_DATA_PATH="igibson/evaluation/transition_modeling/data/resources/problem_pddl.json"
-
-with open(GT_DATA_PATH) as f:
-    GT_DATA=json.load(f)
-
-ACTION_HANDLER_MAPPING={
-    "NAVIGATE_TO":"navigate_to",
-    "LEFT_GRASP":"grasp",
-    "RIGHT_GRASP":"grasp",
-    "LEFT_PLACE_ONTOP":"place_ontop",
-    "RIGHT_PLACE_ONTOP":"place_ontop",
-    "LEFT_PLACE_INSIDE":"place_inside",
-    "RIGHT_PLACE_INSIDE":"place_inside",
-    "OPEN":"open",
-    "CLOSE":"close",
-    "COOK":"cook",
-    "FREEZE":"freeze",
-    "SLICE":"slice",
-    "SOAK":"soak",
-    "TOGGLE_ON":"toggle_on",
-    "LEFT_PLACE_NEXTTO":"place_nextto",
-    "RIGHT_PLACE_NEXTTO":"place_nextto",
-    "LEFT_PLACE_UNDER":"place_under",
-    "RIGHT_PLACE_UNDER":"place_under",
-    "LEFT_PLACE_NEXTTO_ONTOP":"place_nextto_ontop",
-    "RIGHT_PLACE_NEXTTO_ONTOP":"place_nextto_ontop",
-}
 
 class TransitionModelingEvaluator(BaseEnv):
-    def __init__(self, demo_dir,demo_name,domain_file_path=DOMAIN_FILE_PATH,human_annotation_path=HUMAN_ANNOTATION_PATH) -> None:
-        super().__init__(demo_dir=demo_dir,demo_name=demo_name)
+    def __init__(self, demo_name) -> None:
+        super().__init__(demo_name=demo_name)
         self.demo_name=demo_name
-        self.domain_file_path=domain_file_path
-        self.human_attotation_path=human_annotation_path
+        self.domain_file_path=os.path.join(behavior_eval.trans_model_resources_path,"behavior_new.pddl")
+        self.human_attotation_path=os.path.join(behavior_eval.action_seq_resources_path,"human_annotations")
+        self.gt_data_path=os.path.join(behavior_eval.trans_model_resources_path,"problem_pddl.json")
         self.problem_pddl=self.get_problem_pddl()
         self.domain_pddl=self.get_domain_pddl()
         self.gold_actions=self.extract_action_details(content=self.domain_pddl)
 
+        with open(self.gt_data_path) as f:
+            self.gt_data=json.load(f)
 
-    def get_action_handler(self,gt_data=GT_DATA):
+        ACTION_HANDLER_MAPPING={
+            "NAVIGATE_TO":"navigate_to",
+            "LEFT_GRASP":"grasp",
+            "RIGHT_GRASP":"grasp",
+            "LEFT_PLACE_ONTOP":"place_ontop",
+            "RIGHT_PLACE_ONTOP":"place_ontop",
+            "LEFT_PLACE_INSIDE":"place_inside",
+            "RIGHT_PLACE_INSIDE":"place_inside",
+            "OPEN":"open",
+            "CLOSE":"close",
+            "COOK":"cook",
+            "FREEZE":"freeze",
+            "SLICE":"slice",
+            "SOAK":"soak",
+            "TOGGLE_ON":"toggle_on",
+            "LEFT_PLACE_NEXTTO":"place_nextto",
+            "RIGHT_PLACE_NEXTTO":"place_nextto",
+            "LEFT_PLACE_UNDER":"place_under",
+            "RIGHT_PLACE_UNDER":"place_under",
+            "LEFT_PLACE_NEXTTO_ONTOP":"place_nextto_ontop",
+            "RIGHT_PLACE_NEXTTO_ONTOP":"place_nextto_ontop",
+        }
+
+
+    def get_action_handler(self):
         action_handler=set()
-        for action in gt_data[self.demo_name]['actions']:
+        for action in self.gt_data[self.demo_name]['actions']:
             action_handler.add(action.split(" ")[0].strip())
         return list(action_handler)   
                         
@@ -139,11 +134,11 @@ class TransitionModelingEvaluator(BaseEnv):
             problem_pddl=f.read()
         return problem_pddl
     
-    def get_modified_pddl(self,gt_data=GT_DATA)->str:
-        return gt_data[self.demo_name]['problem_pddl']
+    def get_modified_pddl(self)->str:
+        return self.gt_data[self.demo_name]['problem_pddl']
     
-    def get_prompt(self,gt_data=GT_DATA):
-        return prompt.format(problem_file=self.get_modified_pddl(gt_data),action_handler=self.get_llm_input_action_handler())
+    def get_prompt(self):
+        return prompt.format(problem_file=self.get_modified_pddl(self.gt_data),action_handler=self.get_llm_input_action_handler())
     
     def parse_response(self,response):
         parsed_actions=self.extract_action_details(content=response)

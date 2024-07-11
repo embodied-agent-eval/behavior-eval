@@ -2,8 +2,8 @@ import fire
 from typing import Optional
 from behavior_eval.evaluation.action_sequence.scripts.evaluate_results import evaluate_results as action_sequence_evaluate_results
 from behavior_eval.evaluation.action_sequence.scripts.generate_prompts import generate_prompts as action_sequence_generate_prompts
-# from behavior_eval.evaluation.goal_interpretation.scripts.evaluate_results import evaluate_results as goal_interpretation_evaluate_results
-# from behavior_eval.evaluation.goal_interpretation.scripts.generate_prompts import generate_prompts as goal_interpretation_generate_prompts
+from behavior_eval.evaluation.goal_interpretation.scripts.evaluate_results import evaluate_results as goal_interpretation_evaluate_results
+from behavior_eval.evaluation.goal_interpretation.scripts.generate_prompts import generate_prompts as goal_interpretation_generate_prompts
 from behavior_eval.evaluation.subgoal_decomposition.scripts.generate_prompts import generate_prompts as subgoal_decomposition_generate_prompts
 from behavior_eval.evaluation.subgoal_decomposition.scripts.evaluate_results import evaluate_results as subgoal_decomposition_evaluate_results
 import os
@@ -31,11 +31,11 @@ def main(module:str="action_sequence",func:str="generate_prompts",worker_num:int
             action_sequence_evaluate_results(llm_response_dir,worker_num,result_dir)
         elif func == "generate_prompts":
             action_sequence_generate_prompts(worker_num,result_dir)
-    # elif module == "goal_interpretation":
-    #     if func == "evaluate_results":
-    #         goal_interpretation_evaluate_results(llm_response_dir)
-    #     elif func == "generate_prompts":
-    #         goal_interpretation_generate_prompts()
+    elif module == "goal_interpretation":
+        if func == "evaluate_results":
+            goal_interpretation_evaluate_results(llm_response_dir, result_dir)
+        elif func == "generate_prompts":
+            goal_interpretation_generate_prompts(result_dir)
     elif module == "subgoal_decomposition":
         if func == "evaluate_results":
             subgoal_decomposition_evaluate_results(llm_response_dir, worker_num, result_dir)
