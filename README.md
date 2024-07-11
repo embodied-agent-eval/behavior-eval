@@ -2,6 +2,29 @@
 
 ## Installation
 
+### Note before installation:
+
+There might be issues during the installation of iGibson. 
+
+To minimize and identify the potential issues, we recommend:
+
+1. Please see the system requirements section of the [iGibson installation guide](https://stanfordvl.github.io/iGibson/installation.html) first.
+
+2. **Create a Conda Virtual Environment**.
+   ```
+   conda create -n behavior-eval python=3.8 -y
+   ```
+3. **Install CMake Using Conda (do not use pip)**: 
+   ```
+   conda install cmake
+   ```
+4. **Use pip Install with Verbose Mode**:
+   ```
+   pip install -v behavior-eval
+   ```
+
+We have successfully tested the installation on Linux servers, Windows 10+, and Mac OS X.
+
 ### Step 1: Install `behavior-eval`, `iGibson`, and `bddl`
 
 #### For Windows Users:
@@ -40,24 +63,6 @@
 ```
 python -m behavior_eval.utils.download_utils
 ```
-
-### Note:
-
-There might be issues during the installation of iGibson. Please see the system requirements section of the [iGibson installation guide](https://stanfordvl.github.io/iGibson/installation.html).
-
-We have successfully tested the installation on Linux servers, Windows 10+, and Mac OS X.
-
-To minimize and identify the potential issues, we recommend the following steps:
-
-1. **Create a Conda Virtual Environment**.
-2. **Install CMake Using Conda**: 
-   ```
-   conda install cmake
-   ```
-3. **Use pip Install with Verbose Mode**:
-   ```
-   pip install -v behavior-eval
-   ```
 
 ## Usage
 

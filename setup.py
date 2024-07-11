@@ -18,22 +18,18 @@ def is_package_installed(package_name, version=None):
 
 def install_package(package_name, url, version=None):
     if not is_package_installed(package_name, version):
-        process = subprocess.Popen([sys.executable, "-m", "pip", "install", url],
-                                   stdout=subprocess.PIPE,
-                                   stderr=subprocess.PIPE,
-                                   universal_newlines=True)
-        while True:
-            output = process.stdout.readline()
-            if output == '' and process.poll() is not None:
-                break
-            if output:
-                sys.stdout.write(output)
-                sys.stdout.flush()
-        
-        # Print any remaining stderr output
-        stderr = process.communicate()[1]
-        if stderr:
-            sys.stderr.write(stderr)
+        try:
+            process = subprocess.run(
+                [sys.executable, "-m", "pip", "install", url],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                universal_newlines=True,
+                check=True
+            )
+            sys.stdout.write(process.stdout)
+            sys.stderr.write(process.stderr)
+        except subprocess.CalledProcessError as e:
+            sys.stderr.write(f"Error occurred while installing {package_name}: {e.stderr}")
             sys.stderr.flush()
 
 def custom_command():
