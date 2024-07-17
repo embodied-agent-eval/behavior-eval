@@ -66,8 +66,8 @@ def simulate_one_llm(llm_response_path, worker_num: int=1, result_dir: str='./re
     }
     traj_stats = traj_eval_stats(eval_stat_path)
     goal_stats = goal_eval_stats(eval_stat_path)
-    summary['traj_stats'] = traj_stats
-    summary['goal_stats'] = goal_stats
+    summary['trajectory_evaluation'] = traj_stats
+    summary['goal_evaluation'] = goal_stats
 
     summary_path = os.path.join(result_dir, 'summary', f'{llm_name}.json')
     os.makedirs(os.path.dirname(summary_path), exist_ok=True)

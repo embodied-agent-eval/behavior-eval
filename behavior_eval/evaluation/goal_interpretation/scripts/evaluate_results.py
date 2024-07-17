@@ -2,6 +2,7 @@ import igibson.object_states as object_states
 import json
 import behavior_eval
 import os
+import re
 
 
 object_states = {
@@ -54,24 +55,42 @@ class goal_interpretation_data():
 
 
 
-        self.all_models = [
-            "claude-3-haiku-20240307", 
-            "claude-3-opus-20240229", 
-            "claude-3-sonnet-2024022", 
-            "gemini-1.0-pro", 
-            "gemini-1.5-flash-preview-0514", 
-            "gemini-1.5-pro-preview-0409", 
-            "gpt-3.5-turbo-0125", 
-            "gpt-4-turbo-2024-04-09", 
-            "gpt-4o-2024-05-13", 
-            "llama-3-8b-chat", 
-            "llama-3-70b-chat", 
-            "mistral-large-2402", 
-            "mixtral-8x22b-instruct-v0.1",
-            "cohere-command-r",
-            "cohere-command-r-plus"
-        ]
+        # self.all_models = [
+        #     "claude-3-haiku-20240307", 
+        #     "claude-3-opus-20240229", 
+        #     "claude-3-sonnet-2024022", 
+        #     "gemini-1.0-pro", 
+        #     "gemini-1.5-flash-preview-0514", 
+        #     "gemini-1.5-pro-preview-0409", 
+        #     "gpt-3.5-turbo-0125", 
+        #     "gpt-4-turbo-2024-04-09", 
+        #     "gpt-4o-2024-05-13", 
+        #     "llama-3-8b-chat", 
+        #     "llama-3-70b-chat", 
+        #     "mistral-large-2402", 
+        #     "mixtral-8x22b-instruct-v0.1",
+        #     "cohere-command-r",
+        #     "cohere-command-r-plus"
+        # ]
 
+
+def extract_model_names(llm_response_dir):
+    # List to store the extracted model names
+    model_names = []
+
+    # Get all files in the directory
+    files = os.listdir(llm_response_dir)
+    
+    # Define a regex pattern to match the model name part of the filename
+    pattern = re.compile(r"^(.*?)_outputs\.json$")
+    
+    for file in files:
+        match = pattern.match(file)
+        if match:
+            # Extract the model name from the filename and add it to the list
+            model_names.append(match.group(1))
+
+    return model_names
 
 def is_node_condition(condition):
     """check of a condition is a node condition."""
@@ -489,6 +508,7 @@ def evaluate_results(llm_response_dir, result_dir):
         
         
     DATA = goal_interpretation_data()
+    DATA.all_models = extract_model_names(llm_response_dir)
 
     ALL_RESULTS = {}
 
