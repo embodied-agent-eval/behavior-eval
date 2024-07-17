@@ -134,27 +134,27 @@ def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1, result_di
 }
     total_task=len(result_list)
     
-    # round to 1 decimal places
+    # round to 4 decimal places
     new_summary={
         "goal_evaluation": {
-            "goal_success_rate": round(organized_summary["goal_rst"]["all_goal_satisfied_graph"]/total_task*100,1) if total_task!=0 else 0,
-            "state_goal": round(organized_summary["goal_rst"]["satisfied_node_predicates"]/organized_summary["goal_rst"]["tot_node_predicates"]*100,1) if organized_summary["goal_rst"]["tot_node_predicates"]!=0 else 0,
-            "relation_goal": round(organized_summary["goal_rst"]["satisfied_edge_predicates"]/organized_summary["goal_rst"]["tot_edge_predicates"]*100,1) if organized_summary["goal_rst"]["tot_edge_predicates"]!=0 else 0,
+            "task_success_rate": round(organized_summary["goal_rst"]["all_goal_satisfied_graph"]/total_task,4) if total_task!=0 else 0,
+            "state_goal": round(organized_summary["goal_rst"]["satisfied_node_predicates"]/organized_summary["goal_rst"]["tot_node_predicates"],4) if organized_summary["goal_rst"]["tot_node_predicates"]!=0 else 0,
+            "relation_goal": round(organized_summary["goal_rst"]["satisfied_edge_predicates"]/organized_summary["goal_rst"]["tot_edge_predicates"],4) if organized_summary["goal_rst"]["tot_edge_predicates"]!=0 else 0,
             "action_goal": 0,
-            "total": round(organized_summary["goal_rst"]["satisfied_predicates"]/organized_summary["goal_rst"]["tot_predicates"]*100,1) if organized_summary["goal_rst"]["tot_predicates"]!=0 else 0,
+            "total_goal": round(organized_summary["goal_rst"]["satisfied_predicates"]/organized_summary["goal_rst"]["tot_predicates"],4) if organized_summary["goal_rst"]["tot_predicates"]!=0 else 0,
         },
         "trajectory_evaluation": {
-        "execution_success_rate": round(organized_summary["error_type"]["execution_success"]/total_task*100,1),
+        "execution_success_rate": round(organized_summary["error_type"]["execution_success"]/total_task,4),
         "grammar_error": {
-            "parsing": round(organized_summary["error_type"]["parsing"]/total_task*100,1) if total_task!=0 else 0,
-            "hallucination": round(organized_summary["error_type"]["hullucination"]/total_task*100,1) if total_task!=0 else 0,
-            "predicate_argument_number": round(organized_summary["error_type"]["arguments"]/total_task*100,1) if total_task!=0 else 0,
+            "parsing": round(organized_summary["error_type"]["parsing"]/total_task,4) if total_task!=0 else 0,
+            "hallucination": round(organized_summary["error_type"]["hullucination"]/total_task,4) if total_task!=0 else 0,
+            "predicate_argument_number": round(organized_summary["error_type"]["arguments"]/total_task,4) if total_task!=0 else 0,
         },
         "runtime_error": {
-            "wrong_order": round(organized_summary["error_type"]["ErrorType.WRONG_TEMPORAL_ORDER"]/total_task*100,1) if total_task!=0 else 0,
-            "missing_step": round(organized_summary["error_type"]["ErrorType.MISSING_STEP"]/total_task*100,1) if total_task!=0 else 0,
-            "affordance": round(organized_summary["error_type"]["ErrorType.AFFORDANCE_ERROR"]/total_task*100,1) if total_task!=0 else 0,
-            "additional_step": round(organized_summary["error_type"]["ErrorType.ADDITIONAL_STEP"]/total_task*100,1) if total_task!=0 else 0
+            "wrong_order": round(organized_summary["error_type"]["ErrorType.WRONG_TEMPORAL_ORDER"]/total_task,4) if total_task!=0 else 0,
+            "missing_step": round(organized_summary["error_type"]["ErrorType.MISSING_STEP"]/total_task,4) if total_task!=0 else 0,
+            "affordance": round(organized_summary["error_type"]["ErrorType.AFFORDANCE_ERROR"]/total_task,4) if total_task!=0 else 0,
+            "additional_step": round(organized_summary["error_type"]["ErrorType.ADDITIONAL_STEP"]/total_task,4) if total_task!=0 else 0
         }
         },
     }

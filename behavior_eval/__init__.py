@@ -1,13 +1,11 @@
 import logging
 import os
 import yaml
-import igibson
 # Configure logging
 logger = logging.getLogger(__name__)
 
 __version__ = "1.0"
 
-igibson.behavior_eval_mode=True
 # Load global configuration
 config_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "global_config.yaml")
 logger.debug(f"Loading configuration from {config_path}")
@@ -64,3 +62,10 @@ if not os.path.isabs(trans_model_resources_path):
     trans_model_resources_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), trans_model_resources_path)
 if not os.path.isabs(action_seq_resources_path):
     action_seq_resources_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), action_seq_resources_path)
+
+# try to see if the igibson is installed
+try:
+    import igibson
+    igibson.behavior_eval_mode = True
+except ImportError:
+    print("igibson is not installed, please install igibson using python -m behavior_eval.utils.install_igibson_utils")

@@ -12,6 +12,7 @@ from contextlib import redirect_stdout
 import io
 from collections import defaultdict
 import traceback
+import igibson
 BINARY_STATES=[
     'nextto',
     'ontop',
