@@ -18,6 +18,7 @@ setup(
         "fire",
         "lark",
         "bddl-eval",
+        "pyquaternion",
     ],
     include_package_data=True,
     package_data={

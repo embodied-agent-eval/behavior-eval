@@ -31,7 +31,7 @@ def git_clone_repo():
 
 def install_igibson():
     os.chdir('iGibson')
-    subprocess.run([sys.executable, '-m', 'pip', 'install', '.'], check=True)
+    subprocess.run([sys.executable, '-m', 'pip', 'install', '-e','.'], check=True)
     print("iGibson installed successfully.")
 
 def main():

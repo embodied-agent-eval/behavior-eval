@@ -281,7 +281,7 @@
     },
     "organizing_school_stuff_0_Wainscott_1_int_0_2021-08-24_22-56-24": {
         "task": "organizing_school_stuff",
-        "task_id": 1,
+        "task_id": 0,
         "scene_id": "Wainscott_1_int"
     },
     "packing_adult_s_bags_0_Ihlen_1_int_0_2021-10-26_09-54-15": {
@@ -401,7 +401,7 @@
     },
     "rearranging_furniture_0_Pomaria_2_int_1_2021-06-22_16-39-21": {
         "task": "rearranging_furniture",
-        "task_id": 1,
+        "task_id": 0,
         "scene_id": "Pomaria_2_int"
     },
     "serving_a_meal_0_Merom_1_int_0_2021-10-26_00-34-17": {
@@ -436,7 +436,7 @@
     },
     "sorting_mail_0_Wainscott_0_int_1_2021-10-26_14-38-16": {
         "task": "sorting_mail",
-        "task_id": 1,
+        "task_id": 0,
         "scene_id": "Wainscott_0_int"
     },
     "storing_food_0_Rs_int_0_2021-10-25_21-27-36": {

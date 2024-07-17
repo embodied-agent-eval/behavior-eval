@@ -158,8 +158,9 @@ def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1, result_di
         }
         },
     }
-                                
+    
     output_path = output_path.replace('log/', 'summary/')
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w') as f:
         json.dump(new_summary, f, indent=4)
     return new_summary

@@ -37,6 +37,13 @@ def generate_prompts(worker_num: Optional[int] = 1, result_dir: Optional[str] = 
     output_path = os.path.join(result_dir, 'action_sequence_prompts.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
+    # If output_path exists, load first, skip the processed ones
+    if os.path.exists(output_path):
+        existing_results = json.load(open(output_path))
+        processed_identifiers = set([r["identifier"] for r in existing_results])
+        new_demo_list = [r for r in demo_list if r not in processed_identifiers]
+        demo_list = new_demo_list
+        result_list.extend(existing_results)
     
     worker_num = min(worker_num, len(demo_list))
     task_queue = Queue()
