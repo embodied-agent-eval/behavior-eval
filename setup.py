@@ -7,7 +7,7 @@ from setuptools.command.egg_info import egg_info as _egg_info
 
 setup(
     name='behavior-eval',
-    version='1.0.5',
+    version='1.0.6',
     author='stanford',
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
