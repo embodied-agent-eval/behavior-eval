@@ -6,7 +6,7 @@ import behavior_eval
 from typing import Optional
 from multiprocessing import Process, Manager, Queue
 from behavior_eval.evaluation.subgoal_decomposition.subgoal_sim_utils import evaluate_task, get_all_raw_task_goal, get_all_task_list, EvalStatistics
-from behavior_eval.evaluation.subgoal_decomposition.subgoal_eval_utils import traj_eval_stats, goal_eval_stats
+from behavior_eval.evaluation.subgoal_decomposition.subgoal_eval_utils import traj_eval_stats, goal_eval_stats, extract_model_names
 
 def simulate_llm_response(demo_name, lock, llm_plan_path, eval_stat_path):
     report = evaluate_task(demo_name, llm_plan_path)
@@ -28,7 +28,7 @@ def worker_task(queue, lock, eval_stat_path):
         simulate_llm_response(demo_name, lock, llm_plan_path, eval_stat_path)
 
 
-def simulate_one_llm(llm_response_path, worker_num: int=1, result_dir: str='./results'):
+def simulate_one_llm(llm_response_path, llm_name: str, worker_num: int=1, result_dir: str='./results'):
     get_all_raw_task_goal()
     manager = Manager()
     lock = manager.Lock()
@@ -77,10 +77,14 @@ def simulate_one_llm(llm_response_path, worker_num: int=1, result_dir: str='./re
 
 def evaluate_results(llm_response_dir, worker_num: int=1, result_dir: str='./results'):
     os.makedirs(result_dir, exist_ok=True)
-    for file_name in os.listdir(llm_response_dir):
-        file_path = os.path.join(llm_response_dir, file_name)
-        if os.path.isfile(file_path) and file_path.endswith('.json'):
-            simulate_one_llm(file_path, worker_num, result_dir)
+    available_model_names = extract_model_names(llm_response_dir)
+    if not available_model_names:
+        print('No model found in the directory')
+        return
+    for model_name in available_model_names:
+        model_path = os.path.join(llm_response_dir, f'{model_name}_outputs.json')
+        assert os.path.exists(model_path), f'{model_path} not found in the directory'
+        simulate_one_llm(model_path, model_name, worker_num, result_dir)
 
 if  __name__ == '__main__':
     fire.Fire(evaluate_results)

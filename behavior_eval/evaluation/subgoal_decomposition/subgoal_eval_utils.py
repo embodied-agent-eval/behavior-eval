@@ -229,3 +229,21 @@ def goal_eval_stats(eval_stat_path):
         "total_goal": round(overall_goal_success_rate, 4) if tot_num > 0 else 0
     }
     return goal_stats
+
+def extract_model_names(llm_response_dir):
+    # List to store the extracted model names
+    model_names = []
+    assert os.path.exists(llm_response_dir), f"Directory {llm_response_dir} does not exist"
+    # Get all files in the directory
+    files = os.listdir(llm_response_dir)
+    
+    # Define a regex pattern to match the model name part of the filename
+    pattern = re.compile(r"^(.*?)_outputs\.json$")
+    
+    for file in files:
+        match = pattern.match(file)
+        if match:
+            # Extract the model name from the filename and add it to the list
+            model_names.append(match.group(1))
+
+    return model_names

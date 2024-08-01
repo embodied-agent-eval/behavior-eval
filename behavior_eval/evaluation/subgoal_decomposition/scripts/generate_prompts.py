@@ -22,6 +22,7 @@ def get_llm_output(demo_name, result_list, lock, output_path):
         prompt = get_subgoal_prompt(env)
     except:
         raise Exception(f"Failed to generate prompt for {demo_name}")
+    env.transition_model.env.close()
     rst = {
         "identifier": demo_name,
         "llm_prompt": prompt,
@@ -30,6 +31,7 @@ def get_llm_output(demo_name, result_list, lock, output_path):
         result_list.append(rst)
         with open(output_path, 'w') as f:
             json.dump(list(result_list), f, indent=4)
+    
 
 def worker_task(queue, result_list, lock, output_path):
     while True:

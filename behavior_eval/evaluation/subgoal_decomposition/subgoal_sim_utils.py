@@ -119,6 +119,9 @@ def evaluate_task(demo_name:str, plan_path):
     except Exception as e:
         report = ('NotParseable', str(e), None)
     finally:
+        # delete eval_subgoal_plan to clean memory
+        if 'eval_subgoal_plan' in locals():
+            eval_subgoal_plan.env.env.close()
         return report
 
 def get_all_task_list():
