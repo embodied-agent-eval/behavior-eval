@@ -18,6 +18,7 @@ def evaluate_llm_response(demo_name, result_list, lock, output_path, actions_raw
         # Append to the file in real-time
         with open(output_path, 'w') as f:
             json.dump(list(result_list), f, indent=4)
+    ase.transition_model.env.close()
 
 def worker_task(queue, result_list, lock, output_path):
     while True:
@@ -32,7 +33,7 @@ def evaluate_one_llm(llm_response_path, worker_num: Optional[int] = 1, result_di
     result_list = manager.list()
     lock = manager.Lock()
 
-    llm_response_name = os.path.basename(llm_response_path).split('.')[0]
+    llm_response_name = os.path.splitext(os.path.basename(llm_response_path))[0]
     output_path = os.path.join(result_dir, f'log/{llm_response_name}.json')
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
